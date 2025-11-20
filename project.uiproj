@@ -1,0 +1,6 @@
+{
+  "Name": "RecoleccionCBA",
+  "ProjectType": "Process",
+  "Description": "Recolección de precio de productos de la CBA.",
+  "MainFile": "Main.xaml"
+}
