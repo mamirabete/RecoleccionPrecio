@@ -56,30 +56,52 @@
   </TextExpression.NamespacesForImplementation>
   <TextExpression.ReferencesForImplementation>
     <scg:List x:TypeArguments="AssemblyReference" Capacity="84">
+      <AssemblyReference>GlobalVariablesT1PNoYwrqg</AssemblyReference>
       <AssemblyReference>Microsoft.Bcl.AsyncInterfaces</AssemblyReference>
       <AssemblyReference>Microsoft.VisualBasic</AssemblyReference>
       <AssemblyReference>mscorlib</AssemblyReference>
-      <AssemblyReference>NPOI</AssemblyReference>
+      <AssemblyReference>NPOI.Core</AssemblyReference>
       <AssemblyReference>PresentationCore</AssemblyReference>
       <AssemblyReference>PresentationFramework</AssemblyReference>
       <AssemblyReference>System</AssemblyReference>
       <AssemblyReference>System.Activities</AssemblyReference>
       <AssemblyReference>System.Collections</AssemblyReference>
+      <AssemblyReference>System.Collections.Immutable</AssemblyReference>
+      <AssemblyReference>System.Collections.NonGeneric</AssemblyReference>
       <AssemblyReference>System.ComponentModel</AssemblyReference>
       <AssemblyReference>System.ComponentModel.Composition</AssemblyReference>
+      <AssemblyReference>System.ComponentModel.EventBasedAsync</AssemblyReference>
+      <AssemblyReference>System.ComponentModel.Primitives</AssemblyReference>
       <AssemblyReference>System.ComponentModel.TypeConverter</AssemblyReference>
       <AssemblyReference>System.Configuration.ConfigurationManager</AssemblyReference>
       <AssemblyReference>System.Console</AssemblyReference>
       <AssemblyReference>System.Core</AssemblyReference>
       <AssemblyReference>System.Data</AssemblyReference>
+      <AssemblyReference>System.Data.Common</AssemblyReference>
       <AssemblyReference>System.Data.DataSetExtensions</AssemblyReference>
+      <AssemblyReference>System.Data.SqlClient</AssemblyReference>
       <AssemblyReference>System.Drawing</AssemblyReference>
       <AssemblyReference>System.Linq</AssemblyReference>
+      <AssemblyReference>System.Linq.Async</AssemblyReference>
+      <AssemblyReference>System.Linq.Async.Queryable</AssemblyReference>
+      <AssemblyReference>System.Linq.Expressions</AssemblyReference>
+      <AssemblyReference>System.Linq.Parallel</AssemblyReference>
+      <AssemblyReference>System.Linq.Queryable</AssemblyReference>
       <AssemblyReference>System.Memory</AssemblyReference>
+      <AssemblyReference>System.Memory.Data</AssemblyReference>
       <AssemblyReference>System.ObjectModel</AssemblyReference>
       <AssemblyReference>System.Private.CoreLib</AssemblyReference>
+      <AssemblyReference>System.Private.DataContractSerialization</AssemblyReference>
+      <AssemblyReference>System.Private.ServiceModel</AssemblyReference>
       <AssemblyReference>System.Private.Uri</AssemblyReference>
+      <AssemblyReference>System.Private.Xml</AssemblyReference>
+      <AssemblyReference>System.Reflection.DispatchProxy</AssemblyReference>
+      <AssemblyReference>System.Reflection.Metadata</AssemblyReference>
+      <AssemblyReference>System.Reflection.TypeExtensions</AssemblyReference>
+      <AssemblyReference>System.Runtime.Numerics</AssemblyReference>
       <AssemblyReference>System.Runtime.Serialization</AssemblyReference>
+      <AssemblyReference>System.Runtime.Serialization.Formatters</AssemblyReference>
+      <AssemblyReference>System.Runtime.Serialization.Primitives</AssemblyReference>
       <AssemblyReference>System.Security.Permissions</AssemblyReference>
       <AssemblyReference>System.ServiceModel</AssemblyReference>
       <AssemblyReference>System.ValueTuple</AssemblyReference>
@@ -87,40 +109,18 @@
       <AssemblyReference>System.Xml</AssemblyReference>
       <AssemblyReference>System.Xml.Linq</AssemblyReference>
       <AssemblyReference>UiPath.Excel</AssemblyReference>
+      <AssemblyReference>UiPath.Excel.Activities.Design</AssemblyReference>
       <AssemblyReference>UiPath.OCR.Activities.Design</AssemblyReference>
+      <AssemblyReference>UiPath.Studio.Constants</AssemblyReference>
       <AssemblyReference>UiPath.System.Activities</AssemblyReference>
       <AssemblyReference>UiPath.System.Activities.Design</AssemblyReference>
       <AssemblyReference>UiPath.UiAutomation.Activities</AssemblyReference>
       <AssemblyReference>UiPath.UIAutomationCore</AssemblyReference>
       <AssemblyReference>UiPath.Workflow</AssemblyReference>
       <AssemblyReference>WindowsBase</AssemblyReference>
-      <AssemblyReference>UiPath.Studio.Constants</AssemblyReference>
-      <AssemblyReference>UiPath.Excel.Activities.Design</AssemblyReference>
-      <AssemblyReference>System.Private.ServiceModel</AssemblyReference>
-      <AssemblyReference>System.Private.DataContractSerialization</AssemblyReference>
-      <AssemblyReference>System.Runtime.Serialization.Formatters</AssemblyReference>
-      <AssemblyReference>System.Runtime.Serialization.Primitives</AssemblyReference>
-      <AssemblyReference>NPOI.Core</AssemblyReference>
-      <AssemblyReference>System.Collections.NonGeneric</AssemblyReference>
-      <AssemblyReference>System.Linq.Expressions</AssemblyReference>
-      <AssemblyReference>System.Memory.Data</AssemblyReference>
-      <AssemblyReference>System.Linq.Async</AssemblyReference>
-      <AssemblyReference>System.Runtime.Numerics</AssemblyReference>
-      <AssemblyReference>System.Data.SqlClient</AssemblyReference>
-      <AssemblyReference>System.Data.Common</AssemblyReference>
-      <AssemblyReference>System.ComponentModel.EventBasedAsync</AssemblyReference>
-      <AssemblyReference>System.ComponentModel.Primitives</AssemblyReference>
-      <AssemblyReference>System.Private.Xml</AssemblyReference>
-      <AssemblyReference>System.Reflection.DispatchProxy</AssemblyReference>
-      <AssemblyReference>System.Reflection.TypeExtensions</AssemblyReference>
-      <AssemblyReference>System.Reflection.Metadata</AssemblyReference>
-      <AssemblyReference>System.Linq.Async.Queryable</AssemblyReference>
-      <AssemblyReference>System.Collections.Immutable</AssemblyReference>
-      <AssemblyReference>System.Linq.Parallel</AssemblyReference>
-      <AssemblyReference>System.Linq.Queryable</AssemblyReference>
     </scg:List>
   </TextExpression.ReferencesForImplementation>
-  <Flowchart sap2010:Annotation.AnnotationText="Establezca y registre el estado de la transacción junto con campos de registro adicionales.&#xA;Puede haber tres estados posibles: Éxito, Excepción de Negocio y Excepción de Sistema.&#xA;Una Excepción de Regla de Negocio caracteriza una situación irregular según las reglas del proceso e impide que la transacción se procese. En este caso, la transacción no se reintenta, ya que el resultado será el mismo hasta que se resuelva el problema que la causó.&#xA;Por ejemplo, se puede considerar una BusinessRuleException si un proceso espera leer un archivo adjunto de un correo electrónico, pero el remitente no lo adjuntó. En este caso, los reintentos inmediatos de la transacción no producirán un resultado diferente.&#xA;Por otro lado, las excepciones de sistema se caracterizan por excepciones cuyos tipos son diferentes a BusinessRuleException. Cuando ocurre este tipo de excepción, la transacción se puede reintentar tras cerrar y volver a abrir las aplicaciones involucradas en el proceso. Esto se debe a que la excepción fue causada por un problema en las aplicaciones, que podría solucionarse reiniciándolas.&#xA;Si las colas de Orchestrator son el origen de las transacciones, se utiliza la actividad &quot;Establecer estado de transacción&quot; para actualizar el estado. Además, Orchestrator también implementa el mecanismo de reintento.&#xA;Si no se utilizan colas de Orchestrator, el estado se puede establecer, por ejemplo, escribiendo en una columna específica de una hoja de cálculo. En estos casos, el marco de trabajo cubre el mecanismo de reintento y el número de reintentos se define en el archivo de configuración.&#xA;Al final, se incrementa io_TransactionNumber, lo que permite al marco obtener la siguiente transacción que se procesará." DisplayName="Set Transaction Status" sap:VirtualizedContainerService.HintSize="1278.6666666666665,444.32333333333327" sap2010:WorkflowViewState.IdRef="Flowchart_2">
+  <Flowchart sap2010:Annotation.AnnotationText="Establezca y registre el estado de la transacción junto con campos de registro adicionales.&#xA;Puede haber tres estados posibles: Éxito, Excepción de Negocio y Excepción de Sistema.&#xA;Una Excepción de Regla de Negocio caracteriza una situación irregular según las reglas del proceso e impide que la transacción se procese. En este caso, la transacción no se reintenta, ya que el resultado será el mismo hasta que se resuelva el problema que la causó.&#xA;Por ejemplo, se puede considerar una BusinessRuleException si un proceso espera leer un archivo adjunto de un correo electrónico, pero el remitente no lo adjuntó. En este caso, los reintentos inmediatos de la transacción no producirán un resultado diferente.&#xA;Por otro lado, las excepciones de sistema se caracterizan por excepciones cuyos tipos son diferentes a BusinessRuleException. Cuando ocurre este tipo de excepción, la transacción se puede reintentar tras cerrar y volver a abrir las aplicaciones involucradas en el proceso. Esto se debe a que la excepción fue causada por un problema en las aplicaciones, que podría solucionarse reiniciándolas.&#xA;Si las colas de Orchestrator son el origen de las transacciones, se utiliza la actividad &quot;Establecer estado de transacción&quot; para actualizar el estado. Además, Orchestrator también implementa el mecanismo de reintento.&#xA;Si no se utilizan colas de Orchestrator, el estado se puede establecer, por ejemplo, escribiendo en una columna específica de una hoja de cálculo. En estos casos, el marco de trabajo cubre el mecanismo de reintento y el número de reintentos se define en el archivo de configuración.&#xA;Al final, se incrementa io_TransactionNumber, lo que permite al marco obtener la siguiente transacción que se procesará." DisplayName="Set Transaction Status" sap:VirtualizedContainerService.HintSize="962.6666666666666,444.32333333333327" sap2010:WorkflowViewState.IdRef="Flowchart_2">
     <Flowchart.Variables>
       <Variable x:TypeArguments="x:String" Name="errorTipo" />
       <Variable x:TypeArguments="x:String" Name="transactionId" />
@@ -379,10 +379,7 @@
         </FlowStep>
       </FlowDecision.True>
       <FlowDecision.False>
-        <FlowDecision x:Name="__ReferenceID1" DisplayName="¿Es una excepción de negocio?" sap:VirtualizedContainerService.HintSize="60,60" sap2010:WorkflowViewState.IdRef="FlowDecision_3">
-          <FlowDecision.Condition>
-            <VisualBasicValue x:TypeArguments="x:Boolean" DisplayName="Visual basic value" ExpressionText="in_TransactionResult IsNot Nothing AndAlso in_TransactionResult.GetType Is GetType(BusinessRuleException)" />
-          </FlowDecision.Condition>
+        <FlowDecision x:Name="__ReferenceID1" Condition="[in_TransactionResult IsNot Nothing AndAlso in_TransactionResult.GetType Is GetType(BusinessRuleException)]" DisplayName="¿Es una excepción de negocio?" sap:VirtualizedContainerService.HintSize="60,60" sap2010:WorkflowViewState.IdRef="FlowDecision_3">
           <sap:WorkflowViewStateService.ViewState>
             <scg:Dictionary x:TypeArguments="x:String, x:Object">
               <x:Boolean x:Key="IsExpanded">True</x:Boolean>

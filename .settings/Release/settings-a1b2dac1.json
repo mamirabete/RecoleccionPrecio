@@ -45,5 +45,12 @@
   "UiPath.UIAutomationNext.Activities.SAPLogon.SAPLogonDelayBetweenRetries": "0.5",
   "UiPath.UIAutomationNext.Activities.Logging.TargetSearchLogLevel": "Off",
   "UiPath.UIAutomationNext.Activities.Logging.TargetSearchPerformanceLogLevel": "Off",
-  "UiPath.UIAutomationNext.Activities.Logging.AuditLogLevel": "Trace"
+  "UiPath.UIAutomationNext.Activities.Logging.AuditLogLevel": "Trace",
+  "UiPath.UIAutomationNext.Activities.SAP.SAPEnforceHardTimeout": "False",
+  "UiPath.UIAutomationNext.Activities.SAP.SAPAdditionalScaling": "True",
+  "UiPath.UIAutomationNext.Activities.SAP.SAPMonitoring": "False",
+  "UiPath.UIAutomationNext.Activities.SAP.SAPLogonRetries": "5",
+  "UiPath.UIAutomationNext.Activities.SAP.SAPLogonDelayBetweenRetries": "0.5",
+  "UiPath.UIAutomationNext.Activities.UITask.UITaskTraceLevel": "Html",
+  "UiPath.UIAutomationNext.Activities.UITask.UITaskTraceRetention": "7"
 }

@@ -1,0 +1,386 @@
+<Activity mc:Ignorable="sap sap2010" x:Class="Business_Workflows_WF_AbrirSitioSupermercado" sap2010:WorkflowViewState.IdRef="WF_AbrirSitioSupermercado" xmlns="http://schemas.microsoft.com/netfx/2009/xaml/activities" xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" xmlns:s="clr-namespace:System;assembly=System.Private.CoreLib" xmlns:sap="http://schemas.microsoft.com/netfx/2009/xaml/activities/presentation" xmlns:sap2010="http://schemas.microsoft.com/netfx/2010/xaml/activities/presentation" xmlns:scg="clr-namespace:System.Collections.Generic;assembly=System.Private.CoreLib" xmlns:sco="clr-namespace:System.Collections.ObjectModel;assembly=System.Private.CoreLib" xmlns:sd="clr-namespace:System.Drawing;assembly=System.Drawing.Common" xmlns:sd1="clr-namespace:System.Drawing;assembly=System.Drawing.Primitives" xmlns:ui="http://schemas.uipath.com/workflow/activities" xmlns:uix="http://schemas.uipath.com/workflow/activities/uix" xmlns:uwah="clr-namespace:UiPath.Web.Activities.Http;assembly=UiPath.Web.Activities" xmlns:uwahm="clr-namespace:UiPath.Web.Activities.Http.Models;assembly=UiPath.Web.Activities" xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml">
+  <TextExpression.NamespacesForImplementation>
+    <sco:Collection x:TypeArguments="x:String">
+      <x:String>System</x:String>
+      <x:String>System.Collections.Generic</x:String>
+      <x:String>System.Collections.ObjectModel</x:String>
+      <x:String>System.Linq</x:String>
+      <x:String>UiPath.Core</x:String>
+      <x:String>UiPath.Core.Activities</x:String>
+      <x:String>System.Activities</x:String>
+      <x:String>System.Drawing</x:String>
+      <x:String>System</x:String>
+      <x:String>System.Runtime.Serialization</x:String>
+      <x:String>System.Collections.Generic</x:String>
+      <x:String>System.Collections</x:String>
+      <x:String>UiPath.UIAutomationNext.Enums</x:String>
+      <x:String>UiPath.Core</x:String>
+      <x:String>UiPath.Core.Activities</x:String>
+      <x:String>UiPath.UIAutomationCore.Contracts</x:String>
+      <x:String>UiPath.UIAutomationNext.Models</x:String>
+      <x:String>System.Collections.ObjectModel</x:String>
+      <x:String>UiPath.UIAutomationNext.Activities</x:String>
+      <x:String>UiPath.Shared.Activities</x:String>
+      <x:String>UiPath.Platform.ObjectLibrary</x:String>
+      <x:String>UiPath.Platform.SyncObjects</x:String>
+      <x:String>System.Reflection</x:String>
+      <x:String>UiPath.UIAutomationNext</x:String>
+      <x:String>UiPath.Web.Activities.Http.Models</x:String>
+      <x:String>UiPath.Platform.ResourceHandling</x:String>
+      <x:String>System.Data</x:String>
+      <x:String>System.IO</x:String>
+      <x:String>Microsoft.VisualBasic.CompilerServices</x:String>
+      <x:String>Microsoft</x:String>
+      <x:String>Microsoft.Win32.SafeHandles</x:String>
+      <x:String>System.Numerics</x:String>
+      <x:String>System.Net</x:String>
+      <x:String>System.Globalization</x:String>
+      <x:String>System.Configuration.Assemblies</x:String>
+      <x:String>System.ComponentModel</x:String>
+      <x:String>System.CodeDom.Compiler</x:String>
+      <x:String>System.Buffers</x:String>
+      <x:String>System.Buffers.Text</x:String>
+      <x:String>System.Buffers.Binary</x:String>
+      <x:String>System.Threading</x:String>
+      <x:String>System.Threading.Tasks</x:String>
+      <x:String>System.Threading.Tasks.Sources</x:String>
+      <x:String>System.Text</x:String>
+      <x:String>System.Text.Unicode</x:String>
+      <x:String>System.Security</x:String>
+      <x:String>System.Security.Principal</x:String>
+      <x:String>System.Security.Permissions</x:String>
+      <x:String>System.Security.Cryptography</x:String>
+      <x:String>System.Runtime</x:String>
+      <x:String>System.Runtime.Remoting</x:String>
+      <x:String>System.Runtime.ExceptionServices</x:String>
+      <x:String>System.Runtime.ConstrainedExecution</x:String>
+      <x:String>System.Runtime.Versioning</x:String>
+      <x:String>System.Runtime.Loader</x:String>
+      <x:String>System.Runtime.Intrinsics</x:String>
+      <x:String>System.Runtime.Intrinsics.Wasm</x:String>
+      <x:String>System.Runtime.Intrinsics.Arm</x:String>
+      <x:String>System.Runtime.Intrinsics.X86</x:String>
+      <x:String>System.Runtime.InteropServices</x:String>
+      <x:String>System.Runtime.InteropServices.ObjectiveC</x:String>
+      <x:String>System.Runtime.InteropServices.Marshalling</x:String>
+      <x:String>System.Runtime.InteropServices.ComTypes</x:String>
+      <x:String>System.Runtime.CompilerServices</x:String>
+      <x:String>System.Resources</x:String>
+      <x:String>System.Reflection.Metadata</x:String>
+      <x:String>System.Reflection.Emit</x:String>
+      <x:String>System.IO.Enumeration</x:String>
+      <x:String>System.Diagnostics</x:String>
+      <x:String>System.Diagnostics.SymbolStore</x:String>
+      <x:String>System.Diagnostics.Contracts</x:String>
+      <x:String>System.Diagnostics.CodeAnalysis</x:String>
+      <x:String>System.Diagnostics.Tracing</x:String>
+      <x:String>System.Collections.Concurrent</x:String>
+      <x:String>Internal</x:String>
+      <x:String>System.CodeDom</x:String>
+      <x:String>Microsoft.VisualBasic</x:String>
+      <x:String>Microsoft.CSharp</x:String>
+      <x:String>System.Linq.Expressions</x:String>
+      <x:String>System.Linq.Expressions.Interpreter</x:String>
+      <x:String>System.Dynamic</x:String>
+      <x:String>System.Activities.XamlIntegration</x:String>
+      <x:String>System.Activities.Validation</x:String>
+      <x:String>System.ComponentModel.Design.Serialization</x:String>
+      <x:String>System.Text.RegularExpressions</x:String>
+      <x:String>System.Security.Authentication.ExtendedProtection</x:String>
+      <x:String>System.Timers</x:String>
+      <x:String>System.ComponentModel.Design</x:String>
+      <x:String>System.Xml</x:String>
+      <x:String>System.Xml.Schema</x:String>
+      <x:String>System.Xml.Xsl</x:String>
+      <x:String>System.Xml.Xsl.Runtime</x:String>
+      <x:String>System.Xml.XPath</x:String>
+      <x:String>System.Xml.Resolvers</x:String>
+      <x:String>System.Xml.Serialization</x:String>
+      <x:String>Microsoft.VisualBasic.FileIO</x:String>
+      <x:String>System.Security.Authentication</x:String>
+      <x:String>System.Net.Cache</x:String>
+      <x:String>System.Net.NetworkInformation</x:String>
+      <x:String>System.Net.Security</x:String>
+      <x:String>System.Net.Sockets</x:String>
+      <x:String>UiPath.Web.Activities.Http</x:String>
+      <x:String>UiPath.Sdk.Activities</x:String>
+      <x:String>UiPath.Sdk.Activities.DependencyInjection.Contracts</x:String>
+      <x:String>UiPath.Sdk.Activities.DependencyInjection</x:String>
+      <x:String>UiPath.Web.Activities</x:String>
+      <x:String>GlobalVariablesNamespace</x:String>
+      <x:String>GlobalConstantsNamespace</x:String>
+    </sco:Collection>
+  </TextExpression.NamespacesForImplementation>
+  <TextExpression.ReferencesForImplementation>
+    <sco:Collection x:TypeArguments="AssemblyReference">
+      <AssemblyReference>NPOI.Core</AssemblyReference>
+      <AssemblyReference>System.Activities</AssemblyReference>
+      <AssemblyReference>System.Collections</AssemblyReference>
+      <AssemblyReference>System.Collections.NonGeneric</AssemblyReference>
+      <AssemblyReference>System.ComponentModel</AssemblyReference>
+      <AssemblyReference>System.ComponentModel.TypeConverter</AssemblyReference>
+      <AssemblyReference>System.Configuration.ConfigurationManager</AssemblyReference>
+      <AssemblyReference>System.Console</AssemblyReference>
+      <AssemblyReference>System.Drawing.Common</AssemblyReference>
+      <AssemblyReference>System.Drawing.Primitives</AssemblyReference>
+      <AssemblyReference>System.Linq</AssemblyReference>
+      <AssemblyReference>System.Linq.Async</AssemblyReference>
+      <AssemblyReference>System.Memory</AssemblyReference>
+      <AssemblyReference>System.Memory.Data</AssemblyReference>
+      <AssemblyReference>System.ObjectModel</AssemblyReference>
+      <AssemblyReference>System.Private.CoreLib</AssemblyReference>
+      <AssemblyReference>System.Private.DataContractSerialization</AssemblyReference>
+      <AssemblyReference>System.Private.ServiceModel</AssemblyReference>
+      <AssemblyReference>System.Private.Uri</AssemblyReference>
+      <AssemblyReference>System.Reflection.DispatchProxy</AssemblyReference>
+      <AssemblyReference>System.Reflection.Metadata</AssemblyReference>
+      <AssemblyReference>System.Reflection.MetadataLoadContext</AssemblyReference>
+      <AssemblyReference>System.Reflection.TypeExtensions</AssemblyReference>
+      <AssemblyReference>System.Runtime.Serialization.Formatters</AssemblyReference>
+      <AssemblyReference>System.Runtime.Serialization.Primitives</AssemblyReference>
+      <AssemblyReference>System.Security.Permissions</AssemblyReference>
+      <AssemblyReference>UiPath.Excel.Activities</AssemblyReference>
+      <AssemblyReference>UiPath.Excel.Activities.Design</AssemblyReference>
+      <AssemblyReference>UiPath.Mail.Activities</AssemblyReference>
+      <AssemblyReference>UiPath.OCR.Activities</AssemblyReference>
+      <AssemblyReference>UiPath.Platform</AssemblyReference>
+      <AssemblyReference>UiPath.Studio.Constants</AssemblyReference>
+      <AssemblyReference>UiPath.System.Activities</AssemblyReference>
+      <AssemblyReference>UiPath.System.Activities.Design</AssemblyReference>
+      <AssemblyReference>UiPath.Testing.Activities</AssemblyReference>
+      <AssemblyReference>UiPath.UiAutomation.Activities</AssemblyReference>
+      <AssemblyReference>UiPath.UIAutomationCore</AssemblyReference>
+      <AssemblyReference>UiPath.UIAutomationNext</AssemblyReference>
+      <AssemblyReference>UiPath.UIAutomationNext.Activities</AssemblyReference>
+      <AssemblyReference>UiPath.Workflow</AssemblyReference>
+      <AssemblyReference>UiPath.Web.Activities</AssemblyReference>
+      <AssemblyReference>System.Data.SqlClient</AssemblyReference>
+      <AssemblyReference>System.Data.Common</AssemblyReference>
+      <AssemblyReference>System.IO.FileSystem.Watcher</AssemblyReference>
+      <AssemblyReference>System.IO.Packaging</AssemblyReference>
+      <AssemblyReference>System.IO.FileSystem.AccessControl</AssemblyReference>
+      <AssemblyReference>System.IO.FileSystem.DriveInfo</AssemblyReference>
+      <AssemblyReference>System.Linq.Async.Queryable</AssemblyReference>
+      <AssemblyReference>System.Linq.Expressions</AssemblyReference>
+      <AssemblyReference>System.Collections.Immutable</AssemblyReference>
+      <AssemblyReference>System.Linq.Parallel</AssemblyReference>
+      <AssemblyReference>System.Linq.Queryable</AssemblyReference>
+      <AssemblyReference>Microsoft.VisualBasic.Forms</AssemblyReference>
+      <AssemblyReference>Microsoft.VisualBasic.Core</AssemblyReference>
+      <AssemblyReference>Microsoft.VisualStudio.Validation</AssemblyReference>
+      <AssemblyReference>System.Security.Cryptography</AssemblyReference>
+      <AssemblyReference>System.Security.Principal.Windows</AssemblyReference>
+      <AssemblyReference>System.Diagnostics.Process</AssemblyReference>
+      <AssemblyReference>System.IO.MemoryMappedFiles</AssemblyReference>
+      <AssemblyReference>Microsoft.Win32.Registry</AssemblyReference>
+      <AssemblyReference>System.IO.Pipes</AssemblyReference>
+      <AssemblyReference>System.Runtime.Numerics</AssemblyReference>
+      <AssemblyReference>System.Net.Primitives</AssemblyReference>
+      <AssemblyReference>System.Net.HttpListener</AssemblyReference>
+      <AssemblyReference>System.Net.WebProxy</AssemblyReference>
+      <AssemblyReference>System.Net.NameResolution</AssemblyReference>
+      <AssemblyReference>System.Net.WebHeaderCollection</AssemblyReference>
+      <AssemblyReference>System.Net.WebClient</AssemblyReference>
+      <AssemblyReference>System.Net.Requests</AssemblyReference>
+      <AssemblyReference>System.Net.ServicePoint</AssemblyReference>
+      <AssemblyReference>System.ComponentModel.EventBasedAsync</AssemblyReference>
+      <AssemblyReference>PresentationFramework</AssemblyReference>
+      <AssemblyReference>WindowsBase</AssemblyReference>
+      <AssemblyReference>System.ComponentModel.Primitives</AssemblyReference>
+      <AssemblyReference>System.CodeDom</AssemblyReference>
+      <AssemblyReference>System.Threading.AccessControl</AssemblyReference>
+      <AssemblyReference>System.Threading</AssemblyReference>
+      <AssemblyReference>UiPath.Vision.Core</AssemblyReference>
+      <AssemblyReference>UiPath.OCR.Core</AssemblyReference>
+      <AssemblyReference>UiPath.Excel</AssemblyReference>
+      <AssemblyReference>System.Threading.Tasks.Parallel</AssemblyReference>
+      <AssemblyReference>System.Text.Encoding.CodePages</AssemblyReference>
+      <AssemblyReference>System.Text.Encodings.Web</AssemblyReference>
+      <AssemblyReference>System.Runtime.InteropServices</AssemblyReference>
+      <AssemblyReference>System.Security.Claims</AssemblyReference>
+      <AssemblyReference>System.Security.Cryptography.Pkcs</AssemblyReference>
+      <AssemblyReference>System.Security.Cryptography.ProtectedData</AssemblyReference>
+      <AssemblyReference>System.Windows.Forms.Design</AssemblyReference>
+      <AssemblyReference>System.Runtime.CompilerServices.VisualC</AssemblyReference>
+      <AssemblyReference>System.Windows.Forms</AssemblyReference>
+      <AssemblyReference>System.Resources.Writer</AssemblyReference>
+      <AssemblyReference>Microsoft.PowerShell.Commands.Diagnostics</AssemblyReference>
+      <AssemblyReference>System.Diagnostics.FileVersionInfo</AssemblyReference>
+      <AssemblyReference>System.Diagnostics.PerformanceCounter</AssemblyReference>
+      <AssemblyReference>System.Diagnostics.DiagnosticSource</AssemblyReference>
+      <AssemblyReference>System.Diagnostics.TraceSource</AssemblyReference>
+      <AssemblyReference>System.Diagnostics.EventLog</AssemblyReference>
+      <AssemblyReference>System.Diagnostics.TextWriterTraceListener</AssemblyReference>
+      <AssemblyReference>System.Diagnostics.StackTrace</AssemblyReference>
+      <AssemblyReference>System.Collections.Concurrent</AssemblyReference>
+      <AssemblyReference>System.Text.RegularExpressions</AssemblyReference>
+      <AssemblyReference>System.Net.Security</AssemblyReference>
+      <AssemblyReference>System.Private.Xml</AssemblyReference>
+      <AssemblyReference>System.Private.Xml.Linq</AssemblyReference>
+      <AssemblyReference>System.Xml.XPath.XDocument</AssemblyReference>
+      <AssemblyReference>System.Net.NetworkInformation</AssemblyReference>
+      <AssemblyReference>System.Net.Ping</AssemblyReference>
+      <AssemblyReference>System.Net.Sockets</AssemblyReference>
+    </sco:Collection>
+  </TextExpression.ReferencesForImplementation>
+  <Sequence sap2010:Annotation.AnnotationText="Abre en una nueva ventana del Navegador Web Chrome en la URL del portal del Config(&quot;URL_SitioSupermercado&quot;).ToString. Y verifica que la URL del supermercado provea una respuesta válida. En caso que la respuesta de la URL del supermecado no es una respuesta válida. En caso que la respuesta de la URL del supermecado no es una respuesta válida registra un mensaje de log. Si la respuesta tiene el código de error igual a 404 es que la &quot;Aplicación web no esta disponible&quot;, registra un mensaje de log. O si la respuesta tiene un código es igual a 408 o 504 es un error de &quot;Timeout del sitio&quot;, registra un mensaje de log. En cambio, si la respuesta tiene un código de error igual a 503 es un &quot;Error de conexión&quot; también registra un mensaje de log." DisplayName="WF_AbrirSitioSupermercado" sap:VirtualizedContainerService.HintSize="640.6666666666666,2381.3333333333335" sap2010:WorkflowViewState.IdRef="Sequence_1">
+    <Sequence.Variables>
+      <Variable x:TypeArguments="uwahm:HttpResponseSummary" Name="httpResponse" />
+    </Sequence.Variables>
+    <sap:WorkflowViewStateService.ViewState>
+      <scg:Dictionary x:TypeArguments="x:String, x:Object">
+        <x:Boolean x:Key="IsExpanded">True</x:Boolean>
+        <x:Boolean x:Key="IsAnnotationDocked">True</x:Boolean>
+      </scg:Dictionary>
+    </sap:WorkflowViewStateService.ViewState>
+    <uix:NApplicationCard AttachMode="ByInstance" DisplayName="Chrome Supermercados La Anónima" HealingAgentBehavior="Job" sap:VirtualizedContainerService.HintSize="562,294.6666666666667" sap2010:WorkflowViewState.IdRef="NApplicationCard_2" InteractionMode="DebuggerApi" ScopeGuid="a697ff72-3fc1-465a-9a4f-3e8c969c019f" Version="V2">
+      <uix:NApplicationCard.AutoGenerationOptions>
+        <uix:GenerationOptions ExpectedInputs="{x:Null}" Prompt="Abrir la URL &quot;https://www.laanonima.com.ar/&quot; en el navegador Chrome." Url="https://www.laanonima.com.ar/">
+          <uix:GenerationOptions.ExpectedOutputs>
+            <scg:List x:TypeArguments="x:String" Capacity="4">
+              <x:Null />
+            </scg:List>
+          </uix:GenerationOptions.ExpectedOutputs>
+        </uix:GenerationOptions>
+      </uix:NApplicationCard.AutoGenerationOptions>
+      <uix:NApplicationCard.Body>
+        <ActivityAction x:TypeArguments="x:Object">
+          <ActivityAction.Argument>
+            <DelegateInArgument x:TypeArguments="x:Object" Name="WSSessionData" />
+          </ActivityAction.Argument>
+          <Sequence DisplayName="Hacer" sap:VirtualizedContainerService.HintSize="450,90.66666666666667" sap2010:WorkflowViewState.IdRef="Sequence_5">
+            <sap:WorkflowViewStateService.ViewState>
+              <scg:Dictionary x:TypeArguments="x:String, x:Object">
+                <x:Boolean x:Key="IsExpanded">True</x:Boolean>
+              </scg:Dictionary>
+            </sap:WorkflowViewStateService.ViewState>
+          </Sequence>
+        </ActivityAction>
+      </uix:NApplicationCard.Body>
+      <uix:NApplicationCard.OCREngine>
+        <ActivityFunc x:TypeArguments="sd:Image, scg:IEnumerable(scg:KeyValuePair(sd1:Rectangle, x:String))">
+          <ActivityFunc.Argument>
+            <DelegateInArgument x:TypeArguments="sd:Image" Name="Image" />
+          </ActivityFunc.Argument>
+        </ActivityFunc>
+      </uix:NApplicationCard.OCREngine>
+      <uix:NApplicationCard.TargetApp>
+        <uix:TargetApp Area="1911, -9, 1938, 1038" BrowserType="Chrome" ContentHash="awKy9WdkH0WI0z8lJLnYyA" IconBase64="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" InformativeScreenshot="daac56de25595d965837a1339e53b7e8.jpg" Reference="AWnxG0bVVU6RIhXzwQivlA/YdTttghPx0KMii9gkO4IEQ" Selector="&lt;html app='chrome.exe' title='Supermercados La Anónima' /&gt;" Url="[Config(&quot;URL_SitioSupermercado&quot;).ToString]" Version="V2">
+          <uix:TargetApp.Arguments>
+            <InArgument x:TypeArguments="x:String" />
+          </uix:TargetApp.Arguments>
+          <uix:TargetApp.WorkingDirectory>
+            <InArgument x:TypeArguments="x:String" />
+          </uix:TargetApp.WorkingDirectory>
+        </uix:TargetApp>
+      </uix:NApplicationCard.TargetApp>
+    </uix:NApplicationCard>
+    <uwah:NetHttpRequest BasicAuthPassword="{x:Null}" BasicAuthSecurePassword="{x:Null}" BasicAuthUsername="{x:Null}" BinaryPayload="{x:Null}" ClientCertPassword="{x:Null}" ClientCertPath="{x:Null}" ClientCertSecurePassword="{x:Null}" Cookies="{x:Null}" CustomNegotiatedAuthCredentials="{x:Null}" FilePath="{x:Null}" FormData="{x:Null}" Headers="{x:Null}" LocalFiles="{x:Null}" OAuthToken="{x:Null}" OutputFileName="{x:Null}" OutputFileTargetFolder="{x:Null}" Parameters="{x:Null}" PathResource="{x:Null}" ProxyConfiguration="{x:Null}" ResourceFiles="{x:Null}" TextPayload="{x:Null}" AuthenticationType="None" ContinueOnError="True" DisableSslVerification="False" DisplayName="Realizar una solicitud HTTP GET a &quot;https://www.laanonima.com.ar/&quot; para recuperar el código de estado de la respuesta." EnableCookies="True" FileOverwrite="AutoRename" FollowRedirects="True" FormDataParts="[New List (Of FormDataPart) From _&#xA;{&#xA;&#x9;New FileFormDataPart(),&#xA;&#x9;New BinaryFormDataPart(),&#xA;&#x9;New TextFormDataPart()&#xA;}]" sap:VirtualizedContainerService.HintSize="562,281.3333333333333" sap2010:WorkflowViewState.IdRef="NetHttpRequest_2" InitialDelay="500" MaxRedirects="3" MaxRetryAfterDelay="30000" Method="GET" Multiplier="2" PreferRetryAfterValue="True" RequestBodyType="None" RequestUrl="[Config(&quot;URL_SitioSupermercado&quot;).ToString]" Result="[httpResponse]" RetryCount="3" RetryPolicyType="Basic" RetryStatusCodes="[New List (Of System.Net.HttpStatusCode) From _&#xA;{&#xA;&#x9;System.Net.HttpStatusCode.RequestTimeout,&#xA;&#x9;System.Net.HttpStatusCode.TooManyRequests,&#xA;&#x9;System.Net.HttpStatusCode.InternalServerError,&#xA;&#x9;System.Net.HttpStatusCode.BadGateway,&#xA;&#x9;System.Net.HttpStatusCode.ServiceUnavailable,&#xA;&#x9;System.Net.HttpStatusCode.GatewayTimeout&#xA;}]" SaveRawRequestResponse="False" SaveResponseAsFile="False" TextPayloadContentType="application/json" TextPayloadEncoding="UTF-8" TlsProtocol="Automatic" UseJitter="True" UseOsNegotiatedAuthCredentials="True">
+      <uwah:NetHttpRequest.TimeoutInMiliseconds>
+        <InArgument x:TypeArguments="s:Nullable(x:Int32)">
+          <Literal x:TypeArguments="s:Nullable(x:Int32)" Value="10000" />
+        </InArgument>
+      </uwah:NetHttpRequest.TimeoutInMiliseconds>
+    </uwah:NetHttpRequest>
+    <If Condition="[httpResponse.StatusCode = System.Net.HttpStatusCode.NotFound]" DisplayName="Si el código de estado de la respuesta HTTP es 404, registrar un mensaje que indique &quot;Aplicación web no esta disponible&quot;." sap:VirtualizedContainerService.HintSize="562,1705.3333333333333" sap2010:WorkflowViewState.IdRef="If_2">
+      <If.Then>
+        <Sequence DisplayName="Then" sap:VirtualizedContainerService.HintSize="560,228" sap2010:WorkflowViewState.IdRef="Sequence_6">
+          <sap:WorkflowViewStateService.ViewState>
+            <scg:Dictionary x:TypeArguments="x:String, x:Object">
+              <x:Boolean x:Key="IsExpanded">True</x:Boolean>
+            </scg:Dictionary>
+          </sap:WorkflowViewStateService.ViewState>
+          <ui:InvokeWorkflowFile ArgumentsVariable="{x:Null}" ContinueOnError="{x:Null}" DisplayName="AE_AppNoDisponible - Invoke Workflow File (Business\ApplicationExceptions\AE_AppNoDisponible.xaml)" sap:VirtualizedContainerService.HintSize="526,168" sap2010:WorkflowViewState.IdRef="InvokeWorkflowFile_4" UnSafe="False" WorkflowFileName="Business\ApplicationExceptions\AE_AppNoDisponible.xaml">
+            <ui:InvokeWorkflowFile.Arguments>
+              <OutArgument x:TypeArguments="s:Exception" x:Key="out_Exception" />
+            </ui:InvokeWorkflowFile.Arguments>
+          </ui:InvokeWorkflowFile>
+        </Sequence>
+      </If.Then>
+      <If.Else>
+        <Sequence DisplayName="Else" sap:VirtualizedContainerService.HintSize="560,1346.6666666666667" sap2010:WorkflowViewState.IdRef="Sequence_13">
+          <sap:WorkflowViewStateService.ViewState>
+            <scg:Dictionary x:TypeArguments="x:String, x:Object">
+              <x:Boolean x:Key="IsExpanded">True</x:Boolean>
+            </scg:Dictionary>
+          </sap:WorkflowViewStateService.ViewState>
+          <If Condition="[httpResponse.StatusCode = System.Net.HttpStatusCode.RequestTimeout OrElse httpResponse.StatusCode = System.Net.HttpStatusCode.GatewayTimeout]" DisplayName="Si el código de estado de la respuesta HTTP es 408 o 504, registrar un mensaje que indique &quot;Timeout del sitio&quot;." sap:VirtualizedContainerService.HintSize="526,1286.6666666666667" sap2010:WorkflowViewState.IdRef="If_3">
+            <If.Then>
+              <Sequence DisplayName="Then" sap:VirtualizedContainerService.HintSize="524,228" sap2010:WorkflowViewState.IdRef="Sequence_7">
+                <sap:WorkflowViewStateService.ViewState>
+                  <scg:Dictionary x:TypeArguments="x:String, x:Object">
+                    <x:Boolean x:Key="IsExpanded">True</x:Boolean>
+                  </scg:Dictionary>
+                </sap:WorkflowViewStateService.ViewState>
+                <ui:InvokeWorkflowFile ArgumentsVariable="{x:Null}" ContinueOnError="{x:Null}" DisplayName="AE_Timeout - Invoke Workflow File (Business\ApplicationExceptions\AE_Timeout.xaml)" sap:VirtualizedContainerService.HintSize="490,168" sap2010:WorkflowViewState.IdRef="InvokeWorkflowFile_1" UnSafe="False" WorkflowFileName="Business\ApplicationExceptions\AE_Timeout.xaml">
+                  <ui:InvokeWorkflowFile.Arguments>
+                    <OutArgument x:TypeArguments="s:Exception" x:Key="out_Exception" />
+                  </ui:InvokeWorkflowFile.Arguments>
+                </ui:InvokeWorkflowFile>
+              </Sequence>
+            </If.Then>
+            <If.Else>
+              <Sequence DisplayName="Else" sap:VirtualizedContainerService.HintSize="524,928" sap2010:WorkflowViewState.IdRef="Sequence_12">
+                <sap:WorkflowViewStateService.ViewState>
+                  <scg:Dictionary x:TypeArguments="x:String, x:Object">
+                    <x:Boolean x:Key="IsExpanded">True</x:Boolean>
+                  </scg:Dictionary>
+                </sap:WorkflowViewStateService.ViewState>
+                <If Condition="[httpResponse.StatusCode = System.Net.HttpStatusCode.ServiceUnavailable]" DisplayName="Si el código de estado de la respuesta HTTP es 503, registrar un mensaje que indique &quot;Error de conexión&quot;." sap:VirtualizedContainerService.HintSize="490,868" sap2010:WorkflowViewState.IdRef="If_4">
+                  <If.Then>
+                    <Sequence DisplayName="Then" sap:VirtualizedContainerService.HintSize="488,228" sap2010:WorkflowViewState.IdRef="Sequence_8">
+                      <sap:WorkflowViewStateService.ViewState>
+                        <scg:Dictionary x:TypeArguments="x:String, x:Object">
+                          <x:Boolean x:Key="IsExpanded">True</x:Boolean>
+                        </scg:Dictionary>
+                      </sap:WorkflowViewStateService.ViewState>
+                      <ui:InvokeWorkflowFile ArgumentsVariable="{x:Null}" ContinueOnError="{x:Null}" DisplayName="AE_ErrorConexion - Invoke Workflow File (Business\ApplicationExceptions\AE_ErrorConexion.xaml)" sap:VirtualizedContainerService.HintSize="454,168" sap2010:WorkflowViewState.IdRef="InvokeWorkflowFile_2" UnSafe="False" WorkflowFileName="Business\ApplicationExceptions\AE_ErrorConexion.xaml">
+                        <ui:InvokeWorkflowFile.Arguments>
+                          <OutArgument x:TypeArguments="s:Exception" x:Key="out_Exception" />
+                        </ui:InvokeWorkflowFile.Arguments>
+                      </ui:InvokeWorkflowFile>
+                    </Sequence>
+                  </If.Then>
+                  <If.Else>
+                    <Sequence DisplayName="Else" sap:VirtualizedContainerService.HintSize="488,509.3333333333333" sap2010:WorkflowViewState.IdRef="Sequence_11">
+                      <sap:WorkflowViewStateService.ViewState>
+                        <scg:Dictionary x:TypeArguments="x:String, x:Object">
+                          <x:Boolean x:Key="IsExpanded">True</x:Boolean>
+                        </scg:Dictionary>
+                      </sap:WorkflowViewStateService.ViewState>
+                      <If Condition="[Not (httpResponse.StatusCode &gt;= 200 AndAlso httpResponse.StatusCode &lt;= 299)]" DisplayName="Si el código de estado de la respuesta HTTP no es exitoso (por ejemplo, no está en el rango 2xx), registrar un mensaje general que indique que la &quot;URL del supermercado no provee una respuesta válida&quot;." sap:VirtualizedContainerService.HintSize="454,449.3333333333333" sap2010:WorkflowViewState.IdRef="If_5">
+                        <If.Then>
+                          <Sequence DisplayName="Then" sap:VirtualizedContainerService.HintSize="452,228" sap2010:WorkflowViewState.IdRef="Sequence_9">
+                            <sap:WorkflowViewStateService.ViewState>
+                              <scg:Dictionary x:TypeArguments="x:String, x:Object">
+                                <x:Boolean x:Key="IsExpanded">True</x:Boolean>
+                              </scg:Dictionary>
+                            </sap:WorkflowViewStateService.ViewState>
+                            <ui:InvokeWorkflowFile ArgumentsVariable="{x:Null}" ContinueOnError="{x:Null}" DisplayName="AE_Desconocida - Invoke Workflow File (Business\ApplicationExceptions\AE_Desconocida.xaml)" sap:VirtualizedContainerService.HintSize="418,168" sap2010:WorkflowViewState.IdRef="InvokeWorkflowFile_3" UnSafe="False" WorkflowFileName="Business\ApplicationExceptions\AE_Desconocida.xaml">
+                              <ui:InvokeWorkflowFile.Arguments>
+                                <OutArgument x:TypeArguments="s:Exception" x:Key="out_Exception" />
+                              </ui:InvokeWorkflowFile.Arguments>
+                            </ui:InvokeWorkflowFile>
+                          </Sequence>
+                        </If.Then>
+                        <If.Else>
+                          <Sequence DisplayName="Else" sap:VirtualizedContainerService.HintSize="452,90.66666666666667" sap2010:WorkflowViewState.IdRef="Sequence_10">
+                            <sap:WorkflowViewStateService.ViewState>
+                              <scg:Dictionary x:TypeArguments="x:String, x:Object">
+                                <x:Boolean x:Key="IsExpanded">True</x:Boolean>
+                              </scg:Dictionary>
+                            </sap:WorkflowViewStateService.ViewState>
+                          </Sequence>
+                        </If.Else>
+                      </If>
+                    </Sequence>
+                  </If.Else>
+                </If>
+              </Sequence>
+            </If.Else>
+          </If>
+        </Sequence>
+      </If.Else>
+    </If>
+  </Sequence>
+</Activity>
