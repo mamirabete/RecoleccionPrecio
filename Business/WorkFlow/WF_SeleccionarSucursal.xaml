@@ -1,6 +1,5 @@
-<Activity mc:Ignorable="sap sap2010" x:Class="Business_Workflows_WF_SeleccionarSucursal" xmlns="http://schemas.microsoft.com/netfx/2009/xaml/activities" xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" xmlns:sap="http://schemas.microsoft.com/netfx/2009/xaml/activities/presentation" xmlns:sap2010="http://schemas.microsoft.com/netfx/2010/xaml/activities/presentation" xmlns:scg="clr-namespace:System.Collections.Generic;assembly=System.Private.CoreLib" xmlns:sco="clr-namespace:System.Collections.ObjectModel;assembly=System.Private.CoreLib" xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml">
+<Activity mc:Ignorable="sap sap2010" x:Class="Business_Workflows_WF_SeleccionarSucursal" xmlns="http://schemas.microsoft.com/netfx/2009/xaml/activities" xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" xmlns:sap="http://schemas.microsoft.com/netfx/2009/xaml/activities/presentation" xmlns:sap2010="http://schemas.microsoft.com/netfx/2010/xaml/activities/presentation" xmlns:scg="clr-namespace:System.Collections.Generic;assembly=System.Private.CoreLib" xmlns:sco="clr-namespace:System.Collections.ObjectModel;assembly=System.Private.CoreLib" xmlns:sd="clr-namespace:System.Drawing;assembly=System.Drawing.Common" xmlns:sd1="clr-namespace:System.Drawing;assembly=System.Drawing.Primitives" xmlns:uix="http://schemas.uipath.com/workflow/activities/uix" xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml">
   <x:Members>
-    <x:Property Name="in_Config" Type="InArgument(scg:Dictionary(x:String, x:Object))" />
     <x:Property Name="out_SucursalSeleccionada" Type="OutArgument(x:String)" />
   </x:Members>
   <sap2010:WorkflowViewState.IdRef>WF_SeleccionarSucursal</sap2010:WorkflowViewState.IdRef>
@@ -22,11 +21,23 @@
       <x:String>System.Collections</x:String>
       <x:String>System.Runtime.Serialization</x:String>
       <x:String>System.Linq.Expressions</x:String>
+      <x:String>System.Drawing</x:String>
+      <x:String>UiPath.UIAutomationNext.Enums</x:String>
+      <x:String>UiPath.UIAutomationCore.Contracts</x:String>
+      <x:String>UiPath.UIAutomationNext.Models</x:String>
+      <x:String>UiPath.UIAutomationNext.Activities</x:String>
+      <x:String>UiPath.Shared.Activities</x:String>
+      <x:String>UiPath.Platform.ObjectLibrary</x:String>
+      <x:String>UiPath.Platform.SyncObjects</x:String>
+      <x:String>UiPath.UIAutomationNext.Activities.Models</x:String>
+      <x:String>UiPath.UIAutomationNext.Contracts</x:String>
+      <x:String>UiPath.UIAutomationNext.Models.CV</x:String>
+      <x:String>System.ComponentModel</x:String>
+      <x:String>System.Security</x:String>
     </sco:Collection>
   </TextExpression.NamespacesForImplementation>
   <TextExpression.ReferencesForImplementation>
     <sco:Collection x:TypeArguments="AssemblyReference">
-      <AssemblyReference>GlobalVariablesT1PNoYwrqg</AssemblyReference>
       <AssemblyReference>NPOI.Core</AssemblyReference>
       <AssemblyReference>System.Activities</AssemblyReference>
       <AssemblyReference>System.Collections</AssemblyReference>
@@ -56,46 +67,134 @@
       <AssemblyReference>UiPath.System.Activities</AssemblyReference>
       <AssemblyReference>UiPath.UiAutomation.Activities</AssemblyReference>
       <AssemblyReference>UiPath.Workflow</AssemblyReference>
+      <AssemblyReference>System.Drawing.Primitives</AssemblyReference>
+      <AssemblyReference>System.Drawing.Common</AssemblyReference>
+      <AssemblyReference>UiPath.UIAutomationNext</AssemblyReference>
+      <AssemblyReference>UiPath.UIAutomationCore</AssemblyReference>
+      <AssemblyReference>UiPath.UIAutomationNext.Activities</AssemblyReference>
+      <AssemblyReference>UiPath.OCR.Activities</AssemblyReference>
+      <AssemblyReference>UiPath.Testing.Activities</AssemblyReference>
+      <AssemblyReference>UiPath.Web.Activities</AssemblyReference>
+      <AssemblyReference>UiPath.Mail.Activities</AssemblyReference>
+      <AssemblyReference>UiPath.Excel.Activities</AssemblyReference>
+      <AssemblyReference>UiPath.Platform</AssemblyReference>
+      <AssemblyReference>System.ComponentModel.EventBasedAsync</AssemblyReference>
+      <AssemblyReference>PresentationFramework</AssemblyReference>
+      <AssemblyReference>WindowsBase</AssemblyReference>
+      <AssemblyReference>System.ComponentModel.Primitives</AssemblyReference>
+      <AssemblyReference>System.Runtime.InteropServices</AssemblyReference>
     </sco:Collection>
   </TextExpression.ReferencesForImplementation>
-  <Sequence sap2010:Annotation.AnnotationText="Selecciona sucursal si Config(&quot;Sucursal_BusquedaHabilitada&quot;) es TRUE." DisplayName="WF_SeleccionarSucursal" sap:VirtualizedContainerService.HintSize="956.6666666666666,578" sap2010:WorkflowViewState.IdRef="Sequence_2">
-    <Sequence.Variables>
-      <Variable x:TypeArguments="x:String" Name="variable1" />
-    </Sequence.Variables>
+  <Sequence sap2010:Annotation.AnnotationText="Selecciona sucursal si Config(&quot;Sucursal_BusquedaHabilitada&quot;) es TRUE." DisplayName="WF_SeleccionarSucursal" sap:VirtualizedContainerService.HintSize="956.6666666666666,1820" sap2010:WorkflowViewState.IdRef="Sequence_2">
     <sap:WorkflowViewStateService.ViewState>
       <scg:Dictionary x:TypeArguments="x:String, x:Object">
         <x:Boolean x:Key="IsExpanded">True</x:Boolean>
         <x:Boolean x:Key="IsAnnotationDocked">True</x:Boolean>
       </scg:Dictionary>
     </sap:WorkflowViewStateService.ViewState>
-    <If Condition="[CBool(in_Config(&quot;Sucursal_BusquedaHabilitada&quot;))]" DisplayName="¿Selección de sucursal habilitada?" sap:VirtualizedContainerService.HintSize="452,524.6666666666666" sap2010:WorkflowViewState.IdRef="If_1">
-      <If.Then>
-        <Sequence DisplayName="Seleccionar sucursal" sap:VirtualizedContainerService.HintSize="450,227.33333333333334" sap2010:WorkflowViewState.IdRef="Sequence_1">
-          <sap:WorkflowViewStateService.ViewState>
-            <scg:Dictionary x:TypeArguments="x:String, x:Object">
-              <x:Boolean x:Key="IsExpanded">True</x:Boolean>
-            </scg:Dictionary>
-          </sap:WorkflowViewStateService.ViewState>
-          <Assign DisplayName="Asignar sucursal salida" sap:VirtualizedContainerService.HintSize="416,167.33333333333334" sap2010:WorkflowViewState.IdRef="Assign_1">
-            <Assign.To>
-              <OutArgument x:TypeArguments="x:String">[out_SucursalSeleccionada]</OutArgument>
-            </Assign.To>
-            <Assign.Value>
-              <InArgument x:TypeArguments="x:String">[in_Config("Sucursal_Default").ToString]</InArgument>
-            </Assign.Value>
-          </Assign>
-        </Sequence>
-      </If.Then>
-      <If.Else>
-        <Assign DisplayName="No seleccionar sucursal" sap:VirtualizedContainerService.HintSize="450,144.66666666666666" sap2010:WorkflowViewState.IdRef="Assign_2">
-          <Assign.To>
-            <OutArgument x:TypeArguments="x:String">[out_SucursalSeleccionada]</OutArgument>
-          </Assign.To>
-          <Assign.Value>
-            <InArgument x:TypeArguments="x:String">[String.Empty]</InArgument>
-          </Assign.Value>
-        </Assign>
-      </If.Else>
-    </If>
+    <uix:NApplicationCard AttachMode="ByInstance" CloseMode="[UiPath.UIAutomationNext.Enums.NAppCloseMode.Never]" DisplayName="Chrome Nueva pestaña" HealingAgentBehavior="Job" sap:VirtualizedContainerService.HintSize="524,1766.6666666666667" sap2010:WorkflowViewState.IdRef="NApplicationCard_1" OpenMode="[UiPath.UIAutomationNext.Enums.NAppOpenMode.Never]" ScopeGuid="eef3febc-452b-4aec-99cd-e611aae83164" Version="V2">
+      <uix:NApplicationCard.Body>
+        <ActivityAction x:TypeArguments="x:Object">
+          <ActivityAction.Argument>
+            <DelegateInArgument x:TypeArguments="x:Object" Name="WSSessionData" />
+          </ActivityAction.Argument>
+          <Sequence DisplayName="Hacer" sap:VirtualizedContainerService.HintSize="522,1572" sap2010:WorkflowViewState.IdRef="Sequence_3">
+            <Sequence.Variables>
+              <Variable x:TypeArguments="x:String" Name="strTextoExtraido" />
+            </Sequence.Variables>
+            <sap:WorkflowViewStateService.ViewState>
+              <scg:Dictionary x:TypeArguments="x:String, x:Object">
+                <x:Boolean x:Key="IsExpanded">True</x:Boolean>
+              </scg:Dictionary>
+            </sap:WorkflowViewStateService.ViewState>
+            <uix:NGetText DisplayName="Obtiene la sucursal activa" HealingAgentBehavior="SameAsCard" sap:VirtualizedContainerService.HintSize="488,143.33333333333334" sap2010:WorkflowViewState.IdRef="NGetText_2" ScopeIdentifier="eef3febc-452b-4aec-99cd-e611aae83164" TextString="[strTextoExtraido]" Version="V5">
+              <uix:NGetText.Target>
+                <uix:TargetAnchorable BrowserURL="laanonima.com.ar/buscar" DesignTimeRectangle="216, 212, 275, 56" ElementType="Text" ElementVisibilityArgument="Interactive" FuzzySelectorArgument="&lt;webctrl tag='A' type='' class='colorffffff font-size-14 bold seleccionar-sucursal' matching:class='fuzzy' fuzzylevel:class='0.0' /&gt;" Guid="039843b6-c1ae-4116-a8c0-286aa864156e" InformativeScreenshot="ccea94273fc547c6f625c2b645eb103a.png" ScopeSelectorArgument="&lt;html app='chrome.exe' title='Supermercados La Anónima' /&gt;" SearchSteps="FuzzySelector" Version="V6" WaitForReadyArgument="Interactive" />
+              </uix:NGetText.Target>
+            </uix:NGetText>
+            <If Condition="[strTextoExtraido.Split(&quot;(&quot;)(1).Split(&quot;)&quot;)(0)&lt;&gt;Config(&quot;Sucursal_CodigoPostal&quot;).ToString()]" DisplayName="Si la sucursal es diferente a la configurada" sap:VirtualizedContainerService.HintSize="488,1201.3333333333333" sap2010:WorkflowViewState.IdRef="If_3">
+              <If.Then>
+                <Sequence DisplayName="Then" sap:VirtualizedContainerService.HintSize="486,970.6666666666666" sap2010:WorkflowViewState.IdRef="Sequence_6">
+                  <sap:WorkflowViewStateService.ViewState>
+                    <scg:Dictionary x:TypeArguments="x:String, x:Object">
+                      <x:Boolean x:Key="IsExpanded">True</x:Boolean>
+                    </scg:Dictionary>
+                  </sap:WorkflowViewStateService.ViewState>
+                  <uix:NClick ActivateBefore="True" ClickType="Single" DisplayName="Click seleccionar sucursal" HealingAgentBehavior="SameAsCard" sap:VirtualizedContainerService.HintSize="452,195.33333333333334" sap2010:WorkflowViewState.IdRef="NClick_3" InteractionMode="DebuggerApi" KeyModifiers="None" MouseButton="Left" ScopeIdentifier="eef3febc-452b-4aec-99cd-e611aae83164" Version="V5">
+                    <uix:NClick.Target>
+                      <uix:TargetAnchorable BrowserURL="youtube.com/watch" DesignTimeRectangle="216, 277, 275, 56" ElementType="Text" ElementVisibilityArgument="Interactive" FullSelectorArgument="&lt;webctrl aaname='                  Estás en sucursalNeuquén (8300)             ' tag='A' /&gt;" Guid="0d6acdc5-9e6e-4b29-9905-b23828ca5dde" InformativeScreenshot="31f21b1e855d11915f352d391a9f8331.png" ScopeSelectorArgument="&lt;html app='chrome.exe' title='Supermercados La Anónima' /&gt;" SearchSteps="Selector" Version="V6" WaitForReadyArgument="Interactive" />
+                    </uix:NClick.Target>
+                  </uix:NClick>
+                  <uix:NTypeInto ActivateBefore="True" ClickBeforeMode="Single" ClipboardMode="Never" DisplayName="Introduce el CP de la sucursal" EmptyFieldMode="SingleLine" HealingAgentBehavior="SameAsCard" sap:VirtualizedContainerService.HintSize="452,248" sap2010:WorkflowViewState.IdRef="NTypeInto_2" InteractionMode="DebuggerApi" ScopeIdentifier="eef3febc-452b-4aec-99cd-e611aae83164" Text="[Config(&quot;Sucursal_CodigoPostal&quot;).ToString]" Version="V5">
+                    <uix:NTypeInto.Target>
+                      <uix:TargetAnchorable BrowserURL="laanonima.com.ar/buscar" CVScreenId="6a037bf8-8284-4243-b2b1-f2141aea9cca" CvElementArea="715, 492, 484, 50" CvType="InputBox" DesignTimeRectangle="722, 481, 475, 61" ElementType="InputBox" ElementVisibilityArgument="Interactive" FullSelectorArgument="&lt;webctrl id='idCodigoPostalUnificado' tag='INPUT' /&gt;" Guid="4f0914e0-1273-47e5-a0eb-bc0e4a47f40a" InformativeScreenshot="27cd495957980eaaa50e98bb19589645.png" ScopeSelectorArgument="&lt;html app='chrome.exe' title='Supermercados La Anónima' /&gt;" SearchSteps="Selector, CV" Version="V6" WaitForReadyArgument="Interactive" />
+                    </uix:NTypeInto.Target>
+                  </uix:NTypeInto>
+                  <If Condition="[Config(&quot;Sucursal_Denominacion&quot;).ToString=&quot;RIO GRANDE 4&quot;]" DisplayName="Si la sucursal es RIO GRANDE 4" sap:VirtualizedContainerService.HintSize="452,467.3333333333333" sap2010:WorkflowViewState.IdRef="If_4">
+                    <If.Then>
+                      <Sequence DisplayName="Then" sap:VirtualizedContainerService.HintSize="450,246" sap2010:WorkflowViewState.IdRef="Sequence_8">
+                        <sap:WorkflowViewStateService.ViewState>
+                          <scg:Dictionary x:TypeArguments="x:String, x:Object">
+                            <x:Boolean x:Key="IsExpanded">True</x:Boolean>
+                          </scg:Dictionary>
+                        </sap:WorkflowViewStateService.ViewState>
+                        <uix:NClick ActivateBefore="True" ClickType="Single" DisplayName="Click en el elemento seleccionado" HealingAgentBehavior="SameAsCard" sap:VirtualizedContainerService.HintSize="416,186" sap2010:WorkflowViewState.IdRef="NClick_4" InteractionMode="Simulate" KeyModifiers="None" MouseButton="Left" ScopeIdentifier="eef3febc-452b-4aec-99cd-e611aae83164" Version="V5">
+                          <uix:NClick.Target>
+                            <uix:TargetAnchorable BrowserURL="youtube.com/watch" DesignTimeRectangle="728, 567, 450, 151" ElementType="Text" ElementVisibilityArgument="Interactive" FullSelectorArgument="&lt;webctrl parentid='opcionesSucursal' tag='LABEL' /&gt;" Guid="7b0030a3-7547-443e-af57-22938fcae5bf" InformativeScreenshot="686dff5228bae1079241456d12f267a4.png" ScopeSelectorArgument="&lt;html app='chrome.exe' title='Supermercados La Anónima' /&gt;" SearchSteps="Selector" Version="V6" WaitForReadyArgument="Interactive" />
+                          </uix:NClick.Target>
+                        </uix:NClick>
+                      </Sequence>
+                    </If.Then>
+                    <If.Else>
+                      <Sequence DisplayName="Else" sap:VirtualizedContainerService.HintSize="450,90.66666666666667" sap2010:WorkflowViewState.IdRef="Sequence_9">
+                        <sap:WorkflowViewStateService.ViewState>
+                          <scg:Dictionary x:TypeArguments="x:String, x:Object">
+                            <x:Boolean x:Key="IsExpanded">True</x:Boolean>
+                          </scg:Dictionary>
+                        </sap:WorkflowViewStateService.ViewState>
+                      </Sequence>
+                    </If.Else>
+                  </If>
+                </Sequence>
+              </If.Then>
+              <If.Else>
+                <Sequence DisplayName="Else" sap:VirtualizedContainerService.HintSize="486,90.66666666666667" sap2010:WorkflowViewState.IdRef="Sequence_7">
+                  <sap:WorkflowViewStateService.ViewState>
+                    <scg:Dictionary x:TypeArguments="x:String, x:Object">
+                      <x:Boolean x:Key="IsExpanded">True</x:Boolean>
+                    </scg:Dictionary>
+                  </sap:WorkflowViewStateService.ViewState>
+                </Sequence>
+              </If.Else>
+            </If>
+            <Assign DisplayName="Asignar sucursal salida" sap:VirtualizedContainerService.HintSize="488,167.33333333333334" sap2010:WorkflowViewState.IdRef="Assign_1">
+              <Assign.To>
+                <OutArgument x:TypeArguments="x:String">[out_SucursalSeleccionada]</OutArgument>
+              </Assign.To>
+              <Assign.Value>
+                <InArgument x:TypeArguments="x:String">[Config("Sucursal_Denominacion").ToString]</InArgument>
+              </Assign.Value>
+            </Assign>
+          </Sequence>
+        </ActivityAction>
+      </uix:NApplicationCard.Body>
+      <uix:NApplicationCard.OCREngine>
+        <ActivityFunc x:TypeArguments="sd:Image, scg:IEnumerable(scg:KeyValuePair(sd1:Rectangle, x:String))">
+          <ActivityFunc.Argument>
+            <DelegateInArgument x:TypeArguments="sd:Image" Name="Image" />
+          </ActivityFunc.Argument>
+        </ActivityFunc>
+      </uix:NApplicationCard.OCREngine>
+      <uix:NApplicationCard.TargetApp>
+        <uix:TargetApp Area="1911, -9, 1938, 1038" BrowserType="Chrome" ContentHash="Q55YurD6o026y5NEIxvEsQ" IconBase64="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" InformativeScreenshot="db0a6476cf888abe7f68a269e022458f.jpg" Reference="AWnxG0bVVU6RIhXzwQivlA/0h34Ftw_BEGAu9ZGKgOgpQ" Selector="&lt;html app='chrome.exe' title='Supermercados La Anónima' /&gt;" Url="[Config(&quot;URL_SitioSupermercado&quot;).ToString + Config(&quot;URL_SitioSupermercado_SeccionBusqueda&quot;).ToString]" Version="V2">
+          <uix:TargetApp.Arguments>
+            <InArgument x:TypeArguments="x:String" />
+          </uix:TargetApp.Arguments>
+          <uix:TargetApp.WorkingDirectory>
+            <InArgument x:TypeArguments="x:String" />
+          </uix:TargetApp.WorkingDirectory>
+        </uix:TargetApp>
+      </uix:NApplicationCard.TargetApp>
+    </uix:NApplicationCard>
   </Sequence>
 </Activity>

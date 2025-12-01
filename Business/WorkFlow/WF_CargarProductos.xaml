@@ -208,7 +208,7 @@
       <AssemblyReference>UiPath.CodedWorkflows</AssemblyReference>
     </sco:Collection>
   </TextExpression.ReferencesForImplementation>
-  <Sequence sap2010:Annotation.AnnotationText="Lee un archivo con extención .CSV de productos CBA desde Config(&quot;Ruta_Input_Productos&quot;) a un DataTable. Y finalmente asignar el contenido del DataTable al argumento de salida out_dtProductos" DisplayName="WF_CargarProductos" sap:VirtualizedContainerService.HintSize="640.6666666666666,406.6666666666667" sap2010:WorkflowViewState.IdRef="Sequence_2">
+  <Sequence sap2010:Annotation.AnnotationText="Lee un archivo con extención .CSV de productos CBA desde Config(&quot;Ruta_Input_Productos&quot;) a un DataTable. Y finalmente asignar el contenido del DataTable al argumento de salida out_dtProductos" DisplayName="WF_CargarProductos" sap:VirtualizedContainerService.HintSize="1272.6666666666665,569.3333333333334" sap2010:WorkflowViewState.IdRef="Sequence_2">
     <Sequence.Variables>
       <Variable x:TypeArguments="sd:DataTable" Name="dtTmp" />
     </Sequence.Variables>
@@ -219,6 +219,7 @@
       </scg:Dictionary>
     </sap:WorkflowViewStateService.ViewState>
     <ui:ReadCsvFile PathResource="{x:Null}" DataTable="[dtTmp]" Delimitator="Comma" DelimitatorForViewModel="Comma" DisplayName="Lee el archivo CSV " FilePath="[Config(&quot;Ruta_Input_Productos&quot;).ToString]" sap:VirtualizedContainerService.HintSize="450,172" sap2010:WorkflowViewState.IdRef="ReadCsvFile_2" />
+    <ui:LogMessage DisplayName="Log cargar productos" sap:VirtualizedContainerService.HintSize="450,176.66666666666666" sap2010:WorkflowViewState.IdRef="LogMessage_1" Level="Info" Message="[&quot;Se cargaron los productos a buscar de la CBA desde: &quot; + Config(&quot;Ruta_Input_Productos&quot;).ToString]" />
     <Assign DisplayName="Asigna el contenido CSV a out_dtProductos." sap:VirtualizedContainerService.HintSize="450,167.33333333333334" sap2010:WorkflowViewState.IdRef="Assign_3">
       <Assign.To>
         <OutArgument x:TypeArguments="sd:DataTable">[out_dtProductos]</OutArgument>
