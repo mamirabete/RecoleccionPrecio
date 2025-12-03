@@ -223,7 +223,7 @@
       <AssemblyReference>System.Net.Sockets</AssemblyReference>
     </sco:Collection>
   </TextExpression.ReferencesForImplementation>
-  <Sequence sap2010:Annotation.AnnotationText="Verifica que la URL del supermercado provea una respuesta válida. En caso que la respuesta de la URL del supermecado no es una respuesta válida registra un mensaje de log. Si la respuesta tiene el código de error igual a 404 es que la &quot;Aplicación web no esta disponible&quot;, registra un mensaje de log. O si la respuesta tiene un código es igual a 408 o 504 es un error de &quot;Timeout del sitio&quot;, registra un mensaje de log. En cambio, si la respuesta tiene un código de error igual a 503 es un &quot;Error de conexión&quot; también registra un mensaje de log. Al finalalizar si la respuesta es OK abre un navegador en la URL del supermercado." DisplayName="WF_AbrirSitioSupermercado" sap:VirtualizedContainerService.HintSize="956.6666666666666,3016.6666666666665" sap2010:WorkflowViewState.IdRef="Sequence_1">
+  <Sequence sap2010:Annotation.AnnotationText="Verifica que la URL del supermercado provea una respuesta válida. En caso que la respuesta de la URL del supermecado no es una respuesta válida registra un mensaje de log. Si la respuesta tiene el código de error igual a 404 es que la &quot;Aplicación web no esta disponible&quot;, registra un mensaje de log. O si la respuesta tiene un código es igual a 408 o 504 es un error de &quot;Timeout del sitio&quot;, registra un mensaje de log. En cambio, si la respuesta tiene un código de error igual a 503 es un &quot;Error de conexión&quot; también registra un mensaje de log. Al finalalizar si la respuesta es OK abre un navegador en la URL del supermercado." DisplayName="WF_AbrirSitioSupermercado" sap:VirtualizedContainerService.HintSize="640.6666666666666,3106" sap2010:WorkflowViewState.IdRef="Sequence_1">
     <Sequence.Variables>
       <Variable x:TypeArguments="uwahm:HttpResponseSummary" Name="httpResponse" />
     </Sequence.Variables>
@@ -240,15 +240,15 @@
         </InArgument>
       </uwah:NetHttpRequest.TimeoutInMiliseconds>
     </uwah:NetHttpRequest>
-    <If Condition="[httpResponse.StatusCode = System.Net.HttpStatusCode.NotFound]" DisplayName="Si el código de estado de la respuesta HTTP es 404, registrar un mensaje que indique &quot;Aplicación web no esta disponible&quot;." sap:VirtualizedContainerService.HintSize="562,1714.6666666666667" sap2010:WorkflowViewState.IdRef="If_2">
+    <If Condition="[httpResponse.StatusCode = System.Net.HttpStatusCode.NotFound]" DisplayName="Si el código de estado de la respuesta HTTP es 404, registrar un mensaje que indique &quot;Aplicación web no esta disponible&quot;." sap:VirtualizedContainerService.HintSize="562,1796" sap2010:WorkflowViewState.IdRef="If_2">
       <If.Then>
-        <Sequence DisplayName="Then" sap:VirtualizedContainerService.HintSize="560,228" sap2010:WorkflowViewState.IdRef="Sequence_6">
+        <Sequence DisplayName="Then" sap:VirtualizedContainerService.HintSize="560,241.33333333333334" sap2010:WorkflowViewState.IdRef="Sequence_6">
           <sap:WorkflowViewStateService.ViewState>
             <scg:Dictionary x:TypeArguments="x:String, x:Object">
               <x:Boolean x:Key="IsExpanded">True</x:Boolean>
             </scg:Dictionary>
           </sap:WorkflowViewStateService.ViewState>
-          <ui:InvokeWorkflowFile ArgumentsVariable="{x:Null}" ContinueOnError="{x:Null}" DisplayName="AE_AppNoDisponible - Invoke Workflow File (Business\ApplicationExceptions\AE_AppNoDisponible.xaml)" sap:VirtualizedContainerService.HintSize="526,168" sap2010:WorkflowViewState.IdRef="InvokeWorkflowFile_4" UnSafe="False" WorkflowFileName="Business\ApplicationExceptions\AE_AppNoDisponible.xaml">
+          <ui:InvokeWorkflowFile ArgumentsVariable="{x:Null}" ContinueOnError="{x:Null}" DisplayName="AE_AppNoDisponible - Invoke Workflow File (Business\ApplicationExceptions\AE_AppNoDisponible.xaml)" sap:VirtualizedContainerService.HintSize="526,177.33333333333334" sap2010:WorkflowViewState.IdRef="InvokeWorkflowFile_4" UnSafe="False" WorkflowFileName="Business\ApplicationExceptions\AE_AppNoDisponible.xaml">
             <ui:InvokeWorkflowFile.Arguments>
               <OutArgument x:TypeArguments="s:Exception" x:Key="out_Exception" />
             </ui:InvokeWorkflowFile.Arguments>
@@ -256,21 +256,21 @@
         </Sequence>
       </If.Then>
       <If.Else>
-        <Sequence DisplayName="Else" sap:VirtualizedContainerService.HintSize="560,1346.6666666666667" sap2010:WorkflowViewState.IdRef="Sequence_13">
+        <Sequence DisplayName="Else" sap:VirtualizedContainerService.HintSize="560,1414.6666666666667" sap2010:WorkflowViewState.IdRef="Sequence_13">
           <sap:WorkflowViewStateService.ViewState>
             <scg:Dictionary x:TypeArguments="x:String, x:Object">
               <x:Boolean x:Key="IsExpanded">True</x:Boolean>
             </scg:Dictionary>
           </sap:WorkflowViewStateService.ViewState>
-          <If Condition="[httpResponse.StatusCode = System.Net.HttpStatusCode.RequestTimeout OrElse httpResponse.StatusCode = System.Net.HttpStatusCode.GatewayTimeout]" DisplayName="Si el código de estado de la respuesta HTTP es 408 o 504, registrar un mensaje que indique &quot;Timeout del sitio&quot;." sap:VirtualizedContainerService.HintSize="526,1286.6666666666667" sap2010:WorkflowViewState.IdRef="If_3">
+          <If Condition="[httpResponse.StatusCode = System.Net.HttpStatusCode.RequestTimeout OrElse httpResponse.StatusCode = System.Net.HttpStatusCode.GatewayTimeout]" DisplayName="Si el código de estado de la respuesta HTTP es 408 o 504, registrar un mensaje que indique &quot;Timeout del sitio&quot;." sap:VirtualizedContainerService.HintSize="526,1350.6666666666667" sap2010:WorkflowViewState.IdRef="If_3">
             <If.Then>
-              <Sequence DisplayName="Then" sap:VirtualizedContainerService.HintSize="524,228" sap2010:WorkflowViewState.IdRef="Sequence_7">
+              <Sequence DisplayName="Then" sap:VirtualizedContainerService.HintSize="524,241.33333333333334" sap2010:WorkflowViewState.IdRef="Sequence_7">
                 <sap:WorkflowViewStateService.ViewState>
                   <scg:Dictionary x:TypeArguments="x:String, x:Object">
                     <x:Boolean x:Key="IsExpanded">True</x:Boolean>
                   </scg:Dictionary>
                 </sap:WorkflowViewStateService.ViewState>
-                <ui:InvokeWorkflowFile ArgumentsVariable="{x:Null}" ContinueOnError="{x:Null}" DisplayName="AE_Timeout - Invoke Workflow File (Business\ApplicationExceptions\AE_Timeout.xaml)" sap:VirtualizedContainerService.HintSize="490,168" sap2010:WorkflowViewState.IdRef="InvokeWorkflowFile_1" UnSafe="False" WorkflowFileName="Business\ApplicationExceptions\AE_Timeout.xaml">
+                <ui:InvokeWorkflowFile ArgumentsVariable="{x:Null}" ContinueOnError="{x:Null}" DisplayName="AE_Timeout - Invoke Workflow File (Business\ApplicationExceptions\AE_Timeout.xaml)" sap:VirtualizedContainerService.HintSize="490,177.33333333333334" sap2010:WorkflowViewState.IdRef="InvokeWorkflowFile_1" UnSafe="False" WorkflowFileName="Business\ApplicationExceptions\AE_Timeout.xaml">
                   <ui:InvokeWorkflowFile.Arguments>
                     <OutArgument x:TypeArguments="s:Exception" x:Key="out_Exception" />
                   </ui:InvokeWorkflowFile.Arguments>
@@ -278,21 +278,21 @@
               </Sequence>
             </If.Then>
             <If.Else>
-              <Sequence DisplayName="Else" sap:VirtualizedContainerService.HintSize="524,928" sap2010:WorkflowViewState.IdRef="Sequence_12">
+              <Sequence DisplayName="Else" sap:VirtualizedContainerService.HintSize="524,974.6666666666666" sap2010:WorkflowViewState.IdRef="Sequence_12">
                 <sap:WorkflowViewStateService.ViewState>
                   <scg:Dictionary x:TypeArguments="x:String, x:Object">
                     <x:Boolean x:Key="IsExpanded">True</x:Boolean>
                   </scg:Dictionary>
                 </sap:WorkflowViewStateService.ViewState>
-                <If Condition="[httpResponse.StatusCode = System.Net.HttpStatusCode.ServiceUnavailable]" DisplayName="Si el código de estado de la respuesta HTTP es 503, registrar un mensaje que indique &quot;Error de conexión&quot;." sap:VirtualizedContainerService.HintSize="490,868" sap2010:WorkflowViewState.IdRef="If_4">
+                <If Condition="[httpResponse.StatusCode = System.Net.HttpStatusCode.ServiceUnavailable]" DisplayName="Si el código de estado de la respuesta HTTP es 503, registrar un mensaje que indique &quot;Error de conexión&quot;." sap:VirtualizedContainerService.HintSize="490,910.6666666666666" sap2010:WorkflowViewState.IdRef="If_4">
                   <If.Then>
-                    <Sequence DisplayName="Then" sap:VirtualizedContainerService.HintSize="488,228" sap2010:WorkflowViewState.IdRef="Sequence_8">
+                    <Sequence DisplayName="Then" sap:VirtualizedContainerService.HintSize="488,241.33333333333334" sap2010:WorkflowViewState.IdRef="Sequence_8">
                       <sap:WorkflowViewStateService.ViewState>
                         <scg:Dictionary x:TypeArguments="x:String, x:Object">
                           <x:Boolean x:Key="IsExpanded">True</x:Boolean>
                         </scg:Dictionary>
                       </sap:WorkflowViewStateService.ViewState>
-                      <ui:InvokeWorkflowFile ArgumentsVariable="{x:Null}" ContinueOnError="{x:Null}" DisplayName="AE_ErrorConexion - Invoke Workflow File (Business\ApplicationExceptions\AE_ErrorConexion.xaml)" sap:VirtualizedContainerService.HintSize="454,168" sap2010:WorkflowViewState.IdRef="InvokeWorkflowFile_2" UnSafe="False" WorkflowFileName="Business\ApplicationExceptions\AE_ErrorConexion.xaml">
+                      <ui:InvokeWorkflowFile ArgumentsVariable="{x:Null}" ContinueOnError="{x:Null}" DisplayName="AE_ErrorConexion - Invoke Workflow File (Business\ApplicationExceptions\AE_ErrorConexion.xaml)" sap:VirtualizedContainerService.HintSize="454,177.33333333333334" sap2010:WorkflowViewState.IdRef="InvokeWorkflowFile_2" UnSafe="False" WorkflowFileName="Business\ApplicationExceptions\AE_ErrorConexion.xaml">
                         <ui:InvokeWorkflowFile.Arguments>
                           <OutArgument x:TypeArguments="s:Exception" x:Key="out_Exception" />
                         </ui:InvokeWorkflowFile.Arguments>
@@ -300,21 +300,21 @@
                     </Sequence>
                   </If.Then>
                   <If.Else>
-                    <Sequence DisplayName="Else" sap:VirtualizedContainerService.HintSize="488,509.3333333333333" sap2010:WorkflowViewState.IdRef="Sequence_11">
+                    <Sequence DisplayName="Else" sap:VirtualizedContainerService.HintSize="488,534.6666666666666" sap2010:WorkflowViewState.IdRef="Sequence_11">
                       <sap:WorkflowViewStateService.ViewState>
                         <scg:Dictionary x:TypeArguments="x:String, x:Object">
                           <x:Boolean x:Key="IsExpanded">True</x:Boolean>
                         </scg:Dictionary>
                       </sap:WorkflowViewStateService.ViewState>
-                      <If Condition="[Not (httpResponse.StatusCode &gt;= 200 AndAlso httpResponse.StatusCode &lt;= 299)]" DisplayName="Si el código de estado de la respuesta HTTP no es exitoso (por ejemplo, no está en el rango 2xx), registrar un mensaje general que indique que la &quot;URL del supermercado no provee una respuesta válida&quot;." sap:VirtualizedContainerService.HintSize="454,449.3333333333333" sap2010:WorkflowViewState.IdRef="If_5">
+                      <If Condition="[Not (httpResponse.StatusCode &gt;= 200 AndAlso httpResponse.StatusCode &lt;= 299)]" DisplayName="Si el código de estado de la respuesta HTTP no es exitoso (por ejemplo, no está en el rango 2xx), registrar un mensaje general que indique que la &quot;URL del supermercado no provee una respuesta válida&quot;." sap:VirtualizedContainerService.HintSize="454,470.6666666666667" sap2010:WorkflowViewState.IdRef="If_5">
                         <If.Then>
-                          <Sequence DisplayName="Then" sap:VirtualizedContainerService.HintSize="452,228" sap2010:WorkflowViewState.IdRef="Sequence_9">
+                          <Sequence DisplayName="Then" sap:VirtualizedContainerService.HintSize="452,241.33333333333334" sap2010:WorkflowViewState.IdRef="Sequence_9">
                             <sap:WorkflowViewStateService.ViewState>
                               <scg:Dictionary x:TypeArguments="x:String, x:Object">
                                 <x:Boolean x:Key="IsExpanded">True</x:Boolean>
                               </scg:Dictionary>
                             </sap:WorkflowViewStateService.ViewState>
-                            <ui:InvokeWorkflowFile ArgumentsVariable="{x:Null}" ContinueOnError="{x:Null}" DisplayName="AE_Desconocida - Invoke Workflow File (Business\ApplicationExceptions\AE_Desconocida.xaml)" sap:VirtualizedContainerService.HintSize="418,168" sap2010:WorkflowViewState.IdRef="InvokeWorkflowFile_3" UnSafe="False" WorkflowFileName="Business\ApplicationExceptions\AE_Desconocida.xaml">
+                            <ui:InvokeWorkflowFile ArgumentsVariable="{x:Null}" ContinueOnError="{x:Null}" DisplayName="AE_Desconocida - Invoke Workflow File (Business\ApplicationExceptions\AE_Desconocida.xaml)" sap:VirtualizedContainerService.HintSize="418,177.33333333333334" sap2010:WorkflowViewState.IdRef="InvokeWorkflowFile_3" UnSafe="False" WorkflowFileName="Business\ApplicationExceptions\AE_Desconocida.xaml">
                               <ui:InvokeWorkflowFile.Arguments>
                                 <OutArgument x:TypeArguments="s:Exception" x:Key="out_Exception" />
                               </ui:InvokeWorkflowFile.Arguments>
@@ -322,7 +322,7 @@
                           </Sequence>
                         </If.Then>
                         <If.Else>
-                          <Sequence DisplayName="Else" sap:VirtualizedContainerService.HintSize="452,90.66666666666667" sap2010:WorkflowViewState.IdRef="Sequence_10">
+                          <Sequence DisplayName="Else" sap:VirtualizedContainerService.HintSize="452,94.66666666666667" sap2010:WorkflowViewState.IdRef="Sequence_10">
                             <sap:WorkflowViewStateService.ViewState>
                               <scg:Dictionary x:TypeArguments="x:String, x:Object">
                                 <x:Boolean x:Key="IsExpanded">True</x:Boolean>
@@ -341,13 +341,13 @@
       </If.Else>
     </If>
     <ui:LogMessage DisplayName="Log respuesta URL" sap:VirtualizedContainerService.HintSize="562,176.66666666666666" sap2010:WorkflowViewState.IdRef="LogMessage_1" Level="Info" Message="[&quot;Respuesta URL del supermercado: &quot; + httpResponse.StatusCode.ToString]" />
-    <uix:NApplicationCard AttachMode="ByInstance" CloseMode="[UiPath.UIAutomationNext.Enums.NAppCloseMode.Never]" DisplayName="Chrome Nueva pestaña" HealingAgentBehavior="Job" sap:VirtualizedContainerService.HintSize="562,294.6666666666667" sap2010:WorkflowViewState.IdRef="NApplicationCard_7" InteractionMode="DebuggerApi" OpenMode="[UiPath.UIAutomationNext.Enums.NAppOpenMode.Always]" ScopeGuid="24548f94-36e4-484c-b768-f4341bac9be3" Version="V2">
+    <uix:NApplicationCard AttachMode="ByInstance" CloseMode="[UiPath.UIAutomationNext.Enums.NAppCloseMode.Never]" DisplayName="Chrome Nueva pestaña" HealingAgentBehavior="Job" sap:VirtualizedContainerService.HintSize="562,298.6666666666667" sap2010:WorkflowViewState.IdRef="NApplicationCard_7" InteractionMode="DebuggerApi" OpenMode="[UiPath.UIAutomationNext.Enums.NAppOpenMode.Always]" ScopeGuid="24548f94-36e4-484c-b768-f4341bac9be3" Version="V2">
       <uix:NApplicationCard.Body>
         <ActivityAction x:TypeArguments="x:Object">
           <ActivityAction.Argument>
             <DelegateInArgument x:TypeArguments="x:Object" Name="WSSessionData" />
           </ActivityAction.Argument>
-          <Sequence DisplayName="Hacer" sap:VirtualizedContainerService.HintSize="450,90.66666666666667" sap2010:WorkflowViewState.IdRef="Sequence_18">
+          <Sequence DisplayName="Hacer" sap:VirtualizedContainerService.HintSize="450,94.66666666666667" sap2010:WorkflowViewState.IdRef="Sequence_18">
             <sap:WorkflowViewStateService.ViewState>
               <scg:Dictionary x:TypeArguments="x:String, x:Object">
                 <x:Boolean x:Key="IsExpanded">True</x:Boolean>
@@ -374,9 +374,9 @@
         </uix:TargetApp>
       </uix:NApplicationCard.TargetApp>
     </uix:NApplicationCard>
-    <If Condition="[CBool(Config(&quot;Sucursal_BusquedaHabilitada&quot;))]" DisplayName="Si es necesario seleccionar sucursal" sap:VirtualizedContainerService.HintSize="562,449.3333333333333" sap2010:WorkflowViewState.IdRef="If_6">
+    <If Condition="[CBool(Config(&quot;Sucursal_BusquedaHabilitada&quot;))]" DisplayName="Si es necesario seleccionar sucursal" sap:VirtualizedContainerService.HintSize="562,453.3333333333333" sap2010:WorkflowViewState.IdRef="If_6">
       <If.Then>
-        <Sequence DisplayName="Then" sap:VirtualizedContainerService.HintSize="450,228" sap2010:WorkflowViewState.IdRef="Sequence_19">
+        <Sequence DisplayName="Then" sap:VirtualizedContainerService.HintSize="450,232" sap2010:WorkflowViewState.IdRef="Sequence_19">
           <sap:WorkflowViewStateService.ViewState>
             <scg:Dictionary x:TypeArguments="x:String, x:Object">
               <x:Boolean x:Key="IsExpanded">True</x:Boolean>

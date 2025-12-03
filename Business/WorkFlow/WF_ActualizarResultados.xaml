@@ -1,6 +1,5 @@
 <Activity mc:Ignorable="sap sap2010" x:Class="Business_Workflows_WF_ActualizarResultados" xmlns="http://schemas.microsoft.com/netfx/2009/xaml/activities" xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" xmlns:sap="http://schemas.microsoft.com/netfx/2009/xaml/activities/presentation" xmlns:sap2010="http://schemas.microsoft.com/netfx/2010/xaml/activities/presentation" xmlns:scg="clr-namespace:System.Collections.Generic;assembly=System.Private.CoreLib" xmlns:sco="clr-namespace:System.Collections.ObjectModel;assembly=System.Private.CoreLib" xmlns:sd="clr-namespace:System.Data;assembly=System.Data.Common" xmlns:ui="http://schemas.uipath.com/workflow/activities" xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml">
   <x:Members>
-    <x:Property Name="in_Config" Type="InArgument(scg:Dictionary(x:String, x:Object))" />
     <x:Property Name="in_TransactionItem" Type="InArgument(sd:DataRow)" />
     <x:Property Name="in_Estado" Type="InArgument(x:String)" />
     <x:Property Name="in_PrecioTexto" Type="InArgument(x:String)" />
@@ -66,7 +65,7 @@
       <AssemblyReference>UiPath.Workflow</AssemblyReference>
     </sco:Collection>
   </TextExpression.ReferencesForImplementation>
-  <Sequence sap2010:Annotation.AnnotationText="Escribe fila en DataTable salida." DisplayName="WF_ActualizarResultados" sap:VirtualizedContainerService.HintSize="956.6666666666666,3130" sap2010:WorkflowViewState.IdRef="Sequence_1">
+  <Sequence sap2010:Annotation.AnnotationText="Escribe fila en DataTable salida." DisplayName="WF_ActualizarResultados" sap:VirtualizedContainerService.HintSize="956.6666666666666,3134" sap2010:WorkflowViewState.IdRef="Sequence_1">
     <Sequence.Variables>
       <Variable x:TypeArguments="sd:DataRow" Name="nuevaFila" />
       <Variable x:TypeArguments="x:String" Name="fechaEjecucion" />
@@ -159,19 +158,19 @@
         <InArgument x:TypeArguments="x:Object">[""]</InArgument>
       </Assign.Value>
     </Assign>
-    <If Condition="[in_Config IsNot Nothing AndAlso in_Config.ContainsKey(&quot;Sucursal_Default&quot;)]" DisplayName="Set Sucursal si está en Config" sap:VirtualizedContainerService.HintSize="452,397.3333333333333" sap2010:WorkflowViewState.IdRef="If_1">
+    <If Condition="[Config IsNot Nothing AndAlso Config.ContainsKey(&quot;Sucursal_Default&quot;)]" DisplayName="Set Sucursal si está en Config" sap:VirtualizedContainerService.HintSize="452,401.3333333333333" sap2010:WorkflowViewState.IdRef="If_1">
       <If.Then>
         <Assign DisplayName="Set Sucursal" sap:VirtualizedContainerService.HintSize="450,144.66666666666666" sap2010:WorkflowViewState.IdRef="Assign_11">
           <Assign.To>
             <OutArgument x:TypeArguments="x:Object">[nuevaFila("Sucursal")]</OutArgument>
           </Assign.To>
           <Assign.Value>
-            <InArgument x:TypeArguments="x:Object">[in_Config("Sucursal_Default").ToString]</InArgument>
+            <InArgument x:TypeArguments="x:String">[Config("Sucursal_Default").ToString]</InArgument>
           </Assign.Value>
         </Assign>
       </If.Then>
       <If.Else>
-        <Sequence DisplayName="Else" sap:VirtualizedContainerService.HintSize="450,90.66666666666667" sap2010:WorkflowViewState.IdRef="Sequence_2">
+        <Sequence DisplayName="Else" sap:VirtualizedContainerService.HintSize="450,94.66666666666667" sap2010:WorkflowViewState.IdRef="Sequence_2">
           <sap:WorkflowViewStateService.ViewState>
             <scg:Dictionary x:TypeArguments="x:String, x:Object">
               <x:Boolean x:Key="IsExpanded">True</x:Boolean>
@@ -195,7 +194,7 @@
         <OutArgument x:TypeArguments="x:String">[rutaLog]</OutArgument>
       </Assign.To>
       <Assign.Value>
-        <InArgument x:TypeArguments="x:String">[CStr(in_Config("Ruta_Logs_Sesiones")) + "LogFuncionamiento_" + DateTime.Now.ToString("yyyyMMdd") + ".txt"]</InArgument>
+        <InArgument x:TypeArguments="x:String">[CStr(Config("Ruta_Logs_Sesiones")) + "LogFuncionamiento_" + DateTime.Now.ToString("yyyyMMdd") + ".txt"]</InArgument>
       </Assign.Value>
     </Assign>
     <ui:AppendLine File="{x:Null}" DisplayName="Append log funcional" FileName="[rutaLog]" sap:VirtualizedContainerService.HintSize="452,159.33333333333334" sap2010:WorkflowViewState.IdRef="AppendLine_1" Text="[lineaLog]" UseDefaultEncoding="False" />

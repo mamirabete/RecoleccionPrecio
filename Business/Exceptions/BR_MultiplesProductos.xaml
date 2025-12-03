@@ -1,9 +1,6 @@
-<Activity mc:Ignorable="sap sap2010" x:Class="Business_Exceptions_BR_NoHayLocales" xmlns="http://schemas.microsoft.com/netfx/2009/xaml/activities" xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" xmlns:s="clr-namespace:System;assembly=System.Private.CoreLib" xmlns:sap="http://schemas.microsoft.com/netfx/2009/xaml/activities/presentation" xmlns:sap2010="http://schemas.microsoft.com/netfx/2010/xaml/activities/presentation" xmlns:scg="clr-namespace:System.Collections.Generic;assembly=System.Private.CoreLib" xmlns:sco="clr-namespace:System.Collections.ObjectModel;assembly=System.Private.CoreLib" xmlns:sd="clr-namespace:System.Data;assembly=System.Data.Common" xmlns:ui="http://schemas.uipath.com/workflow/activities" xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml">
+<Activity mc:Ignorable="sap sap2010" x:Class="Business_Exceptions_BR_NoHayLocales" xmlns="http://schemas.microsoft.com/netfx/2009/xaml/activities" xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" xmlns:sap="http://schemas.microsoft.com/netfx/2009/xaml/activities/presentation" xmlns:sap2010="http://schemas.microsoft.com/netfx/2010/xaml/activities/presentation" xmlns:scg="clr-namespace:System.Collections.Generic;assembly=System.Private.CoreLib" xmlns:sco="clr-namespace:System.Collections.ObjectModel;assembly=System.Private.CoreLib" xmlns:sd="clr-namespace:System.Data;assembly=System.Data.Common" xmlns:ui="http://schemas.uipath.com/workflow/activities" xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml">
   <x:Members>
     <x:Property Name="in_TransactionItem" Type="InArgument(x:Object)" />
-    <x:Property Name="in_ListaResultados" Type="InArgument(x:Object)" />
-    <x:Property Name="in_Config" Type="InArgument(scg:Dictionary(x:String, x:Object))" />
-    <x:Property Name="in_Exception" Type="InArgument(s:Exception)" />
   </x:Members>
   <sap2010:WorkflowViewState.IdRef>ActivityBuilder_1</sap2010:WorkflowViewState.IdRef>
   <TextExpression.NamespacesForImplementation>
@@ -30,7 +27,6 @@
   </TextExpression.NamespacesForImplementation>
   <TextExpression.ReferencesForImplementation>
     <sco:Collection x:TypeArguments="AssemblyReference">
-      <AssemblyReference>GlobalVariablesT1PNoYwrqg</AssemblyReference>
       <AssemblyReference>NPOI.Core</AssemblyReference>
       <AssemblyReference>System.Activities</AssemblyReference>
       <AssemblyReference>System.Collections</AssemblyReference>
@@ -66,7 +62,7 @@
       <AssemblyReference>UiPath.Workflow</AssemblyReference>
     </sco:Collection>
   </TextExpression.ReferencesForImplementation>
-  <Sequence DisplayName="BR_NoHayLocales" sap:VirtualizedContainerService.HintSize="956.6666666666666,889.3333333333334" sap2010:WorkflowViewState.IdRef="Sequence_1">
+  <Sequence DisplayName="BR_NoHayLocales" sap:VirtualizedContainerService.HintSize="956.6666666666666,904" sap2010:WorkflowViewState.IdRef="Sequence_1">
     <Sequence.Variables>
       <Variable x:TypeArguments="x:String" Name="screenshotPath" />
     </Sequence.Variables>
@@ -76,9 +72,8 @@
       </scg:Dictionary>
     </sap:WorkflowViewStateService.ViewState>
     <ui:LogMessage DisplayName="Log - Múltiples productos válidos" sap:VirtualizedContainerService.HintSize="452,176.66666666666666" sap2010:WorkflowViewState.IdRef="LogMessage_1" Level="Warn" Message="[&quot;[CBA] Excepción de negocio: Múltiples productos válidos; se registrará el primero de la lista.&quot;]" />
-    <ui:InvokeWorkflowFile ArgumentsVariable="{x:Null}" ContinueOnError="{x:Null}" DisplayName="Registrar primer producto de la lista" sap:VirtualizedContainerService.HintSize="452,177.33333333333334" sap2010:WorkflowViewState.IdRef="InvokeWorkflowFile_2" UnSafe="False" WorkflowFileName="Business\WorkFlow\WF_ActualizarResultados.xaml">
+    <ui:InvokeWorkflowFile ArgumentsVariable="{x:Null}" ContinueOnError="{x:Null}" DisplayName="Registrar primer producto de la lista" sap:VirtualizedContainerService.HintSize="452,182.66666666666666" sap2010:WorkflowViewState.IdRef="InvokeWorkflowFile_2" UnSafe="False" WorkflowFileName="Business\WorkFlow\WF_ActualizarResultados.xaml">
       <ui:InvokeWorkflowFile.Arguments>
-        <InArgument x:TypeArguments="scg:Dictionary(x:String, x:Object)" x:Key="in_Config">[in_Config]</InArgument>
         <InArgument x:TypeArguments="sd:DataRow" x:Key="in_TransactionItem">[CType(in_TransactionItem, System.Data.DataRow)]</InArgument>
         <InArgument x:TypeArguments="x:String" x:Key="in_Estado">AMBIGUO_PRIMERO_LISTA</InArgument>
         <InArgument x:TypeArguments="x:String" x:Key="in_PrecioTexto" />
@@ -87,17 +82,17 @@
         <InOutArgument x:TypeArguments="sd:DataTable" x:Key="io_dtResultados" />
       </ui:InvokeWorkflowFile.Arguments>
     </ui:InvokeWorkflowFile>
-    <If Condition="[in_Config.ContainsKey(&quot;ActivarScreenshotNegocio&quot;) AndAlso CBool(in_Config(&quot;ActivarScreenshotNegocio&quot;))]" DisplayName="Tomar screenshot (Negocio)" sap:VirtualizedContainerService.HintSize="452,398" sap2010:WorkflowViewState.IdRef="If_1">
+    <If Condition="[Config.ContainsKey(&quot;ActivarScreenshotNegocio&quot;) AndAlso CBool(Config(&quot;ActivarScreenshotNegocio&quot;))]" DisplayName="Tomar screenshot (Negocio)" sap:VirtualizedContainerService.HintSize="452,407.3333333333333" sap2010:WorkflowViewState.IdRef="If_1">
       <If.Then>
-        <ui:InvokeWorkflowFile ArgumentsVariable="{x:Null}" ContinueOnError="{x:Null}" DisplayName="Tomar Screenshot" sap:VirtualizedContainerService.HintSize="450,145.33333333333334" sap2010:WorkflowViewState.IdRef="InvokeWorkflowFile_1" UnSafe="False" WorkflowFileName="Framework\TakeScreenshot.xaml">
+        <ui:InvokeWorkflowFile ArgumentsVariable="{x:Null}" ContinueOnError="{x:Null}" DisplayName="Tomar Screenshot" sap:VirtualizedContainerService.HintSize="450,150.66666666666666" sap2010:WorkflowViewState.IdRef="InvokeWorkflowFile_1" UnSafe="False" WorkflowFileName="Framework\TakeScreenshot.xaml">
           <ui:InvokeWorkflowFile.Arguments>
-            <InArgument x:TypeArguments="x:String" x:Key="in_Folder">[in_Config("ExScreenshotsFolderPath").ToString]</InArgument>
+            <InArgument x:TypeArguments="x:String" x:Key="in_Folder">[Config("ExScreenshotsFolderPath").ToString]</InArgument>
             <InOutArgument x:TypeArguments="x:String" x:Key="io_FilePath">[screenshotPath]</InOutArgument>
           </ui:InvokeWorkflowFile.Arguments>
         </ui:InvokeWorkflowFile>
       </If.Then>
       <If.Else>
-        <Sequence DisplayName="Else" sap:VirtualizedContainerService.HintSize="450,90.66666666666667" sap2010:WorkflowViewState.IdRef="Sequence_2">
+        <Sequence DisplayName="Else" sap:VirtualizedContainerService.HintSize="450,94.66666666666667" sap2010:WorkflowViewState.IdRef="Sequence_2">
           <sap:WorkflowViewStateService.ViewState>
             <scg:Dictionary x:TypeArguments="x:String, x:Object">
               <x:Boolean x:Key="IsExpanded">True</x:Boolean>

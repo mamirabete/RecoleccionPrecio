@@ -1,7 +1,9 @@
 <Activity mc:Ignorable="sap sap2010" x:Class="Business_Workflows_WF_BuscarProducto" xmlns="http://schemas.microsoft.com/netfx/2009/xaml/activities" xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" xmlns:sap="http://schemas.microsoft.com/netfx/2009/xaml/activities/presentation" xmlns:sap2010="http://schemas.microsoft.com/netfx/2010/xaml/activities/presentation" xmlns:scg="clr-namespace:System.Collections.Generic;assembly=System.Private.CoreLib" xmlns:sco="clr-namespace:System.Collections.ObjectModel;assembly=System.Private.CoreLib" xmlns:sd="clr-namespace:System.Data;assembly=System.Data.Common" xmlns:sd1="clr-namespace:System.Drawing;assembly=System.Drawing.Common" xmlns:sd2="clr-namespace:System.Drawing;assembly=System.Drawing.Primitives" xmlns:ui="http://schemas.uipath.com/workflow/activities" xmlns:uix="http://schemas.uipath.com/workflow/activities/uix" xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml">
   <x:Members>
-    <x:Property Name="in_Config" Type="InArgument(scg:Dictionary(x:String, x:Object))" />
-    <x:Property Name="in_TransactionItem" Type="InArgument(sd:DataRow)" />
+    <x:Property Name="in_Unidad" Type="InArgument(x:String)" />
+    <x:Property Name="in_ContenidoNeto" Type="InArgument(x:String)" />
+    <x:Property Name="out_dtExtractDataTable" Type="OutArgument(sd:DataTable)" />
+    <x:Property Name="in_TextoBusqueda" Type="InArgument(x:String)" />
     <x:Property Name="out_CantidadResultados" Type="OutArgument(x:Int32)" />
   </x:Members>
   <sap2010:WorkflowViewState.IdRef>WF_BuscarProducto</sap2010:WorkflowViewState.IdRef>
@@ -36,11 +38,16 @@
       <x:String>UiPath.UIAutomationNext.Models</x:String>
       <x:String>System.Collections.ObjectModel</x:String>
       <x:String>System.Reflection</x:String>
+      <x:String>UiPath.UIAutomationNext.Activities.Models</x:String>
+      <x:String>UiPath.UIAutomationNext.Contracts</x:String>
+      <x:String>UiPath.UIAutomationNext.Models.CV</x:String>
+      <x:String>System.Xml.Serialization</x:String>
+      <x:String>UiPath.UIAutomationNext.Models.ExtractData</x:String>
+      <x:String>System.Numerics</x:String>
     </sco:Collection>
   </TextExpression.NamespacesForImplementation>
   <TextExpression.ReferencesForImplementation>
     <sco:Collection x:TypeArguments="AssemblyReference">
-      <AssemblyReference>GlobalVariablesT1PNoYwrqg</AssemblyReference>
       <AssemblyReference>NPOI.Core</AssemblyReference>
       <AssemblyReference>PresentationFramework</AssemblyReference>
       <AssemblyReference>System.Activities</AssemblyReference>
@@ -88,39 +95,92 @@
       <AssemblyReference>UiPath.UIAutomationNext.Activities</AssemblyReference>
       <AssemblyReference>UiPath.Workflow</AssemblyReference>
       <AssemblyReference>WindowsBase</AssemblyReference>
+      <AssemblyReference>System.Private.Xml</AssemblyReference>
+      <AssemblyReference>System.Runtime.Numerics</AssemblyReference>
+      <AssemblyReference>UiPath.Web.Activities</AssemblyReference>
     </sco:Collection>
   </TextExpression.ReferencesForImplementation>
-  <Sequence sap2010:Annotation.AnnotationText="Realiza la búsqueda de un producto en la web con los datos del TransactionItem." DisplayName="WF_BuscarProducto" sap:VirtualizedContainerService.HintSize="956.6666666666666,1121.3333333333333" sap2010:WorkflowViewState.IdRef="Sequence_1">
-    <Sequence.Variables>
-      <Variable x:TypeArguments="x:String" Name="textoBusqueda" />
-    </Sequence.Variables>
+  <Sequence sap2010:Annotation.AnnotationText="Realiza la búsqueda de un producto en la web con los datos del TransactionItem." DisplayName="WF_BuscarProducto" sap:VirtualizedContainerService.HintSize="956.6666666666666,2473.333333333334" sap2010:WorkflowViewState.IdRef="Sequence_1">
     <sap:WorkflowViewStateService.ViewState>
       <scg:Dictionary x:TypeArguments="x:String, x:Object">
         <x:Boolean x:Key="IsExpanded">True</x:Boolean>
         <x:Boolean x:Key="IsAnnotationDocked">True</x:Boolean>
       </scg:Dictionary>
     </sap:WorkflowViewStateService.ViewState>
-    <Assign DisplayName="Construir texto de búsqueda" sap:VirtualizedContainerService.HintSize="452,176.66666666666666" sap2010:WorkflowViewState.IdRef="Assign_1">
+    <ui:LogMessage DisplayName="Log Message Process Start" sap:VirtualizedContainerService.HintSize="452,176.66666666666666" sap2010:WorkflowViewState.IdRef="LogMessage_1" Level="Info" Message="[&quot;Buscar producto de la transacción: &quot;+in_TextoBusqueda +&quot; &quot;+in_ContenidoNeto+&quot; &quot;+in_Unidad]" />
+    <Assign DisplayName="Inicializar cantidad de resultados" sap:VirtualizedContainerService.HintSize="452,176.66666666666666" sap2010:WorkflowViewState.IdRef="Assign_5">
       <Assign.To>
-        <OutArgument x:TypeArguments="x:String">[textoBusqueda]</OutArgument>
+        <OutArgument x:TypeArguments="x:Int32">[out_CantidadResultados]</OutArgument>
       </Assign.To>
       <Assign.Value>
-        <InArgument x:TypeArguments="x:String">[in_TransactionItem("Descripcion").ToString]</InArgument>
+        <InArgument x:TypeArguments="x:Int32">[0]</InArgument>
       </Assign.Value>
     </Assign>
-    <uix:NApplicationCard AttachMode="ByInstance" DisplayName="Use Application/Browser" HealingAgentBehavior="Job" sap:VirtualizedContainerService.HintSize="452,555.3333333333334" sap2010:WorkflowViewState.IdRef="NApplicationCard_1" IsDisplayNameAuto="True" ScopeGuid="b6f41673-074c-43d7-87db-4481e174d823" Version="V2">
+    <uix:NApplicationCard AttachMode="ByInstance" CloseMode="[UiPath.UIAutomationNext.Enums.NAppCloseMode.Never]" DisplayName="Chrome Nueva pestaña" HealingAgentBehavior="Job" sap:VirtualizedContainerService.HintSize="452,2066.6666666666665" sap2010:WorkflowViewState.IdRef="NApplicationCard_3" OpenMode="[UiPath.UIAutomationNext.Enums.NAppOpenMode.Never]" ScopeGuid="eef3febc-452b-4aec-99cd-e611aae83164" Version="V2">
       <uix:NApplicationCard.Body>
         <ActivityAction x:TypeArguments="x:Object">
           <ActivityAction.Argument>
             <DelegateInArgument x:TypeArguments="x:Object" Name="WSSessionData" />
           </ActivityAction.Argument>
-          <Sequence DisplayName="Hacer" sap:VirtualizedContainerService.HintSize="450,298.6666666666667" sap2010:WorkflowViewState.IdRef="Sequence_2">
+          <Sequence DisplayName="Hacer" sap:VirtualizedContainerService.HintSize="450,1872" sap2010:WorkflowViewState.IdRef="Sequence_9">
+            <Sequence.Variables>
+              <Variable x:TypeArguments="x:String" Name="strTextoExtraido" />
+            </Sequence.Variables>
             <sap:WorkflowViewStateService.ViewState>
               <scg:Dictionary x:TypeArguments="x:String, x:Object">
                 <x:Boolean x:Key="IsExpanded">True</x:Boolean>
               </scg:Dictionary>
             </sap:WorkflowViewStateService.ViewState>
-            <uix:NTypeInto ActivateBefore="True" ClickBeforeMode="Single" ClipboardMode="Never" DisplayName="Escribir en buscador" EmptyFieldMode="SingleLine" HealingAgentBehavior="SameAsCard" sap:VirtualizedContainerService.HintSize="416,238.66666666666666" sap2010:WorkflowViewState.IdRef="NTypeInto_1" ScopeIdentifier="b6f41673-074c-43d7-87db-4481e174d823" Text="[in_Config(&quot;Selector_Buscador&quot;).ToString]" Version="V5" />
+            <uix:NTypeInto ActivateBefore="True" ClickBeforeMode="Single" ClipboardMode="Never" DisplayName="Type Into TextoBuscar" EmptyFieldMode="SingleLine" HealingAgentBehavior="SameAsCard" sap:VirtualizedContainerService.HintSize="416,252" sap2010:WorkflowViewState.IdRef="NTypeInto_3" InteractionMode="DebuggerApi" ScopeIdentifier="eef3febc-452b-4aec-99cd-e611aae83164" Text="[in_TextoBusqueda]" Version="V5">
+              <uix:NTypeInto.Target>
+                <uix:TargetAnchorable BrowserURL="laanonima.com.ar/buscar" ContentHash="Rm2s6GnyskiVBVWlKiOSwg" DesignTimeRectangle="710, 137, 600, 45" ElementVisibilityArgument="Interactive" FullSelectorArgument="&lt;webctrl class='cont-buscar' tag='DIV' /&gt;" Guid="afe7a77e-f742-4314-9c3c-968fb5f925ae" InformativeScreenshot="ccfb1da74173687d1ccdd33eb3d34ab4.png" Reference="AWnxG0bVVU6RIhXzwQivlA/5smPDLMHVEWWCwXwxHqQEA" ScopeSelectorArgument="&lt;html app='chrome.exe' title='Supermercados La Anónima' /&gt;" SearchSteps="Selector" Version="V6" WaitForReadyArgument="Interactive" />
+              </uix:NTypeInto.Target>
+            </uix:NTypeInto>
+            <uix:NKeyboardShortcuts ActivateBefore="True" ClickBeforeMode="None" DisplayName="Keyboard Shortcuts 'Cuadro de texto buscar'" HealingAgentBehavior="SameAsCard" sap:VirtualizedContainerService.HintSize="416,513.3333333333334" sap2010:WorkflowViewState.IdRef="NKeyboardShortcuts_1" InteractionMode="HardwareEvents" ScopeIdentifier="eef3febc-452b-4aec-99cd-e611aae83164" Shortcuts="[d(hk)][k(Enter)][u(hk)]" Version="V5">
+              <uix:NKeyboardShortcuts.Target>
+                <uix:TargetAnchorable BrowserURL="laanonima.com.ar/buscar" ContentHash="Rm2s6GnyskiVBVWlKiOSwg" DesignTimeRectangle="710, 137, 600, 45" ElementVisibilityArgument="Interactive" FullSelectorArgument="&lt;webctrl class='cont-buscar' tag='DIV' /&gt;" Guid="afe7a77e-f742-4314-9c3c-968fb5f925ae" InformativeScreenshot="ccfb1da74173687d1ccdd33eb3d34ab4.png" Reference="AWnxG0bVVU6RIhXzwQivlA/5smPDLMHVEWWCwXwxHqQEA" ScopeSelectorArgument="&lt;html app='chrome.exe' title='Supermercados La Anónima' /&gt;" SearchSteps="Selector" Version="V6" WaitForReadyArgument="Interactive" />
+              </uix:NKeyboardShortcuts.Target>
+            </uix:NKeyboardShortcuts>
+            <uix:NExtractData AppendResults="False" ContinueOnError="True" DataTable="[out_dtExtractDataTable]" DisplayName="Extraer datos de tablas en la Web" ExtractDataSettings="&lt;Table xmlns:xsi='http://www.w3.org/2001/XMLSchema-instance' xmlns:xsd='http://www.w3.org/2001/XMLSchema' Type='Structured' AddCvHeader='true' IsScrollEnabled='false'&gt;&#xA;&#x9;&lt;Column xsi:type='DataColumn' ReferenceName='Column0' Name='Descripcion'&gt;&#xA;&#x9;&#x9;&lt;IsValidName&gt;true&lt;/IsValidName&gt;&#xA;&#x9;&#x9;&lt;ValidationErrorMessage /&gt;&#xA;&#x9;&#x9;&lt;IsExtra&gt;false&lt;/IsExtra&gt;&#xA;&#x9;&#x9;&lt;CanExtractSimilar&gt;true&lt;/CanExtractSimilar&gt;&#xA;&#x9;&#x9;&lt;Format xsi:type='TextColumnFormat' /&gt;&#xA;&#x9;&lt;/Column&gt;&#xA;&#x9;&lt;Column xsi:type='DataColumn' ReferenceName='Column1' Name='Precio'&gt;&#xA;&#x9;&#x9;&lt;IsValidName&gt;true&lt;/IsValidName&gt;&#xA;&#x9;&#x9;&lt;ValidationErrorMessage /&gt;&#xA;&#x9;&#x9;&lt;IsExtra&gt;false&lt;/IsExtra&gt;&#xA;&#x9;&#x9;&lt;CanExtractSimilar&gt;true&lt;/CanExtractSimilar&gt;&#xA;&#x9;&#x9;&lt;Format xsi:type='TextColumnFormat' /&gt;&#xA;&#x9;&lt;/Column&gt;&#xA;&#x9;&lt;Column xsi:type='DataColumn' ReferenceName='Column2' Name='Url'&gt;&#xA;&#x9;&#x9;&lt;IsValidName&gt;true&lt;/IsValidName&gt;&#xA;&#x9;&#x9;&lt;ValidationErrorMessage /&gt;&#xA;&#x9;&#x9;&lt;IsExtra&gt;false&lt;/IsExtra&gt;&#xA;&#x9;&#x9;&lt;CanExtractSimilar&gt;true&lt;/CanExtractSimilar&gt;&#xA;&#x9;&#x9;&lt;Format xsi:type='TextColumnFormat' /&gt;&#xA;&#x9;&lt;/Column&gt;&#xA;&lt;/Table&gt;" ExtractMetadata="&lt;extract&gt;&lt;row exact='1'&gt;&lt;webctrl tag='div' /&gt;&lt;webctrl tag='div' idx='1' /&gt;&lt;/row&gt;&lt;column exact='1' name='Column0' attr='fulltext'&gt;&lt;webctrl tag='div' /&gt;&lt;webctrl tag='div' idx='1' /&gt;&lt;webctrl tag='div' idx='1' /&gt;&lt;webctrl tag='a' idx='1' /&gt;&lt;webctrl tag='h2' idx='1' /&gt;&lt;/column&gt;&lt;column exact='1' name='Column1' attr='fulltext'&gt;&lt;webctrl tag='div' /&gt;&lt;webctrl tag='div' idx='1' /&gt;&lt;webctrl tag='div' idx='1' /&gt;&lt;webctrl tag='a' idx='1' /&gt;&lt;webctrl tag='div' idx='2' /&gt;&lt;webctrl tag='span' idx='1' /&gt;&lt;/column&gt;&lt;column exact='1' name='Column2' attr='href'&gt;&lt;webctrl tag='div' /&gt;&lt;webctrl tag='div' idx='1' /&gt;&lt;webctrl tag='a' idx='1' /&gt;&lt;webctrl tag='div' idx='1' /&gt;&lt;webctrl tag='img' idx='1' /&gt;&lt;/column&gt;&lt;/extract&gt;" HealingAgentBehavior="SameAsCard" sap:VirtualizedContainerService.HintSize="416,147.33333333333334" sap2010:WorkflowViewState.IdRef="NExtractData_6" LimitExtractionTo="None" MaximumResults="0" ScopeIdentifier="eef3febc-452b-4aec-99cd-e611aae83164" Version="V5">
+              <uix:NExtractData.Target>
+                <uix:TargetAnchorable BrowserURL="https://www.laanonima.com.ar/buscar/aceite%20de%20oliva/filtros/ordenarPor=mep/" DesignTimeRectangle="598, 400, 1095, 1289" ElementVisibilityArgument="Interactive" FullSelectorArgument="&lt;webctrl id='productos-container' tag='DIV' /&gt;" Guid="e5495313-8304-427d-bb2b-64ee69b65119" InformativeScreenshot="8d17aaa7c7ad3f74f1e2d0145d3471c5.png" ScopeSelectorArgument="&lt;html app='chrome.exe' title='Supermercados La Anónima' /&gt;" SearchSteps="Selector" Version="V6" WaitForReadyArgument="Interactive" />
+              </uix:NExtractData.Target>
+            </uix:NExtractData>
+            <ui:FilterDataTable sap2010:Annotation.AnnotationText="Se filtran los datos extraídos que contienen en la columna &quot;Descripcion&quot; el valor de &quot;CONT. NETO&quot;." DataTable="[out_dtExtractDataTable]" DisplayName="Filter the 'out_dtExtractDataTable'" FilterRowsMode="Keep" sap:VirtualizedContainerService.HintSize="416,244.66666666666666" sap2010:WorkflowViewState.IdRef="FilterDataTable_6" OutputDataTable="[out_dtExtractDataTable]" SelectColumnsMode="Keep">
+              <ui:FilterDataTable.Filters>
+                <scg:List x:TypeArguments="ui:FilterOperationArgument" Capacity="4">
+                  <ui:FilterOperationArgument BooleanOperator="And" Operator="CONTAINS">
+                    <ui:FilterOperationArgument.Column>
+                      <InArgument x:TypeArguments="x:String">["Descripcion"]</InArgument>
+                    </ui:FilterOperationArgument.Column>
+                    <ui:FilterOperationArgument.Operand>
+                      <InArgument x:TypeArguments="x:String">[in_ContenidoNeto]</InArgument>
+                    </ui:FilterOperationArgument.Operand>
+                  </ui:FilterOperationArgument>
+                </scg:List>
+              </ui:FilterDataTable.Filters>
+              <ui:FilterDataTable.SelectColumns>
+                <scg:List x:TypeArguments="InArgument" Capacity="4">
+                  <x:Null />
+                </scg:List>
+              </ui:FilterDataTable.SelectColumns>
+              <sap:WorkflowViewStateService.ViewState>
+                <scg:Dictionary x:TypeArguments="x:String, x:Object">
+                  <x:Boolean x:Key="IsAnnotationDocked">True</x:Boolean>
+                </scg:Dictionary>
+              </sap:WorkflowViewStateService.ViewState>
+            </ui:FilterDataTable>
+            <ui:LogMessage DisplayName="Registrar la cadena de la tabla de datos ordenada." sap:VirtualizedContainerService.HintSize="416,180.66666666666666" sap2010:WorkflowViewState.IdRef="LogMessage_10" Level="Info" Message="[&quot;Tabla de datos resultantes filtrada.&quot;]" />
+            <ui:SortDataTable ColumnIndex="{x:Null}" DataColumn="{x:Null}" ColumnName="Precio" DataTable="[out_dtExtractDataTable]" DisplayName="Ordenar la tabla de datos por la columna 'Precio' en orden ascendente." sap:VirtualizedContainerService.HintSize="416,118" sap2010:WorkflowViewState.IdRef="SortDataTable_4" OutputDataTable="[out_dtExtractDataTable]" SortOrder="Descending" />
+            <ui:LogMessage DisplayName="Registrar la cadena de la tabla de datos ordenada." sap:VirtualizedContainerService.HintSize="416,180.66666666666666" sap2010:WorkflowViewState.IdRef="LogMessage_11" Level="Info" Message="[&quot;Tabla de datos resultantes ordenada&quot;]" />
+            <Assign DisplayName="Establecer valor de cantidad de resultados" sap:VirtualizedContainerService.HintSize="416,171.33333333333334" sap2010:WorkflowViewState.IdRef="Assign_10">
+              <Assign.To>
+                <OutArgument x:TypeArguments="x:Int32">[out_CantidadResultados]</OutArgument>
+              </Assign.To>
+              <Assign.Value>
+                <InArgument x:TypeArguments="x:Int32">[If(out_dtExtractDataTable Is Nothing, 0, out_dtExtractDataTable.Rows.Count)]</InArgument>
+              </Assign.Value>
+            </Assign>
           </Sequence>
         </ActivityAction>
       </uix:NApplicationCard.Body>
@@ -132,44 +192,15 @@
         </ActivityFunc>
       </uix:NApplicationCard.OCREngine>
       <uix:NApplicationCard.TargetApp>
-        <uix:TargetApp Area="0, 0, 0, 0" Version="V2">
+        <uix:TargetApp Area="1911, -9, 1938, 1038" BrowserType="Chrome" ContentHash="Q55YurD6o026y5NEIxvEsQ" IconBase64="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" InformativeScreenshot="db0a6476cf888abe7f68a269e022458f.jpg" Reference="AWnxG0bVVU6RIhXzwQivlA/0h34Ftw_BEGAu9ZGKgOgpQ" Selector="&lt;html app='chrome.exe' title='Supermercados La Anónima' /&gt;" Url="[Config(&quot;URL_SitioSupermercado&quot;).ToString + Config(&quot;URL_SitioSupermercado_SeccionBusqueda&quot;).ToString]" Version="V2">
           <uix:TargetApp.Arguments>
             <InArgument x:TypeArguments="x:String" />
           </uix:TargetApp.Arguments>
-          <uix:TargetApp.FilePath>
-            <InArgument x:TypeArguments="x:String" />
-          </uix:TargetApp.FilePath>
-          <uix:TargetApp.Selector>
-            <InArgument x:TypeArguments="x:String" />
-          </uix:TargetApp.Selector>
-          <uix:TargetApp.Url>
-            <InArgument x:TypeArguments="x:String" />
-          </uix:TargetApp.Url>
           <uix:TargetApp.WorkingDirectory>
             <InArgument x:TypeArguments="x:String" />
           </uix:TargetApp.WorkingDirectory>
         </uix:TargetApp>
       </uix:NApplicationCard.TargetApp>
     </uix:NApplicationCard>
-    <ui:SendHotkey ClickBeforeTyping="{x:Null}" DelayBefore="{x:Null}" DelayBetweenKeys="{x:Null}" DelayMS="{x:Null}" EmptyField="{x:Null}" SendWindowMessages="{x:Null}" Activate="True" DisplayName="Enter búsqueda" sap:VirtualizedContainerService.HintSize="452,168.66666666666666" sap2010:WorkflowViewState.IdRef="SendHotkey_1" Key="enter" KeyModifiers="None" SpecialKey="True">
-      <ui:SendHotkey.Target>
-        <ui:Target ClippingRegion="{x:Null}" Element="{x:Null}" Selector="{x:Null}" Id="370a1368-ebb2-4105-9c22-542cd1ad8963">
-          <ui:Target.TimeoutMS>
-            <InArgument x:TypeArguments="x:Int32" />
-          </ui:Target.TimeoutMS>
-          <ui:Target.WaitForReady>
-            <InArgument x:TypeArguments="ui:WaitForReady" />
-          </ui:Target.WaitForReady>
-        </ui:Target>
-      </ui:SendHotkey.Target>
-    </ui:SendHotkey>
-    <Assign DisplayName="Inicializar cantidad de resultados" sap:VirtualizedContainerService.HintSize="452,167.33333333333334" sap2010:WorkflowViewState.IdRef="Assign_2">
-      <Assign.To>
-        <OutArgument x:TypeArguments="x:Int32">[out_CantidadResultados]</OutArgument>
-      </Assign.To>
-      <Assign.Value>
-        <InArgument x:TypeArguments="x:Int32">[0]</InArgument>
-      </Assign.Value>
-    </Assign>
   </Sequence>
 </Activity>

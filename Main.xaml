@@ -114,7 +114,7 @@
       <AssemblyReference>Microsoft.Extensions.DependencyModel</AssemblyReference>
     </scg:List>
   </TextExpression.ReferencesForImplementation>
-  <StateMachine InitialState="{x:Reference __ReferenceID3}" sap2010:Annotation.AnnotationText="Scraping de precios de la CBA.&#xA;El proceso automatiza la búsqueda web y registro del precio más económico de cada producto de la Canasta Básica de Alimentos, extrayendo datos desde un listado y generando resultados estructurados de forma precisa y repetible.&#xA;Autor: Martín Mirabete; contacto: martinmirabete@gmail.com; aplicaciones: Chrome, Excel y portal web del supermercado; configuración externa requerida: acceso al sitio, planilla CBA y parámetros de sucursal." DisplayName="General Business Process" sap:VirtualizedContainerService.HintSize="962.6666666666667,256.32333333333327" sap2010:WorkflowViewState.IdRef="StateMachine_1">
+  <StateMachine InitialState="{x:Reference __ReferenceID3}" sap2010:Annotation.AnnotationText="Scraping de precios de la CBA.&#xA;El proceso automatiza la búsqueda web y registro del precio más económico de cada producto de la Canasta Básica de Alimentos, extrayendo datos desde un listado y generando resultados estructurados de forma precisa y repetible.&#xA;Autor: Martín Mirabete; contacto: martinmirabete@gmail.com; aplicaciones: Chrome, Excel y portal web del supermercado; configuración externa requerida: acceso al sitio, planilla CBA y parámetros de sucursal." DisplayName="General Business Process" sap:VirtualizedContainerService.HintSize="1278.6666666666667,444.32333333333327" sap2010:WorkflowViewState.IdRef="StateMachine_1">
     <sap:WorkflowViewStateService.ViewState>
       <scg:Dictionary x:TypeArguments="x:String, x:Object">
         <x:Boolean x:Key="IsExpanded">True</x:Boolean>
@@ -125,9 +125,9 @@
         <x:Boolean x:Key="IsAnnotationDocked">True</x:Boolean>
       </scg:Dictionary>
     </sap:WorkflowViewStateService.ViewState>
-    <State x:Name="__ReferenceID0" sap2010:Annotation.AnnotationText="Obtener la siguiente transacción a procesar." DisplayName="Get Transaction Data" sap:VirtualizedContainerService.HintSize="229.33333333333334,110" sap2010:WorkflowViewState.IdRef="State_4">
+    <State x:Name="__ReferenceID0" sap2010:Annotation.AnnotationText="Obtener la siguiente transacción a procesar." DisplayName="Get Transaction Data" sap:VirtualizedContainerService.HintSize="568.6666666666666,1778" sap2010:WorkflowViewState.IdRef="State_4">
       <State.Entry>
-        <Sequence sap2010:Annotation.AnnotationText="Recuperar los datos de una nueva transacción para su procesamiento.&#xD;&#xA;La variable TransactionNumber contiene el número de transacción actual y, al incrementarla, el framework recupera la siguiente transacción. Si el framework reintenta una transacción fallida, esta variable no se incrementa hasta alcanzar el número máximo de reintentos." DisplayName="Recuperar datos" sap:VirtualizedContainerService.HintSize="522,1316" sap2010:WorkflowViewState.IdRef="Sequence_25">
+        <Sequence sap2010:Annotation.AnnotationText="Recuperar los datos de una nueva transacción para su procesamiento.&#xA;La variable TransactionNumber contiene el número de transacción actual y, al incrementarla, el framework recupera la siguiente transacción. Si el framework reintenta una transacción fallida, esta variable no se incrementa hasta alcanzar el número máximo de reintentos." DisplayName="Recuperar datos" sap:VirtualizedContainerService.HintSize="522,1347.3333333333333" sap2010:WorkflowViewState.IdRef="Sequence_25">
           <Sequence.Variables>
             <Variable x:TypeArguments="x:Boolean" Name="ShouldStop" />
           </Sequence.Variables>
@@ -139,7 +139,7 @@
             </scg:Dictionary>
           </sap:WorkflowViewStateService.ViewState>
           <ui:ShouldStop DisplayName="Comprobar la señal de parada" sap:VirtualizedContainerService.HintSize="488,124" sap2010:WorkflowViewState.IdRef="ShouldStop_2" Result="[ShouldStop]" />
-          <If Condition="[ShouldStop]" DisplayName="Si ¿Debería parar o pasar al siguiente?" sap:VirtualizedContainerService.HintSize="488,1038" sap2010:WorkflowViewState.IdRef="If_11">
+          <If Condition="[ShouldStop]" DisplayName="Si ¿Debería parar o pasar al siguiente?" sap:VirtualizedContainerService.HintSize="488,1069.3333333333333" sap2010:WorkflowViewState.IdRef="If_11">
             <sap:WorkflowViewStateService.ViewState>
               <scg:Dictionary x:TypeArguments="x:String, x:Object">
                 <x:Boolean x:Key="IsExpanded">True</x:Boolean>
@@ -166,13 +166,13 @@
               </Sequence>
             </If.Then>
             <If.Else>
-              <Sequence DisplayName="Else" sap:VirtualizedContainerService.HintSize="486,882" sap2010:WorkflowViewState.IdRef="Sequence_45">
+              <Sequence DisplayName="Else" sap:VirtualizedContainerService.HintSize="486,913.3333333333334" sap2010:WorkflowViewState.IdRef="Sequence_45">
                 <sap:WorkflowViewStateService.ViewState>
                   <scg:Dictionary x:TypeArguments="x:String, x:Object">
                     <x:Boolean x:Key="IsExpanded">True</x:Boolean>
                   </scg:Dictionary>
                 </sap:WorkflowViewStateService.ViewState>
-                <TryCatch DisplayName="Try GetTransactionData" sap:VirtualizedContainerService.HintSize="452,822" sap2010:WorkflowViewState.IdRef="TryCatch_7">
+                <TryCatch DisplayName="Try GetTransactionData" sap:VirtualizedContainerService.HintSize="452,849.3333333333334" sap2010:WorkflowViewState.IdRef="TryCatch_7">
                   <sap:WorkflowViewStateService.ViewState>
                     <scg:Dictionary x:TypeArguments="x:String, x:Object">
                       <x:Boolean x:Key="IsExpanded">True</x:Boolean>
@@ -180,14 +180,14 @@
                     </scg:Dictionary>
                   </sap:WorkflowViewStateService.ViewState>
                   <TryCatch.Try>
-                    <Sequence DisplayName="Try" sap:VirtualizedContainerService.HintSize="450,228" sap2010:WorkflowViewState.IdRef="Sequence_46">
+                    <Sequence DisplayName="Try" sap:VirtualizedContainerService.HintSize="450,241.33333333333334" sap2010:WorkflowViewState.IdRef="Sequence_46">
                       <sap:WorkflowViewStateService.ViewState>
                         <scg:Dictionary x:TypeArguments="x:String, x:Object">
                           <x:Boolean x:Key="IsExpanded">True</x:Boolean>
                           <x:Boolean x:Key="IsPinned">False</x:Boolean>
                         </scg:Dictionary>
                       </sap:WorkflowViewStateService.ViewState>
-                      <ui:InvokeWorkflowFile ArgumentsVariable="{x:Null}" ContinueOnError="{x:Null}" DisplayName="Invoke GetTransactionData workflow" sap:VirtualizedContainerService.HintSize="416,168" sap2010:WorkflowViewState.IdRef="InvokeWorkflowFile_20" UnSafe="False" WorkflowFileName="Framework\GetTransactionData.xaml">
+                      <ui:InvokeWorkflowFile ArgumentsVariable="{x:Null}" ContinueOnError="{x:Null}" DisplayName="Invoke GetTransactionData workflow" sap:VirtualizedContainerService.HintSize="416,177.33333333333334" sap2010:WorkflowViewState.IdRef="InvokeWorkflowFile_20" UnSafe="False" WorkflowFileName="Framework\GetTransactionData.xaml">
                         <ui:InvokeWorkflowFile.Arguments>
                           <OutArgument x:TypeArguments="sd:DataRow" x:Key="out_dt_TransactionItem">[dt_TransactionItem]</OutArgument>
                           <InArgument x:TypeArguments="x:Int32" x:Key="in_TransactionNumber">[TransactionNumber]</InArgument>
@@ -218,15 +218,15 @@
                         <ActivityAction.Argument>
                           <DelegateInArgument x:TypeArguments="s:Exception" Name="Exception" />
                         </ActivityAction.Argument>
-                        <Sequence DisplayName="Log exception message and end process" sap:VirtualizedContainerService.HintSize="450,404" sap2010:WorkflowViewState.IdRef="Sequence_24">
+                        <Sequence DisplayName="Log exception message and end process" sap:VirtualizedContainerService.HintSize="450,416" sap2010:WorkflowViewState.IdRef="Sequence_24">
                           <sap:WorkflowViewStateService.ViewState>
                             <scg:Dictionary x:TypeArguments="x:String, x:Object">
                               <x:Boolean x:Key="IsExpanded">True</x:Boolean>
                               <x:Boolean x:Key="IsPinned">False</x:Boolean>
                             </scg:Dictionary>
                           </sap:WorkflowViewStateService.ViewState>
-                          <ui:LogMessage DisplayName="Log message  (Get transaction data error)" sap:VirtualizedContainerService.HintSize="416,176.66666666666666" sap2010:WorkflowViewState.IdRef="LogMessage_28" Level="Fatal" Message="[Config(&quot;LogMessage_GetTransactionDataError&quot;).ToString+TransactionNumber.ToString+&quot;. &quot;+Exception.Message+&quot; originado desde: &quot;+Exception.Source]" />
-                          <Assign DisplayName="End Process (Could not get new transaction)" sap:VirtualizedContainerService.HintSize="416,167.33333333333334" sap2010:WorkflowViewState.IdRef="Assign_23">
+                          <ui:LogMessage DisplayName="Log message  (Get transaction data error)" sap:VirtualizedContainerService.HintSize="416,180.66666666666666" sap2010:WorkflowViewState.IdRef="LogMessage_28" Level="Fatal" Message="[Config(&quot;LogMessage_GetTransactionDataError&quot;).ToString+TransactionNumber.ToString+&quot;. &quot;+Exception.Message+&quot; originado desde: &quot;+Exception.Source]" />
+                          <Assign DisplayName="End Process (Could not get new transaction)" sap:VirtualizedContainerService.HintSize="416,171.33333333333334" sap2010:WorkflowViewState.IdRef="Assign_23">
                             <Assign.To>
                               <OutArgument x:TypeArguments="ui:QueueItem">[TransactionItem]</OutArgument>
                             </Assign.To>
@@ -275,7 +275,7 @@
             </scg:Dictionary>
           </sap:WorkflowViewStateService.ViewState>
           <Transition.To>
-            <State x:Name="__ReferenceID2" sap2010:Annotation.AnnotationText="Procesar una sola transacción.&#xD;&#xA;El resultado del procesamiento puede ser: 1) Éxito, 2) Excepción de Negocio, 3) Excepción del Sistema.&#xD;&#xA;En caso de una excepción del sistema, la transacción se puede reintentar automáticamente." DisplayName="Process Transaction" sap:VirtualizedContainerService.HintSize="240,208.66666666666666" sap2010:WorkflowViewState.IdRef="State_3">
+            <State x:Name="__ReferenceID2" sap2010:Annotation.AnnotationText="Procesar una sola transacción.&#xA;El resultado del procesamiento puede ser: 1) Éxito, 2) Excepción de Negocio, 3) Excepción del Sistema.&#xA;En caso de una excepción del sistema, la transacción se puede reintentar automáticamente." DisplayName="Process Transaction" sap:VirtualizedContainerService.HintSize="240,208.66666666666666" sap2010:WorkflowViewState.IdRef="State_3">
               <State.Entry>
                 <TryCatch DisplayName="Intentar procesar la transacción" sap:VirtualizedContainerService.HintSize="488,2880" sap2010:WorkflowViewState.IdRef="TryCatch_9">
                   <sap:WorkflowViewStateService.ViewState>
@@ -302,8 +302,8 @@
                       </Assign>
                       <ui:InvokeWorkflowFile ArgumentsVariable="{x:Null}" ContinueOnError="{x:Null}" DisplayName="Invoke Process workflow" sap:VirtualizedContainerService.HintSize="452,177.33333333333334" sap2010:WorkflowViewState.IdRef="InvokeWorkflowFile_24" UnSafe="False" WorkflowFileName="Framework\Process.xaml">
                         <ui:InvokeWorkflowFile.Arguments>
+                          <InArgument x:TypeArguments="sd:DataRow" x:Key="in_dt_TransactionItem">[dt_TransactionItem]</InArgument>
                           <InArgument x:TypeArguments="ui:QueueItem" x:Key="in_TransactionItem">[TransactionItem]</InArgument>
-                          <InArgument x:TypeArguments="scg:Dictionary(x:String, x:Object)" x:Key="in_Config">[GlobalVariablesNamespace.GlobalVariables.Config]</InArgument>
                         </ui:InvokeWorkflowFile.Arguments>
                       </ui:InvokeWorkflowFile>
                       <TryCatch DisplayName="Try Catch Set Transaction Status (Success)" sap:VirtualizedContainerService.HintSize="452,680.6666666666666" sap2010:WorkflowViewState.IdRef="TryCatch_10">
@@ -1025,7 +1025,7 @@
             <ui:LogMessage DisplayName="Log message (New transaction retrieved)" sap:VirtualizedContainerService.HintSize="346,144.66666666666666" sap2010:WorkflowViewState.IdRef="LogMessage_29" Level="Info" Message="[GlobalVariablesNamespace.GlobalVariables.Config(&quot;LogMessage_GetTransactionData&quot;).ToString+TransactionNumber.ToString]" />
           </Transition.Action>
           <Transition.Condition>
-            <VisualBasicValue x:TypeArguments="x:Boolean" DisplayName="Visual basic value" ExpressionText="dt_TransactionItem IsNot Nothing" />
+            <VisualBasicValue x:TypeArguments="x:Boolean" DisplayName="Visual basic value" ExpressionText="dt_TransactionItem IsNot Nothing" sap2010:WorkflowViewState.IdRef="VisualBasicValue`1_3" />
           </Transition.Condition>
         </Transition>
         <Transition sap2010:Annotation.AnnotationText="This is a simple mecanism to stop the process.&#xA;In reallife scenario you can stop the process when there is no more data to process or on a schedule." DisplayName="No Data" sap:VirtualizedContainerService.HintSize="451.3333333333333,598" sap2010:WorkflowViewState.IdRef="Transition_7">
@@ -1044,9 +1044,7 @@
           <Transition.Action>
             <ui:LogMessage DisplayName="Log message (No more transations available)" sap:VirtualizedContainerService.HintSize="346,144.66666666666666" sap2010:WorkflowViewState.IdRef="LogMessage_30" Level="Info" Message="[&quot;Process finished due to no more transaction data&quot;]" />
           </Transition.Action>
-          <Transition.Condition>
-            <VisualBasicValue x:TypeArguments="x:Boolean" DisplayName="Visual basic value" ExpressionText="dt_TransactionItem Is Nothing" />
-          </Transition.Condition>
+          <Transition.Condition>[dt_TransactionItem Is Nothing]</Transition.Condition>
         </Transition>
       </State.Transitions>
     </State>

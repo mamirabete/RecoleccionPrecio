@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="utf-16"?>
+<ObjectRepositoryTargetData ContentHash="O6xiNF5KV0SAoN7Ot1_7_A" xmlns="http://schemas.uipath.com/workflow/activities/uix" xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml">
+  <ObjectRepositoryTargetData.Data>
+    <TargetAnchorable x:Key="TargetAnchorable" BrowserURL="laanonima.com.ar/buscar/aceite%20de%20oliva" CVScreenId="1fdc0711-7feb-41b5-96b0-6bc392df16e9" DesignTimeRectangle="750, 360, 111, 21" ElementType="Text" ElementVisibilityArgument="Interactive" FullSelectorArgument="&lt;webctrl id='orden-label' tag='SPAN' /&gt;" Guid="76633cf8-4646-4907-98ff-dd0657d6d17c" ScopeSelectorArgument="&lt;html app='chrome.exe' title='Supermercados La Anónima' /&gt;" SearchSteps="Selector" Version="V6" WaitForReadyArgument="Interactive">
+      <imageRef attrName="InformativeScreenshot" originalValue="74592bbe0f19f2b4eb4833ba7aa5539a.png" xmlns="">0H3X3baVvuEq9fE2uR0KbYg</imageRef>
+    </TargetAnchorable>
+    <x:String x:Key="ActivityType">GetText</x:String>
+  </ObjectRepositoryTargetData.Data>
+</ObjectRepositoryTargetData>

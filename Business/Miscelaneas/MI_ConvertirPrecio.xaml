@@ -18,11 +18,11 @@
       <x:String>System.Activities</x:String>
       <x:String>System.Collections</x:String>
       <x:String>System.Runtime.Serialization</x:String>
+      <x:String>System.Linq.Expressions</x:String>
     </sco:Collection>
   </TextExpression.NamespacesForImplementation>
   <TextExpression.ReferencesForImplementation>
     <sco:Collection x:TypeArguments="AssemblyReference">
-      <AssemblyReference>GlobalVariablesT1PNoYwrqg</AssemblyReference>
       <AssemblyReference>System.Activities</AssemblyReference>
       <AssemblyReference>System.Collections</AssemblyReference>
       <AssemblyReference>System.Collections.NonGeneric</AssemblyReference>
@@ -38,9 +38,20 @@
       <AssemblyReference>UiPath.System.Activities</AssemblyReference>
       <AssemblyReference>UiPath.UiAutomation.Activities</AssemblyReference>
       <AssemblyReference>UiPath.Workflow</AssemblyReference>
+      <AssemblyReference>System.Memory.Data</AssemblyReference>
+      <AssemblyReference>UiPath.Excel.Activities.Design</AssemblyReference>
+      <AssemblyReference>System.Console</AssemblyReference>
+      <AssemblyReference>System.Security.Permissions</AssemblyReference>
+      <AssemblyReference>System.Configuration.ConfigurationManager</AssemblyReference>
+      <AssemblyReference>System.ComponentModel</AssemblyReference>
+      <AssemblyReference>System.Memory</AssemblyReference>
+      <AssemblyReference>System.Private.Uri</AssemblyReference>
+      <AssemblyReference>NPOI.Core</AssemblyReference>
+      <AssemblyReference>System.Linq.Async</AssemblyReference>
+      <AssemblyReference>System.Linq.Expressions</AssemblyReference>
     </sco:Collection>
   </TextExpression.ReferencesForImplementation>
-  <Sequence sap2010:Annotation.AnnotationText="Objetivo: limpiar y normalizar la URL del producto para guardarla en el CSV." DisplayName="HL_ConvertirPrecio" sap:VirtualizedContainerService.HintSize="956.6666666666666,1687.3333333333333" sap2010:WorkflowViewState.IdRef="Sequence_1">
+  <Sequence sap2010:Annotation.AnnotationText="Objetivo: limpiar y normalizar la URL del producto para guardarla en el CSV." DisplayName="HL_ConvertirPrecio" sap:VirtualizedContainerService.HintSize="956.6666666666666,1703.3333333333333" sap2010:WorkflowViewState.IdRef="Sequence_1">
     <Sequence.Variables>
       <Variable x:TypeArguments="x:String" Name="precioLimpio" />
       <Variable x:TypeArguments="x:Double" Name="valor" />
@@ -68,9 +79,9 @@
         <InArgument x:TypeArguments="x:Double">[0]</InArgument>
       </Assign.Value>
     </Assign>
-    <If Condition="[String.IsNullOrWhiteSpace(in_PrecioTexto)]" DisplayName="Texto de precio vacío" sap:VirtualizedContainerService.HintSize="488,1280.6666666666667" sap2010:WorkflowViewState.IdRef="If_1">
+    <If Condition="[String.IsNullOrWhiteSpace(in_PrecioTexto)]" DisplayName="Texto de precio vacío" sap:VirtualizedContainerService.HintSize="488,1294" sap2010:WorkflowViewState.IdRef="If_1">
       <If.Then>
-        <Sequence DisplayName="Then" sap:VirtualizedContainerService.HintSize="486,90.66666666666667" sap2010:WorkflowViewState.IdRef="Sequence_2">
+        <Sequence DisplayName="Then" sap:VirtualizedContainerService.HintSize="486,94.66666666666667" sap2010:WorkflowViewState.IdRef="Sequence_2">
           <sap:WorkflowViewStateService.ViewState>
             <scg:Dictionary x:TypeArguments="x:String, x:Object">
               <x:Boolean x:Key="IsExpanded">True</x:Boolean>
@@ -79,36 +90,36 @@
         </Sequence>
       </If.Then>
       <If.Else>
-        <Sequence DisplayName="Intentar parsear precio" sap:VirtualizedContainerService.HintSize="486,1059.3333333333333" sap2010:WorkflowViewState.IdRef="Sequence_4">
+        <Sequence DisplayName="Intentar parsear precio" sap:VirtualizedContainerService.HintSize="486,1091.3333333333333" sap2010:WorkflowViewState.IdRef="Sequence_4">
           <sap:WorkflowViewStateService.ViewState>
             <scg:Dictionary x:TypeArguments="x:String, x:Object">
               <x:Boolean x:Key="IsExpanded">True</x:Boolean>
             </scg:Dictionary>
           </sap:WorkflowViewStateService.ViewState>
-          <Assign DisplayName="Normalizar texto de precio" sap:VirtualizedContainerService.HintSize="452,176.66666666666666" sap2010:WorkflowViewState.IdRef="Assign_3">
+          <Assign DisplayName="Normalizar texto de precio" sap:VirtualizedContainerService.HintSize="452,180.66666666666666" sap2010:WorkflowViewState.IdRef="Assign_3">
             <Assign.To>
               <OutArgument x:TypeArguments="x:String">[precioLimpio]</OutArgument>
             </Assign.To>
             <Assign.Value>
-              <InArgument x:TypeArguments="x:String">[in_PrecioTexto.Trim().Replace("ARS","").Replace("$","").Trim().Replace(".","").Replace(",",".")]</InArgument>
+              <InArgument x:TypeArguments="x:String">[in_PrecioTexto.Trim().Replace("$","").Replace("$","").Trim().Replace(".","").Replace(",",".")]</InArgument>
             </Assign.Value>
           </Assign>
-          <ui:InvokeCode ContinueOnError="{x:Null}" Code="Try&#xA;    If String.IsNullOrWhiteSpace(precioLimpio) Then&#xA;        parseOk = False&#xA;    Else&#xA;        valor = Double.Parse(precioLimpio, Globalization.CultureInfo.InvariantCulture)&#xA;        parseOk = True&#xA;    End If&#xA;Catch&#xA;    parseOk = False&#xA;End Try" DisplayName="Parsear Double usando VB" sap:VirtualizedContainerService.HintSize="452,197.33333333333334" sap2010:WorkflowViewState.IdRef="InvokeCode_1">
+          <ui:InvokeCode ContinueOnError="{x:Null}" Code="Try&#xA;    If String.IsNullOrWhiteSpace(precioLimpio) Then&#xA;        parseOk = False&#xA;    Else&#xA;        valor = Double.Parse(precioLimpio, Globalization.CultureInfo.InvariantCulture)&#xA;        parseOk = True&#xA;    End If&#xA;Catch&#xA;    parseOk = False&#xA;End Try" DisplayName="Parsear Double usando VB" sap:VirtualizedContainerService.HintSize="452,201.33333333333334" sap2010:WorkflowViewState.IdRef="InvokeCode_1">
             <ui:InvokeCode.Arguments>
               <InArgument x:TypeArguments="x:String" x:Key="precioLimpio" />
               <OutArgument x:TypeArguments="x:Double" x:Key="valor" />
               <OutArgument x:TypeArguments="x:Boolean" x:Key="parseOk" />
             </ui:InvokeCode.Arguments>
           </ui:InvokeCode>
-          <If Condition="[parseOk]" DisplayName="Asignar resultado parseo" sap:VirtualizedContainerService.HintSize="452,625.3333333333334" sap2010:WorkflowViewState.IdRef="If_2">
+          <If Condition="[parseOk]" DisplayName="Asignar resultado parseo" sap:VirtualizedContainerService.HintSize="452,645.3333333333334" sap2010:WorkflowViewState.IdRef="If_2">
             <If.Then>
-              <Sequence DisplayName="Then" sap:VirtualizedContainerService.HintSize="450,404" sap2010:WorkflowViewState.IdRef="Sequence_3">
+              <Sequence DisplayName="Then" sap:VirtualizedContainerService.HintSize="450,416" sap2010:WorkflowViewState.IdRef="Sequence_3">
                 <sap:WorkflowViewStateService.ViewState>
                   <scg:Dictionary x:TypeArguments="x:String, x:Object">
                     <x:Boolean x:Key="IsExpanded">True</x:Boolean>
                   </scg:Dictionary>
                 </sap:WorkflowViewStateService.ViewState>
-                <Assign DisplayName="Asignar precio numérico" sap:VirtualizedContainerService.HintSize="416,176.66666666666666" sap2010:WorkflowViewState.IdRef="Assign_4">
+                <Assign DisplayName="Asignar precio numérico" sap:VirtualizedContainerService.HintSize="416,180.66666666666666" sap2010:WorkflowViewState.IdRef="Assign_4">
                   <Assign.To>
                     <OutArgument x:TypeArguments="x:Double">[out_PrecioNumero]</OutArgument>
                   </Assign.To>
@@ -116,7 +127,7 @@
                     <InArgument x:TypeArguments="x:Double">[valor]</InArgument>
                   </Assign.Value>
                 </Assign>
-                <Assign DisplayName="Marcar como válido" sap:VirtualizedContainerService.HintSize="416,167.33333333333334" sap2010:WorkflowViewState.IdRef="Assign_5">
+                <Assign DisplayName="Marcar como válido" sap:VirtualizedContainerService.HintSize="416,171.33333333333334" sap2010:WorkflowViewState.IdRef="Assign_5">
                   <Assign.To>
                     <OutArgument x:TypeArguments="x:Boolean">[out_EsValido]</OutArgument>
                   </Assign.To>
@@ -127,7 +138,7 @@
               </Sequence>
             </If.Then>
             <If.Else>
-              <Sequence DisplayName="Else" sap:VirtualizedContainerService.HintSize="450,90.66666666666667" sap2010:WorkflowViewState.IdRef="Sequence_5">
+              <Sequence DisplayName="Else" sap:VirtualizedContainerService.HintSize="450,94.66666666666667" sap2010:WorkflowViewState.IdRef="Sequence_5">
                 <sap:WorkflowViewStateService.ViewState>
                   <scg:Dictionary x:TypeArguments="x:String, x:Object">
                     <x:Boolean x:Key="IsExpanded">True</x:Boolean>

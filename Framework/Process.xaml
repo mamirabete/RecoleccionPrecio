@@ -1,7 +1,7 @@
-<Activity mc:Ignorable="sap sap2010" x:Class="Process" xmlns="http://schemas.microsoft.com/netfx/2009/xaml/activities" xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" xmlns:sap="http://schemas.microsoft.com/netfx/2009/xaml/activities/presentation" xmlns:sap2010="http://schemas.microsoft.com/netfx/2010/xaml/activities/presentation" xmlns:scg="clr-namespace:System.Collections.Generic;assembly=System.Private.CoreLib" xmlns:ui="http://schemas.uipath.com/workflow/activities" xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml">
+<Activity mc:Ignorable="sap sap2010" x:Class="Process" xmlns="http://schemas.microsoft.com/netfx/2009/xaml/activities" xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" xmlns:sap="http://schemas.microsoft.com/netfx/2009/xaml/activities/presentation" xmlns:sap2010="http://schemas.microsoft.com/netfx/2010/xaml/activities/presentation" xmlns:scg="clr-namespace:System.Collections.Generic;assembly=System.Private.CoreLib" xmlns:sd="clr-namespace:System.Data;assembly=System.Data.Common" xmlns:ui="http://schemas.uipath.com/workflow/activities" xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml">
   <x:Members>
+    <x:Property Name="in_dt_TransactionItem" Type="InArgument(sd:DataRow)" />
     <x:Property sap2010:Annotation.AnnotationText="Transaction item to be processed." Name="in_TransactionItem" Type="InArgument(ui:QueueItem)" />
-    <x:Property sap2010:Annotation.AnnotationText="Dictionary structure to store configuration data of the process (settings, constants and assets)." Name="in_Config" Type="InArgument(scg:Dictionary(x:String, x:Object))" />
   </x:Members>
   <VisualBasic.Settings>
     <x:Null />
@@ -37,11 +37,15 @@
       <x:String>UiPath.Core.Activities</x:String>
       <x:String>GlobalVariablesNamespace</x:String>
       <x:String>GlobalConstantsNamespace</x:String>
+      <x:String>System.Reflection</x:String>
+      <x:String>System.Linq.Expressions</x:String>
+      <x:String>System.Numerics</x:String>
+      <x:String>System.ComponentModel</x:String>
+      <x:String>System.Xml.Serialization</x:String>
     </scg:List>
   </TextExpression.NamespacesForImplementation>
   <TextExpression.ReferencesForImplementation>
-    <scg:List x:TypeArguments="AssemblyReference" Capacity="40">
-      <AssemblyReference>GlobalVariablesT1PNoYwrqg</AssemblyReference>
+    <scg:List x:TypeArguments="AssemblyReference" Capacity="80">
       <AssemblyReference>Microsoft.Bcl.AsyncInterfaces</AssemblyReference>
       <AssemblyReference>Microsoft.VisualBasic</AssemblyReference>
       <AssemblyReference>mscorlib</AssemblyReference>
@@ -79,16 +83,164 @@
       <AssemblyReference>UiPath.UIAutomationCore</AssemblyReference>
       <AssemblyReference>UiPath.Workflow</AssemblyReference>
       <AssemblyReference>WindowsBase</AssemblyReference>
+      <AssemblyReference>UiPath.Studio.Constants</AssemblyReference>
+      <AssemblyReference>System.Reflection.DispatchProxy</AssemblyReference>
+      <AssemblyReference>System.Reflection.TypeExtensions</AssemblyReference>
+      <AssemblyReference>System.Reflection.Metadata</AssemblyReference>
+      <AssemblyReference>UiPath.Excel.Activities.Design</AssemblyReference>
+      <AssemblyReference>System.Memory.Data</AssemblyReference>
+      <AssemblyReference>System.Private.ServiceModel</AssemblyReference>
+      <AssemblyReference>System.Private.DataContractSerialization</AssemblyReference>
+      <AssemblyReference>System.Runtime.Serialization.Formatters</AssemblyReference>
+      <AssemblyReference>System.Runtime.Serialization.Primitives</AssemblyReference>
+      <AssemblyReference>System.Linq.Expressions</AssemblyReference>
+      <AssemblyReference>System.Data.SqlClient</AssemblyReference>
+      <AssemblyReference>System.Data.Common</AssemblyReference>
+      <AssemblyReference>System.Linq.Async</AssemblyReference>
+      <AssemblyReference>NPOI.Core</AssemblyReference>
+      <AssemblyReference>System.Collections.NonGeneric</AssemblyReference>
+      <AssemblyReference>System.Runtime.Numerics</AssemblyReference>
+      <AssemblyReference>System.ComponentModel.EventBasedAsync</AssemblyReference>
+      <AssemblyReference>System.ComponentModel.Primitives</AssemblyReference>
+      <AssemblyReference>System.Private.Xml</AssemblyReference>
     </scg:List>
   </TextExpression.ReferencesForImplementation>
-  <Sequence sap2010:Annotation.AnnotationText="Invoke major steps of the business process, which are usually implemented by multiple subworkflows.&#xA;&#xA;If a BusinessRuleException is thrown, the transaction is skipped. &#xA;If another kind of exception occurs, the current transaction can be retried. " DisplayName="Process" sap:VirtualizedContainerService.HintSize="375.2,389.6" sap2010:WorkflowViewState.IdRef="Sequence_1">
+  <Sequence sap2010:Annotation.AnnotationText="Invoca los pasos principales del proceso de negocio, que suelen implementarse mediante múltiples subflujos de trabajo.&#xA;Si se lanza una BusinessRuleException, se omite la transacción.&#xA;Si se produce otro tipo de excepción, se puede reintentar la transacción actual." DisplayName="Process" sap:VirtualizedContainerService.HintSize="956.6666666666666,2866.6666666666665" sap2010:WorkflowViewState.IdRef="Sequence_1">
+    <Sequence.Variables>
+      <Variable x:TypeArguments="x:String" Name="Unidad" />
+      <Variable x:TypeArguments="x:String" Name="contenidoNeto" />
+      <Variable x:TypeArguments="x:String" Name="textoBusqueda" />
+      <Variable x:TypeArguments="sd:DataTable" Name="dtResultadosBusqueda" />
+      <Variable x:TypeArguments="x:Int32" Name="cantidadResultados" />
+      <Variable x:TypeArguments="x:Boolean" Name="productoNoEncontrado" />
+      <Variable x:TypeArguments="x:Boolean" Name="multiplesProductos" />
+      <Variable x:TypeArguments="x:Boolean" Name="hayUnicoValido" />
+      <Variable x:TypeArguments="sd:DataRow" Name="filaSeleccionada" />
+      <Variable x:TypeArguments="x:String" Name="precioTexto" />
+      <Variable x:TypeArguments="x:Double" Name="precioNumero" />
+      <Variable x:TypeArguments="x:Boolean" Name="precioEsValido" />
+      <Variable x:TypeArguments="x:String" Name="urlBruta" />
+      <Variable x:TypeArguments="x:String" Name="urlLimpia" />
+    </Sequence.Variables>
     <sap:WorkflowViewStateService.ViewState>
       <scg:Dictionary x:TypeArguments="x:String, x:Object">
         <x:Boolean x:Key="IsExpanded">True</x:Boolean>
         <x:Boolean x:Key="IsAnnotationDocked">True</x:Boolean>
       </scg:Dictionary>
     </sap:WorkflowViewStateService.ViewState>
-    <ui:LogMessage DisplayName="Log Message Process Start" sap:VirtualizedContainerService.HintSize="333.6,92.8" sap2010:WorkflowViewState.IdRef="LogMessage_1" Level="Info" Message="[&quot;Started Process&quot;]" />
-    <ui:Comment DisplayName="Comment (placeholder)" sap:VirtualizedContainerService.HintSize="333.6,56" sap2010:WorkflowViewState.IdRef="Comment_1" Text="//  Invoke steps of the process" />
+    <ui:LogMessage DisplayName="Log Message Process Start" sap:VirtualizedContainerService.HintSize="522.6666666666666,176.66666666666666" sap2010:WorkflowViewState.IdRef="LogMessage_1" Level="Info" Message="[&quot;Iniciando proceso.&quot;]" />
+    <ui:InvokeWorkflowFile ArgumentsVariable="{x:Null}" ContinueOnError="{x:Null}" DisplayName="Normalizar Texto  PRODUCTO (WEB)" sap:VirtualizedContainerService.HintSize="522.6666666666666,182.66666666666666" sap2010:WorkflowViewState.IdRef="InvokeWorkflowFile_1" UnSafe="False" WorkflowFileName="Business\Miscelaneas\MI_NormalizarTexto.xaml">
+      <ui:InvokeWorkflowFile.Arguments>
+        <InArgument x:TypeArguments="x:String" x:Key="in_TextoOriginal">[CStr(in_dt_TransactionItem("PRODUCTO (WEB)"))]</InArgument>
+        <OutArgument x:TypeArguments="x:String" x:Key="out_TextoNormalizado">[textoBusqueda]</OutArgument>
+      </ui:InvokeWorkflowFile.Arguments>
+    </ui:InvokeWorkflowFile>
+    <ui:InvokeWorkflowFile ArgumentsVariable="{x:Null}" ContinueOnError="{x:Null}" DisplayName="Normalizar Texto CONT. NETO" sap:VirtualizedContainerService.HintSize="522.6666666666666,182.66666666666666" sap2010:WorkflowViewState.IdRef="InvokeWorkflowFile_8" UnSafe="False" WorkflowFileName="Business\Miscelaneas\MI_NormalizarTexto.xaml">
+      <ui:InvokeWorkflowFile.Arguments>
+        <InArgument x:TypeArguments="x:String" x:Key="in_TextoOriginal">[CStr(in_dt_TransactionItem("CONT. NETO"))]</InArgument>
+        <OutArgument x:TypeArguments="x:String" x:Key="out_TextoNormalizado">[contenidoNeto]</OutArgument>
+      </ui:InvokeWorkflowFile.Arguments>
+    </ui:InvokeWorkflowFile>
+    <ui:InvokeWorkflowFile ArgumentsVariable="{x:Null}" ContinueOnError="{x:Null}" DisplayName="Normalizar Texto UNIDAD" sap:VirtualizedContainerService.HintSize="522.6666666666666,182.66666666666666" sap2010:WorkflowViewState.IdRef="InvokeWorkflowFile_9" UnSafe="False" WorkflowFileName="Business\Miscelaneas\MI_NormalizarTexto.xaml">
+      <ui:InvokeWorkflowFile.Arguments>
+        <InArgument x:TypeArguments="x:String" x:Key="in_TextoOriginal">[CStr(in_dt_TransactionItem("UNIDAD"))]</InArgument>
+        <OutArgument x:TypeArguments="x:String" x:Key="out_TextoNormalizado">[Unidad]</OutArgument>
+      </ui:InvokeWorkflowFile.Arguments>
+    </ui:InvokeWorkflowFile>
+    <ui:InvokeWorkflowFile ArgumentsVariable="{x:Null}" ContinueOnError="{x:Null}" DisplayName="WF_BuscarProducto" sap:VirtualizedContainerService.HintSize="522.6666666666666,182.66666666666666" sap2010:WorkflowViewState.IdRef="InvokeWorkflowFile_2" UnSafe="False" WorkflowFileName="Business\WorkFlow\WF_BuscarProducto.xaml">
+      <ui:InvokeWorkflowFile.Arguments>
+        <InArgument x:TypeArguments="x:String" x:Key="in_Unidad">[Unidad]</InArgument>
+        <InArgument x:TypeArguments="x:String" x:Key="in_ContenidoNeto">[contenidoNeto]</InArgument>
+        <OutArgument x:TypeArguments="sd:DataTable" x:Key="out_dtExtractDataTable">[dtResultadosBusqueda]</OutArgument>
+        <InArgument x:TypeArguments="x:String" x:Key="in_TextoBusqueda">[textoBusqueda]</InArgument>
+        <OutArgument x:TypeArguments="x:Int32" x:Key="out_CantidadResultados">[cantidadResultados]</OutArgument>
+      </ui:InvokeWorkflowFile.Arguments>
+    </ui:InvokeWorkflowFile>
+    <ui:InvokeWorkflowFile ArgumentsVariable="{x:Null}" ContinueOnError="{x:Null}" DisplayName="MI_ValidarCantidadResultados" sap:VirtualizedContainerService.HintSize="522.6666666666666,182.66666666666666" sap2010:WorkflowViewState.IdRef="InvokeWorkflowFile_3" UnSafe="False" WorkflowFileName="Business\Miscelaneas\MI_ValidarCantidadResultados.xaml">
+      <ui:InvokeWorkflowFile.Arguments>
+        <InArgument x:TypeArguments="x:Int32" x:Key="in_CantidadResultados">[cantidadResultados]</InArgument>
+        <OutArgument x:TypeArguments="x:Boolean" x:Key="out_ProductoNoEncontrado">[productoNoEncontrado]</OutArgument>
+        <OutArgument x:TypeArguments="x:Boolean" x:Key="out_MultiplesProductos">[multiplesProductos]</OutArgument>
+        <OutArgument x:TypeArguments="x:Boolean" x:Key="out_HayUnicoValido">[hayUnicoValido]</OutArgument>
+      </ui:InvokeWorkflowFile.Arguments>
+    </ui:InvokeWorkflowFile>
+    <If Condition="[productoNoEncontrado]" DisplayName="Producto no encontrado" sap:VirtualizedContainerService.HintSize="522.6666666666666,407.3333333333333" sap2010:WorkflowViewState.IdRef="If_1">
+      <If.Then>
+        <ui:InvokeWorkflowFile ArgumentsVariable="{x:Null}" ContinueOnError="{x:Null}" DisplayName="BR_ProductoNoEncontrado - Invocar archivo de flujo de trabajo (Business\Exceptions\BR_ProductoNoEncontrado.xaml)" sap:VirtualizedContainerService.HintSize="450,150.66666666666666" sap2010:WorkflowViewState.IdRef="InvokeWorkflowFile_10" UnSafe="False" WorkflowFileName="Business\Exceptions\BR_ProductoNoEncontrado.xaml">
+          <ui:InvokeWorkflowFile.Arguments>
+            <InArgument x:TypeArguments="x:Object" x:Key="in_TransactionItem">[in_dt_TransactionItem]</InArgument>
+          </ui:InvokeWorkflowFile.Arguments>
+        </ui:InvokeWorkflowFile>
+      </If.Then>
+      <If.Else>
+        <Sequence DisplayName="Else" sap:VirtualizedContainerService.HintSize="450,94.66666666666667" sap2010:WorkflowViewState.IdRef="Sequence_4">
+          <sap:WorkflowViewStateService.ViewState>
+            <scg:Dictionary x:TypeArguments="x:String, x:Object">
+              <x:Boolean x:Key="IsExpanded">True</x:Boolean>
+            </scg:Dictionary>
+          </sap:WorkflowViewStateService.ViewState>
+        </Sequence>
+      </If.Else>
+    </If>
+    <ui:InvokeWorkflowFile ArgumentsVariable="{x:Null}" ContinueOnError="{x:Null}" DisplayName="MI_SeleccionarProductoEconomico" sap:VirtualizedContainerService.HintSize="522.6666666666666,182.66666666666666" sap2010:WorkflowViewState.IdRef="InvokeWorkflowFile_4" UnSafe="False" WorkflowFileName="Business\Miscelaneas\MI_SeleccionarProductoEconomico.xaml">
+      <ui:InvokeWorkflowFile.Arguments>
+        <InArgument x:TypeArguments="sd:DataTable" x:Key="in_dtResultados">[dtResultadosBusqueda]</InArgument>
+        <OutArgument x:TypeArguments="sd:DataRow" x:Key="out_FilaProductoSeleccionado">[filaSeleccionada]</OutArgument>
+        <OutArgument x:TypeArguments="x:Boolean" x:Key="out_HayProductoValido">[hayUnicoValido]</OutArgument>
+      </ui:InvokeWorkflowFile.Arguments>
+    </ui:InvokeWorkflowFile>
+    <ui:CommentOut DisplayName="Comentar" sap:VirtualizedContainerService.HintSize="522.6666666666666,570" sap2010:WorkflowViewState.IdRef="CommentOut_1">
+      <ui:CommentOut.Body>
+        <Sequence DisplayName="Actividades ignoradas" sap:VirtualizedContainerService.HintSize="486,458" sap2010:WorkflowViewState.IdRef="Sequence_5">
+          <sap:WorkflowViewStateService.ViewState>
+            <scg:Dictionary x:TypeArguments="x:String, x:Object">
+              <x:Boolean x:Key="IsExpanded">True</x:Boolean>
+            </scg:Dictionary>
+          </sap:WorkflowViewStateService.ViewState>
+          <If Condition="[multiplesProductos]" DisplayName="Más de un producto válido y no se puede desambiguar" sap:VirtualizedContainerService.HintSize="452,398" sap2010:WorkflowViewState.IdRef="If_2">
+            <If.Then>
+              <ui:InvokeWorkflowFile ArgumentsVariable="{x:Null}" ContinueOnError="{x:Null}" DisplayName="BR_MultiplesProductos - Invocar archivo de flujo de trabajo (Business\Exceptions\BR_MultiplesProductos.xaml)" sap:VirtualizedContainerService.HintSize="450,150.66666666666666" sap2010:WorkflowViewState.IdRef="InvokeWorkflowFile_11" UnSafe="False" WorkflowFileName="Business\Exceptions\BR_MultiplesProductos.xaml">
+                <ui:InvokeWorkflowFile.Arguments>
+                  <InArgument x:TypeArguments="x:Object" x:Key="in_TransactionItem">[in_dt_TransactionItem]</InArgument>
+                </ui:InvokeWorkflowFile.Arguments>
+              </ui:InvokeWorkflowFile>
+            </If.Then>
+            <If.Else>
+              <Sequence DisplayName="Else" sap:VirtualizedContainerService.HintSize="450,94.66666666666667" sap2010:WorkflowViewState.IdRef="Sequence_2">
+                <sap:WorkflowViewStateService.ViewState>
+                  <scg:Dictionary x:TypeArguments="x:String, x:Object">
+                    <x:Boolean x:Key="IsExpanded">True</x:Boolean>
+                  </scg:Dictionary>
+                </sap:WorkflowViewStateService.ViewState>
+              </Sequence>
+            </If.Else>
+          </If>
+        </Sequence>
+      </ui:CommentOut.Body>
+    </ui:CommentOut>
+    <Assign DisplayName="Leer urlBruta" sap:VirtualizedContainerService.HintSize="522.6666666666666,176.66666666666666" sap2010:WorkflowViewState.IdRef="Assign_3">
+      <Assign.To>
+        <OutArgument x:TypeArguments="x:String">[urlBruta]</OutArgument>
+      </Assign.To>
+      <Assign.Value>
+        <InArgument x:TypeArguments="x:String">[CStr(filaSeleccionada("URL"))]</InArgument>
+      </Assign.Value>
+    </Assign>
+    <ui:InvokeWorkflowFile ArgumentsVariable="{x:Null}" ContinueOnError="{x:Null}" DisplayName="MI_FormatearURL" sap:VirtualizedContainerService.HintSize="522.6666666666666,182.66666666666666" sap2010:WorkflowViewState.IdRef="InvokeWorkflowFile_6" UnSafe="False" WorkflowFileName="Business\Miscelaneas\MI_FormatearURL.xaml">
+      <ui:InvokeWorkflowFile.Arguments>
+        <InArgument x:TypeArguments="x:String" x:Key="in_URLBruta">[urlBruta]</InArgument>
+        <OutArgument x:TypeArguments="x:String" x:Key="out_URLLimpia">[urlLimpia]</OutArgument>
+      </ui:InvokeWorkflowFile.Arguments>
+    </ui:InvokeWorkflowFile>
+    <ui:InvokeWorkflowFile ArgumentsVariable="{x:Null}" ContinueOnError="{x:Null}" DisplayName="WF_ActualizarResultados" sap:VirtualizedContainerService.HintSize="522.6666666666666,173.33333333333334" sap2010:WorkflowViewState.IdRef="InvokeWorkflowFile_7" UnSafe="False" WorkflowFileName="Business\WorkFlow\WF_ActualizarResultados.xaml">
+      <ui:InvokeWorkflowFile.Arguments>
+        <InArgument x:TypeArguments="sd:DataRow" x:Key="in_TransactionItem" />
+        <InArgument x:TypeArguments="x:String" x:Key="in_Estado" />
+        <InArgument x:TypeArguments="x:String" x:Key="in_PrecioTexto" />
+        <InArgument x:TypeArguments="x:String" x:Key="in_PrecioNumero" />
+        <InArgument x:TypeArguments="x:String" x:Key="in_UrlProducto" />
+        <InOutArgument x:TypeArguments="sd:DataTable" x:Key="io_dtResultados" />
+      </ui:InvokeWorkflowFile.Arguments>
+    </ui:InvokeWorkflowFile>
   </Sequence>
 </Activity>

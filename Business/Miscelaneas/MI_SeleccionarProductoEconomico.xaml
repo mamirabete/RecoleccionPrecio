@@ -30,7 +30,6 @@
   </TextExpression.NamespacesForImplementation>
   <TextExpression.ReferencesForImplementation>
     <sco:Collection x:TypeArguments="AssemblyReference">
-      <AssemblyReference>GlobalVariablesT1PNoYwrqg</AssemblyReference>
       <AssemblyReference>NPOI.Core</AssemblyReference>
       <AssemblyReference>PresentationFramework</AssemblyReference>
       <AssemblyReference>System.Activities</AssemblyReference>
@@ -67,7 +66,7 @@
       <AssemblyReference>WindowsBase</AssemblyReference>
     </sco:Collection>
   </TextExpression.ReferencesForImplementation>
-  <Sequence sap2010:Annotation.AnnotationText="Objetivo: dado un DataTable de resultados, elegir la fila con menor precio." DisplayName="MI_SeleccionarProductoEconomico" sap:VirtualizedContainerService.HintSize="956.6666666666666,3194.6666666666665" sap2010:WorkflowViewState.IdRef="Sequence_6">
+  <Sequence sap2010:Annotation.AnnotationText="Objetivo: dado un DataTable de resultados, elegir la fila con menor precio." DisplayName="MI_SeleccionarProductoEconomico" sap:VirtualizedContainerService.HintSize="640.6666666666666,4663.333333333333" sap2010:WorkflowViewState.IdRef="Sequence_6">
     <Sequence.Variables>
       <Variable x:TypeArguments="sd:DataRow" Name="filaMinima" />
       <Variable x:TypeArguments="x:Double" Name="minPrecio" />
@@ -79,7 +78,8 @@
         <x:Boolean x:Key="IsAnnotationDocked">True</x:Boolean>
       </scg:Dictionary>
     </sap:WorkflowViewStateService.ViewState>
-    <Assign DisplayName="Inicializar HayProductoValido" sap:VirtualizedContainerService.HintSize="526,176.66666666666666" sap2010:WorkflowViewState.IdRef="Assign_1">
+    <ui:LogMessage DisplayName="Log Message Process Start" sap:VirtualizedContainerService.HintSize="594.6666666666666,176.66666666666666" sap2010:WorkflowViewState.IdRef="LogMessage_1" Level="Info" Message="[&quot;Buscando el producto más económico&quot;]" />
+    <Assign DisplayName="Inicializar HayProductoValido" sap:VirtualizedContainerService.HintSize="594.6666666666666,176.66666666666666" sap2010:WorkflowViewState.IdRef="Assign_1">
       <Assign.To>
         <OutArgument x:TypeArguments="x:Boolean">[out_HayProductoValido]</OutArgument>
       </Assign.To>
@@ -87,9 +87,9 @@
         <InArgument x:TypeArguments="x:Boolean">[False]</InArgument>
       </Assign.Value>
     </Assign>
-    <If Condition="[in_dtResultados Is Nothing OrElse in_dtResultados.Rows.Count = 0]" DisplayName="dtResultados nulo o sin filas" sap:VirtualizedContainerService.HintSize="526,2964.6666666666665" sap2010:WorkflowViewState.IdRef="If_4">
+    <If Condition="[in_dtResultados Is Nothing OrElse in_dtResultados.Rows.Count = 0]" DisplayName="dtResultados nulo o sin filas" sap:VirtualizedContainerService.HintSize="594.6666666666666,4256.666666666667" sap2010:WorkflowViewState.IdRef="If_4">
       <If.Then>
-        <Sequence DisplayName="Then" sap:VirtualizedContainerService.HintSize="524,90.66666666666667" sap2010:WorkflowViewState.IdRef="Sequence_7">
+        <Sequence DisplayName="Then" sap:VirtualizedContainerService.HintSize="592.6666666666666,94.66666666666667" sap2010:WorkflowViewState.IdRef="Sequence_7">
           <sap:WorkflowViewStateService.ViewState>
             <scg:Dictionary x:TypeArguments="x:String, x:Object">
               <x:Boolean x:Key="IsExpanded">True</x:Boolean>
@@ -98,13 +98,13 @@
         </Sequence>
       </If.Then>
       <If.Else>
-        <Sequence DisplayName="Buscar fila con menor precio" sap:VirtualizedContainerService.HintSize="524,2743.3333333333335" sap2010:WorkflowViewState.IdRef="Sequence_5">
+        <Sequence DisplayName="Buscar fila con menor precio" sap:VirtualizedContainerService.HintSize="592.6666666666666,4031.3333333333335" sap2010:WorkflowViewState.IdRef="Sequence_5">
           <sap:WorkflowViewStateService.ViewState>
             <scg:Dictionary x:TypeArguments="x:String, x:Object">
               <x:Boolean x:Key="IsExpanded">True</x:Boolean>
             </scg:Dictionary>
           </sap:WorkflowViewStateService.ViewState>
-          <Assign DisplayName="Inicializar encontro" sap:VirtualizedContainerService.HintSize="490,176.66666666666666" sap2010:WorkflowViewState.IdRef="Assign_2">
+          <Assign DisplayName="Inicializar encontro" sap:VirtualizedContainerService.HintSize="558.6666666666666,180.66666666666666" sap2010:WorkflowViewState.IdRef="Assign_2">
             <Assign.To>
               <OutArgument x:TypeArguments="x:Boolean">[encontro]</OutArgument>
             </Assign.To>
@@ -112,7 +112,7 @@
               <InArgument x:TypeArguments="x:Boolean">[False]</InArgument>
             </Assign.Value>
           </Assign>
-          <Assign DisplayName="Inicializar minPrecio" sap:VirtualizedContainerService.HintSize="490,176.66666666666666" sap2010:WorkflowViewState.IdRef="Assign_3">
+          <Assign DisplayName="Inicializar minPrecio" sap:VirtualizedContainerService.HintSize="558.6666666666666,180.66666666666666" sap2010:WorkflowViewState.IdRef="Assign_3">
             <Assign.To>
               <OutArgument x:TypeArguments="x:Double">[minPrecio]</OutArgument>
             </Assign.To>
@@ -120,13 +120,13 @@
               <InArgument x:TypeArguments="x:Double">[0]</InArgument>
             </Assign.Value>
           </Assign>
-          <ui:ForEach x:TypeArguments="sd:DataRow" CurrentIndex="{x:Null}" DisplayName="Iterar filas" sap:VirtualizedContainerService.HintSize="490,1704.6666666666667" sap2010:WorkflowViewState.IdRef="ForEach`1_1" Values="[in_dtResultados.Rows]">
+          <ui:ForEach x:TypeArguments="sd:DataRow" CurrentIndex="{x:Null}" DisplayName="Iterar filas" sap:VirtualizedContainerService.HintSize="558.6666666666666,2960.6666666666665" sap2010:WorkflowViewState.IdRef="ForEach`1_1" Values="[in_dtResultados.Rows]">
             <ui:ForEach.Body>
               <ActivityAction x:TypeArguments="sd:DataRow">
                 <ActivityAction.Argument>
-                  <DelegateInArgument x:TypeArguments="sd:DataRow" Name="fila" />
+                  <DelegateInArgument x:TypeArguments="sd:DataRow" Name="filaActual" />
                 </ActivityAction.Argument>
-                <Sequence DisplayName="Evaluar fila" sap:VirtualizedContainerService.HintSize="488,1572.6666666666667" sap2010:WorkflowViewState.IdRef="Sequence_3">
+                <Sequence DisplayName="Evaluar fila" sap:VirtualizedContainerService.HintSize="556.6666666666666,2824.6666666666665" sap2010:WorkflowViewState.IdRef="Sequence_3">
                   <Sequence.Variables>
                     <Variable x:TypeArguments="x:Double" Name="precioFila" />
                   </Sequence.Variables>
@@ -135,31 +135,93 @@
                       <x:Boolean x:Key="IsExpanded">True</x:Boolean>
                     </scg:Dictionary>
                   </sap:WorkflowViewStateService.ViewState>
-                  <Assign DisplayName="Leer precio de la fila" sap:VirtualizedContainerService.HintSize="454,176.66666666666666" sap2010:WorkflowViewState.IdRef="Assign_4">
-                    <Assign.To>
-                      <OutArgument x:TypeArguments="x:Double">[precioFila]</OutArgument>
-                    </Assign.To>
-                    <Assign.Value>
-                      <InArgument x:TypeArguments="x:Double">[CDbl(fila("PrecioNumero"))]</InArgument>
-                    </Assign.Value>
-                  </Assign>
-                  <If Condition="[Not encontro]" DisplayName="Es la primera fila válida" sap:VirtualizedContainerService.HintSize="454,1336" sap2010:WorkflowViewState.IdRef="If_2">
-                    <If.Then>
-                      <Sequence DisplayName="Then" sap:VirtualizedContainerService.HintSize="452,580.6666666666666" sap2010:WorkflowViewState.IdRef="Sequence_1">
+                  <ui:CommentOut DisplayName="Comentar" sap:VirtualizedContainerService.HintSize="522.6666666666666,343.3333333333333" sap2010:WorkflowViewState.IdRef="CommentOut_4">
+                    <ui:CommentOut.Body>
+                      <Sequence DisplayName="Actividades ignoradas" sap:VirtualizedContainerService.HintSize="450,227.33333333333334" sap2010:WorkflowViewState.IdRef="Sequence_10">
                         <sap:WorkflowViewStateService.ViewState>
                           <scg:Dictionary x:TypeArguments="x:String, x:Object">
                             <x:Boolean x:Key="IsExpanded">True</x:Boolean>
                           </scg:Dictionary>
                         </sap:WorkflowViewStateService.ViewState>
-                        <Assign DisplayName="Asignar primera fila" sap:VirtualizedContainerService.HintSize="418,176.66666666666666" sap2010:WorkflowViewState.IdRef="Assign_5">
+                        <Assign DisplayName="Leer precioTexto" sap:VirtualizedContainerService.HintSize="416,167.33333333333334" sap2010:WorkflowViewState.IdRef="Assign_12">
+                          <Assign.To>
+                            <OutArgument x:TypeArguments="x:String">[precioTexto]</OutArgument>
+                          </Assign.To>
+                          <Assign.Value>
+                            <InArgument x:TypeArguments="x:String">[CStr(filaSeleccionada("PrecioTexto"))]</InArgument>
+                          </Assign.Value>
+                        </Assign>
+                      </Sequence>
+                    </ui:CommentOut.Body>
+                  </ui:CommentOut>
+                  <ui:CommentOut DisplayName="Comentar" sap:VirtualizedContainerService.HintSize="522.6666666666666,349.3333333333333" sap2010:WorkflowViewState.IdRef="CommentOut_3">
+                    <ui:CommentOut.Body>
+                      <Sequence DisplayName="Actividades ignoradas" sap:VirtualizedContainerService.HintSize="450,233.33333333333334" sap2010:WorkflowViewState.IdRef="Sequence_11">
+                        <sap:WorkflowViewStateService.ViewState>
+                          <scg:Dictionary x:TypeArguments="x:String, x:Object">
+                            <x:Boolean x:Key="IsExpanded">True</x:Boolean>
+                          </scg:Dictionary>
+                        </sap:WorkflowViewStateService.ViewState>
+                        <ui:InvokeWorkflowFile ArgumentsVariable="{x:Null}" ContinueOnError="{x:Null}" DisplayName="MI_ConvertirPrecio" sap:VirtualizedContainerService.HintSize="416,173.33333333333334" sap2010:WorkflowViewState.IdRef="InvokeWorkflowFile_1" UnSafe="False" WorkflowFileName="Business\Miscelaneas\MI_ConvertirPrecio.xaml">
+                          <ui:InvokeWorkflowFile.Arguments>
+                            <InArgument x:TypeArguments="x:String" x:Key="in_PrecioTexto">[precioTexto]</InArgument>
+                            <OutArgument x:TypeArguments="x:Double" x:Key="out_PrecioNumero">[precioNumero]</OutArgument>
+                            <OutArgument x:TypeArguments="x:Boolean" x:Key="out_EsValido">[precioEsValido]</OutArgument>
+                          </ui:InvokeWorkflowFile.Arguments>
+                        </ui:InvokeWorkflowFile>
+                      </Sequence>
+                    </ui:CommentOut.Body>
+                  </ui:CommentOut>
+                  <ui:CommentOut DisplayName="Comentar" sap:VirtualizedContainerService.HintSize="522.6666666666666,515.3333333333334" sap2010:WorkflowViewState.IdRef="CommentOut_2">
+                    <ui:CommentOut.Body>
+                      <Sequence DisplayName="Actividades ignoradas" sap:VirtualizedContainerService.HintSize="486,399.3333333333333" sap2010:WorkflowViewState.IdRef="Sequence_13">
+                        <sap:WorkflowViewStateService.ViewState>
+                          <scg:Dictionary x:TypeArguments="x:String, x:Object">
+                            <x:Boolean x:Key="IsExpanded">True</x:Boolean>
+                          </scg:Dictionary>
+                        </sap:WorkflowViewStateService.ViewState>
+                        <If Condition="[Not precioEsValido]" DisplayName="Precio con formato no esperado" sap:VirtualizedContainerService.HintSize="452,339.3333333333333" sap2010:WorkflowViewState.IdRef="If_5">
+                          <If.Then>
+                            <Throw DisplayName="BR_PrecioFormatoNoEsperado" Exception="[New UiPath.Core.BusinessRuleException(&quot;PrecioFormatoNoEsperado&quot;)]" sap:VirtualizedContainerService.HintSize="450,92" sap2010:WorkflowViewState.IdRef="Throw_1" />
+                          </If.Then>
+                          <If.Else>
+                            <Sequence DisplayName="Else" sap:VirtualizedContainerService.HintSize="450,94.66666666666667" sap2010:WorkflowViewState.IdRef="Sequence_12">
+                              <sap:WorkflowViewStateService.ViewState>
+                                <scg:Dictionary x:TypeArguments="x:String, x:Object">
+                                  <x:Boolean x:Key="IsExpanded">True</x:Boolean>
+                                </scg:Dictionary>
+                              </sap:WorkflowViewStateService.ViewState>
+                            </Sequence>
+                          </If.Else>
+                        </If>
+                      </Sequence>
+                    </ui:CommentOut.Body>
+                  </ui:CommentOut>
+                  <Assign DisplayName="Leer precio de la fila" sap:VirtualizedContainerService.HintSize="522.6666666666666,180.66666666666666" sap2010:WorkflowViewState.IdRef="Assign_4">
+                    <Assign.To>
+                      <OutArgument x:TypeArguments="x:Double">[precioFila]</OutArgument>
+                    </Assign.To>
+                    <Assign.Value>
+                      <InArgument x:TypeArguments="x:Double">[CDbl(filaActual("Precio").ToString.Replace("$", "").Replace(" ", "").Replace(".", "").Replace(",", "."))]</InArgument>
+                    </Assign.Value>
+                  </Assign>
+                  <If Condition="[Not encontro]" DisplayName="Es la primera fila válida" sap:VirtualizedContainerService.HintSize="522.6666666666666,1372" sap2010:WorkflowViewState.IdRef="If_2">
+                    <If.Then>
+                      <Sequence DisplayName="Then" sap:VirtualizedContainerService.HintSize="452,596.6666666666666" sap2010:WorkflowViewState.IdRef="Sequence_1">
+                        <sap:WorkflowViewStateService.ViewState>
+                          <scg:Dictionary x:TypeArguments="x:String, x:Object">
+                            <x:Boolean x:Key="IsExpanded">True</x:Boolean>
+                          </scg:Dictionary>
+                        </sap:WorkflowViewStateService.ViewState>
+                        <Assign DisplayName="Asignar primera fila" sap:VirtualizedContainerService.HintSize="418,180.66666666666666" sap2010:WorkflowViewState.IdRef="Assign_5">
                           <Assign.To>
                             <OutArgument x:TypeArguments="sd:DataRow">[filaMinima]</OutArgument>
                           </Assign.To>
                           <Assign.Value>
-                            <InArgument x:TypeArguments="sd:DataRow">[fila]</InArgument>
+                            <InArgument x:TypeArguments="sd:DataRow">[filaActual]</InArgument>
                           </Assign.Value>
                         </Assign>
-                        <Assign DisplayName="Asignar minPrecio" sap:VirtualizedContainerService.HintSize="418,176.66666666666666" sap2010:WorkflowViewState.IdRef="Assign_6">
+                        <Assign DisplayName="Asignar minPrecio" sap:VirtualizedContainerService.HintSize="418,180.66666666666666" sap2010:WorkflowViewState.IdRef="Assign_6">
                           <Assign.To>
                             <OutArgument x:TypeArguments="x:Double">[minPrecio]</OutArgument>
                           </Assign.To>
@@ -167,7 +229,7 @@
                             <InArgument x:TypeArguments="x:Double">[precioFila]</InArgument>
                           </Assign.Value>
                         </Assign>
-                        <Assign DisplayName="Marcar encontro" sap:VirtualizedContainerService.HintSize="418,167.33333333333334" sap2010:WorkflowViewState.IdRef="Assign_7">
+                        <Assign DisplayName="Marcar encontro" sap:VirtualizedContainerService.HintSize="418,171.33333333333334" sap2010:WorkflowViewState.IdRef="Assign_7">
                           <Assign.To>
                             <OutArgument x:TypeArguments="x:Boolean">[encontro]</OutArgument>
                           </Assign.To>
@@ -178,23 +240,23 @@
                       </Sequence>
                     </If.Then>
                     <If.Else>
-                      <If Condition="[precioFila &lt; minPrecio]" DisplayName="Precio menor que minPrecio" sap:VirtualizedContainerService.HintSize="452,602.6666666666666" sap2010:WorkflowViewState.IdRef="If_1">
+                      <If Condition="[precioFila &lt; minPrecio]" DisplayName="Precio menor que minPrecio" sap:VirtualizedContainerService.HintSize="452,618.6666666666666" sap2010:WorkflowViewState.IdRef="If_1">
                         <If.Then>
-                          <Sequence DisplayName="Then" sap:VirtualizedContainerService.HintSize="450,404" sap2010:WorkflowViewState.IdRef="Sequence_2">
+                          <Sequence DisplayName="Then" sap:VirtualizedContainerService.HintSize="450,416" sap2010:WorkflowViewState.IdRef="Sequence_2">
                             <sap:WorkflowViewStateService.ViewState>
                               <scg:Dictionary x:TypeArguments="x:String, x:Object">
                                 <x:Boolean x:Key="IsExpanded">True</x:Boolean>
                               </scg:Dictionary>
                             </sap:WorkflowViewStateService.ViewState>
-                            <Assign DisplayName="Actualizar filaMinima" sap:VirtualizedContainerService.HintSize="416,176.66666666666666" sap2010:WorkflowViewState.IdRef="Assign_8">
+                            <Assign DisplayName="Actualizar filaMinima" sap:VirtualizedContainerService.HintSize="416,180.66666666666666" sap2010:WorkflowViewState.IdRef="Assign_8">
                               <Assign.To>
                                 <OutArgument x:TypeArguments="sd:DataRow">[filaMinima]</OutArgument>
                               </Assign.To>
                               <Assign.Value>
-                                <InArgument x:TypeArguments="sd:DataRow">[fila]</InArgument>
+                                <InArgument x:TypeArguments="sd:DataRow">[filaActual]</InArgument>
                               </Assign.Value>
                             </Assign>
-                            <Assign DisplayName="Actualizar minPrecio" sap:VirtualizedContainerService.HintSize="416,167.33333333333334" sap2010:WorkflowViewState.IdRef="Assign_9">
+                            <Assign DisplayName="Actualizar minPrecio" sap:VirtualizedContainerService.HintSize="416,171.33333333333334" sap2010:WorkflowViewState.IdRef="Assign_9">
                               <Assign.To>
                                 <OutArgument x:TypeArguments="x:Double">[minPrecio]</OutArgument>
                               </Assign.To>
@@ -205,7 +267,7 @@
                           </Sequence>
                         </If.Then>
                         <If.Else>
-                          <Sequence DisplayName="Else" sap:VirtualizedContainerService.HintSize="450,90.66666666666667" sap2010:WorkflowViewState.IdRef="Sequence_8">
+                          <Sequence DisplayName="Else" sap:VirtualizedContainerService.HintSize="450,94.66666666666667" sap2010:WorkflowViewState.IdRef="Sequence_8">
                             <sap:WorkflowViewStateService.ViewState>
                               <scg:Dictionary x:TypeArguments="x:String, x:Object">
                                 <x:Boolean x:Key="IsExpanded">True</x:Boolean>
@@ -220,15 +282,15 @@
               </ActivityAction>
             </ui:ForEach.Body>
           </ui:ForEach>
-          <If Condition="[encontro]" DisplayName="Asignar salida si se encontró algo" sap:VirtualizedContainerService.HintSize="490,625.3333333333334" sap2010:WorkflowViewState.IdRef="If_3">
+          <If Condition="[encontro]" DisplayName="Asignar salida si se encontró algo" sap:VirtualizedContainerService.HintSize="558.6666666666666,645.3333333333334" sap2010:WorkflowViewState.IdRef="If_3">
             <If.Then>
-              <Sequence DisplayName="Then" sap:VirtualizedContainerService.HintSize="450,404" sap2010:WorkflowViewState.IdRef="Sequence_4">
+              <Sequence DisplayName="Then" sap:VirtualizedContainerService.HintSize="450,416" sap2010:WorkflowViewState.IdRef="Sequence_4">
                 <sap:WorkflowViewStateService.ViewState>
                   <scg:Dictionary x:TypeArguments="x:String, x:Object">
                     <x:Boolean x:Key="IsExpanded">True</x:Boolean>
                   </scg:Dictionary>
                 </sap:WorkflowViewStateService.ViewState>
-                <Assign DisplayName="Asignar fila seleccionada" sap:VirtualizedContainerService.HintSize="416,176.66666666666666" sap2010:WorkflowViewState.IdRef="Assign_10">
+                <Assign DisplayName="Asignar fila seleccionada" sap:VirtualizedContainerService.HintSize="416,180.66666666666666" sap2010:WorkflowViewState.IdRef="Assign_10">
                   <Assign.To>
                     <OutArgument x:TypeArguments="sd:DataRow">[out_FilaProductoSeleccionado]</OutArgument>
                   </Assign.To>
@@ -236,7 +298,7 @@
                     <InArgument x:TypeArguments="sd:DataRow">[filaMinima]</InArgument>
                   </Assign.Value>
                 </Assign>
-                <Assign DisplayName="Marcar HayProductoValido" sap:VirtualizedContainerService.HintSize="416,167.33333333333334" sap2010:WorkflowViewState.IdRef="Assign_11">
+                <Assign DisplayName="Marcar HayProductoValido" sap:VirtualizedContainerService.HintSize="416,171.33333333333334" sap2010:WorkflowViewState.IdRef="Assign_11">
                   <Assign.To>
                     <OutArgument x:TypeArguments="x:Boolean">[out_HayProductoValido]</OutArgument>
                   </Assign.To>
@@ -247,7 +309,7 @@
               </Sequence>
             </If.Then>
             <If.Else>
-              <Sequence DisplayName="Else" sap:VirtualizedContainerService.HintSize="450,90.66666666666667" sap2010:WorkflowViewState.IdRef="Sequence_9">
+              <Sequence DisplayName="Else" sap:VirtualizedContainerService.HintSize="450,94.66666666666667" sap2010:WorkflowViewState.IdRef="Sequence_9">
                 <sap:WorkflowViewStateService.ViewState>
                   <scg:Dictionary x:TypeArguments="x:String, x:Object">
                     <x:Boolean x:Key="IsExpanded">True</x:Boolean>

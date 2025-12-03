@@ -1,0 +1,17 @@
+﻿{
+  "Name": "Cuadro de texto buscar",
+  "Type": "Element",
+  "TaxonomyType": "Element",
+  "Id": "5smPDLMHVEWWCwXwxHqQEA",
+  "Reference": "AWnxG0bVVU6RIhXzwQivlA/5smPDLMHVEWWCwXwxHqQEA",
+  "ParentRef": "AWnxG0bVVU6RIhXzwQivlA/0h34Ftw_BEGAu9ZGKgOgpQ",
+  "Created": "2025-12-02T19:19:17.9034124Z",
+  "Updated": "2025-12-02T19:20:00.2424283Z",
+  "CreatedBy": [
+    "UiPath.UIAutomationCore, Version=25.10.20.0, Culture=neutral, PublicKeyToken=null",
+    "UiPath.Platform, Version=25.10.1.0, Culture=neutral, PublicKeyToken=null"
+  ],
+  "UpdatedBy": [
+    "UiPath.Platform, Version=25.10.1.0, Culture=neutral, PublicKeyToken=null"
+  ]
+}

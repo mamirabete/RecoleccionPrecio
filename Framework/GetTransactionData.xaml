@@ -342,7 +342,7 @@
               <OutArgument x:TypeArguments="x:String">[out_TransactionField1]</OutArgument>
             </Assign.To>
             <Assign.Value>
-              <InArgument x:TypeArguments="x:String">[out_dt_TransactionItem(0).ToString]</InArgument>
+              <InArgument x:TypeArguments="x:String">[out_dt_TransactionItem("GRUPO").ToString]</InArgument>
             </Assign.Value>
           </Assign>
           <Assign DisplayName="Assign out_TransactionField2" sap:VirtualizedContainerService.HintSize="463.3333333333333,167.33333333333334" sap2010:WorkflowViewState.IdRef="Assign_7">
@@ -350,7 +350,7 @@
               <OutArgument x:TypeArguments="x:String">[out_TransactionField2]</OutArgument>
             </Assign.To>
             <Assign.Value>
-              <InArgument x:TypeArguments="x:String">[out_dt_TransactionItem(2).ToString]</InArgument>
+              <InArgument x:TypeArguments="x:String">[out_dt_TransactionItem("PRODUCTO (WEB)").ToString]</InArgument>
             </Assign.Value>
           </Assign>
         </Sequence>

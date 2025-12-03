@@ -1,0 +1,14 @@
+﻿{
+  "Name": "Obtiene el orden",
+  "Type": "Element",
+  "TaxonomyType": "Label",
+  "Id": "DWHigY6fQ0ug-QOFuk57MA",
+  "Reference": "AWnxG0bVVU6RIhXzwQivlA/DWHigY6fQ0ug-QOFuk57MA",
+  "ParentRef": "AWnxG0bVVU6RIhXzwQivlA/0h34Ftw_BEGAu9ZGKgOgpQ",
+  "Created": "2025-12-02T19:25:59.4529441Z",
+  "Updated": "2025-12-02T19:25:59.4529441Z",
+  "CreatedBy": [
+    "UiPath.UIAutomationCore, Version=25.10.20.0, Culture=neutral, PublicKeyToken=null",
+    "UiPath.Platform, Version=25.10.1.0, Culture=neutral, PublicKeyToken=null"
+  ]
+}

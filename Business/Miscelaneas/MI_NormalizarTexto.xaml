@@ -18,7 +18,6 @@
   </TextExpression.NamespacesForImplementation>
   <TextExpression.ReferencesForImplementation>
     <sco:Collection x:TypeArguments="AssemblyReference">
-      <AssemblyReference>GlobalVariablesT1PNoYwrqg</AssemblyReference>
       <AssemblyReference>System.Activities</AssemblyReference>
       <AssemblyReference>System.Collections</AssemblyReference>
       <AssemblyReference>System.ComponentModel.TypeConverter</AssemblyReference>
@@ -29,10 +28,11 @@
       <AssemblyReference>UiPath.UiAutomation.Activities</AssemblyReference>
     </sco:Collection>
   </TextExpression.ReferencesForImplementation>
-  <Sequence DisplayName="MI_NormalizarTexto" sap:VirtualizedContainerService.HintSize="962.6666666666666,444.32333333333327" sap2010:WorkflowViewState.IdRef="Sequence_1">
+  <Sequence sap2010:Annotation.AnnotationText="Soporte general (comparaciones de descripciones, no dispara excepción en sí)." DisplayName="MI_NormalizarTexto" sap:VirtualizedContainerService.HintSize="962.6666666666666,256.32333333333327" sap2010:WorkflowViewState.IdRef="Sequence_1">
     <sap:WorkflowViewStateService.ViewState>
       <scg:Dictionary x:TypeArguments="x:String, x:Object">
         <x:Boolean x:Key="IsExpanded">True</x:Boolean>
+        <x:Boolean x:Key="IsAnnotationDocked">True</x:Boolean>
       </scg:Dictionary>
     </sap:WorkflowViewStateService.ViewState>
     <Assign DisplayName="Normalizar texto (trim + lower)" sap:VirtualizedContainerService.HintSize="450,167.33333333333334" sap2010:WorkflowViewState.IdRef="Assign_1">
