@@ -64,9 +64,10 @@
       <AssemblyReference>UiPath.System.Activities</AssemblyReference>
       <AssemblyReference>UiPath.UiAutomation.Activities</AssemblyReference>
       <AssemblyReference>UiPath.Workflow</AssemblyReference>
+      <AssemblyReference>GlobalVariablesPyJlhA8tsO</AssemblyReference>
     </sco:Collection>
   </TextExpression.ReferencesForImplementation>
-  <Sequence sap2010:Annotation.AnnotationText="Escribe fila en DataTable salida." DisplayName="WF_ActualizarResultados" sap:VirtualizedContainerService.HintSize="956.6666666666666,2040" sap2010:WorkflowViewState.IdRef="Sequence_1">
+  <Sequence sap2010:Annotation.AnnotationText="Escribe fila en DataTable salida." DisplayName="WF_ActualizarResultados" sap:VirtualizedContainerService.HintSize="640.6666666666666,2040" sap2010:WorkflowViewState.IdRef="Sequence_1">
     <Sequence.Variables>
       <Variable x:TypeArguments="sd:DataRow" Name="nuevaFila" />
       <Variable x:TypeArguments="x:String" Name="rutaLog" />
@@ -179,7 +180,7 @@
       </Assign.Value>
     </Assign>
     <ui:LogMessage DisplayName="Log resultado agregado" sap:VirtualizedContainerService.HintSize="486.6666666666667,176.66666666666666" sap2010:WorkflowViewState.IdRef="LogMessage_1" Level="Info" Message="[lineaLog]" />
-    <ui:CommentOut DisplayName="Esto genera un log por cada registro (OJO)" sap:VirtualizedContainerService.HintSize="486.6666666666667,498.6666666666667" sap2010:WorkflowViewState.IdRef="CommentOut_1">
+    <ui:CommentOut DisplayName="Esto genera un log por cada registro (OJO no sería necesario)" sap:VirtualizedContainerService.HintSize="486.66666666666674,476" sap2010:WorkflowViewState.IdRef="CommentOut_1">
       <ui:CommentOut.Body>
         <Sequence DisplayName="Actividades ignoradas" sap:VirtualizedContainerService.HintSize="450,396" sap2010:WorkflowViewState.IdRef="Sequence_3">
           <sap:WorkflowViewStateService.ViewState>

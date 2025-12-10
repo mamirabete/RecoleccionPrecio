@@ -80,13 +80,13 @@
     <ui:InvokeWorkflowFile ArgumentsVariable="{x:Null}" ContinueOnError="{x:Null}" DisplayName="Registrar FORMATO_PRECIO_INVALIDO" sap:VirtualizedContainerService.HintSize="452,177.33333333333334" sap2010:WorkflowViewState.IdRef="InvokeWorkflowFile_1" UnSafe="False" WorkflowFileName="Business\WorkFlow\WF_ActualizarResultados.xaml">
       <ui:InvokeWorkflowFile.Arguments>
         <InArgument x:TypeArguments="scg:Dictionary(x:String, x:Object)" x:Key="in_Config">[in_Config]</InArgument>
-        <InArgument x:TypeArguments="sd:DataRow" x:Key="in_TransactionItem">[CType(in_TransactionItem, System.Data.DataRow)]</InArgument>
+        <InArgument x:TypeArguments="sd:DataRow" x:Key="in_Descripcion">[CType(in_TransactionItem, System.Data.DataRow)]</InArgument>
         <InArgument x:TypeArguments="x:String" x:Key="in_Estado">FORMATO_PRECIO_INVALIDO</InArgument>
         <InArgument x:TypeArguments="x:String" x:Key="in_PrecioTexto">[in_PrecioTexto]</InArgument>
-        <InArgument x:TypeArguments="x:String" x:Key="in_PrecioNumero">
+        <InArgument x:TypeArguments="x:String" x:Key="in_Precio">
           <Literal x:TypeArguments="x:String" Value="" />
         </InArgument>
-        <InArgument x:TypeArguments="x:String" x:Key="in_UrlProducto">
+        <InArgument x:TypeArguments="x:String" x:Key="in_Url">
           <Literal x:TypeArguments="x:String" Value="" />
         </InArgument>
         <InOutArgument x:TypeArguments="sd:DataTable" x:Key="io_dtResultados" />

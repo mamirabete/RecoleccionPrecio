@@ -75,15 +75,15 @@
     <ui:LogMessage DisplayName="Log - Producto no encontrado" sap:VirtualizedContainerService.HintSize="452,176.66666666666666" sap2010:WorkflowViewState.IdRef="LogMessage_1" Level="Warn" Message="[&quot;[CBA] Excepción de negocio: Producto no encontrado para : &quot; + If(in_TransactionItem IsNot Nothing, CType(in_TransactionItem, System.Data.DataRow)(&quot;PRODUCTO (WEB)&quot;).ToString(), String.Empty)]" />
     <ui:InvokeWorkflowFile ArgumentsVariable="{x:Null}" ContinueOnError="{x:Null}" DisplayName="Registrar resultado NO_ENCONTRADO" sap:VirtualizedContainerService.HintSize="452,182.66666666666666" sap2010:WorkflowViewState.IdRef="InvokeWorkflowFile_1" UnSafe="False" WorkflowFileName="Business\WorkFlow\WF_ActualizarResultados.xaml">
       <ui:InvokeWorkflowFile.Arguments>
-        <InArgument x:TypeArguments="sd:DataRow" x:Key="in_TransactionItem">[CType(in_TransactionItem, DataRow)]</InArgument>
+        <InArgument x:TypeArguments="sd:DataRow" x:Key="in_Descripcion">[CType(in_TransactionItem, DataRow)]</InArgument>
         <InArgument x:TypeArguments="x:String" x:Key="in_Estado">NO_ENCONTRADO</InArgument>
         <InArgument x:TypeArguments="x:String" x:Key="in_PrecioTexto">
           <Literal x:TypeArguments="x:String" Value="" />
         </InArgument>
-        <InArgument x:TypeArguments="x:String" x:Key="in_PrecioNumero">
+        <InArgument x:TypeArguments="x:String" x:Key="in_Precio">
           <Literal x:TypeArguments="x:String" Value="" />
         </InArgument>
-        <InArgument x:TypeArguments="x:String" x:Key="in_UrlProducto">
+        <InArgument x:TypeArguments="x:String" x:Key="in_Url">
           <Literal x:TypeArguments="x:String" Value="" />
         </InArgument>
         <InOutArgument x:TypeArguments="sd:DataTable" x:Key="io_dtResultados" />

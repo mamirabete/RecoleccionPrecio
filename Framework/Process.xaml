@@ -35,13 +35,13 @@
       <x:String>System.Xml.Linq</x:String>
       <x:String>UiPath.Core</x:String>
       <x:String>UiPath.Core.Activities</x:String>
-      <x:String>GlobalVariablesNamespace</x:String>
-      <x:String>GlobalConstantsNamespace</x:String>
       <x:String>System.Reflection</x:String>
       <x:String>System.Linq.Expressions</x:String>
       <x:String>System.Numerics</x:String>
       <x:String>System.ComponentModel</x:String>
       <x:String>System.Xml.Serialization</x:String>
+      <x:String>GlobalVariablesNamespace</x:String>
+      <x:String>GlobalConstantsNamespace</x:String>
     </scg:List>
   </TextExpression.NamespacesForImplementation>
   <TextExpression.ReferencesForImplementation>
@@ -105,20 +105,18 @@
       <AssemblyReference>System.Private.Xml</AssemblyReference>
     </scg:List>
   </TextExpression.ReferencesForImplementation>
-  <Sequence sap2010:Annotation.AnnotationText="Invoca los pasos principales del proceso de negocio, que suelen implementarse mediante múltiples subflujos de trabajo.&#xA;Si se lanza una BusinessRuleException, se omite la transacción.&#xA;Si se produce otro tipo de excepción, se puede reintentar la transacción actual." DisplayName="Process" sap:VirtualizedContainerService.HintSize="956.6666666666666,2866.6666666666665" sap2010:WorkflowViewState.IdRef="Sequence_1">
+  <Sequence sap2010:Annotation.AnnotationText="Invoca los pasos principales del proceso de negocio, que suelen implementarse mediante múltiples subflujos de trabajo.&#xA;Si se lanza una BusinessRuleException, se omite la transacción.&#xA;Si se produce otro tipo de excepción, se puede reintentar la transacción actual." DisplayName="Process" sap:VirtualizedContainerService.HintSize="640.6666666666666,3059.3333333333335" sap2010:WorkflowViewState.IdRef="Sequence_1">
     <Sequence.Variables>
+      <Variable x:TypeArguments="x:Boolean" Name="hayUnicoValido" />
+      <Variable x:TypeArguments="x:Boolean" Name="multiplesProductos" />
       <Variable x:TypeArguments="x:String" Name="Unidad" />
       <Variable x:TypeArguments="x:String" Name="contenidoNeto" />
       <Variable x:TypeArguments="x:String" Name="textoBusqueda" />
       <Variable x:TypeArguments="sd:DataTable" Name="dtResultadosBusqueda" />
       <Variable x:TypeArguments="x:Int32" Name="cantidadResultados" />
       <Variable x:TypeArguments="x:Boolean" Name="productoNoEncontrado" />
-      <Variable x:TypeArguments="x:Boolean" Name="multiplesProductos" />
-      <Variable x:TypeArguments="x:Boolean" Name="hayUnicoValido" />
       <Variable x:TypeArguments="sd:DataRow" Name="filaSeleccionada" />
       <Variable x:TypeArguments="x:String" Name="precioTexto" />
-      <Variable x:TypeArguments="x:Double" Name="precioNumero" />
-      <Variable x:TypeArguments="x:Boolean" Name="precioEsValido" />
       <Variable x:TypeArguments="x:String" Name="urlBruta" />
       <Variable x:TypeArguments="x:String" Name="urlLimpia" />
     </Sequence.Variables>
@@ -218,6 +216,14 @@
         </Sequence>
       </ui:CommentOut.Body>
     </ui:CommentOut>
+    <Assign DisplayName="Establecer valor de variable" sap:VirtualizedContainerService.HintSize="522.6666666666666,176.66666666666666" sap2010:WorkflowViewState.IdRef="Assign_6">
+      <Assign.To>
+        <OutArgument x:TypeArguments="x:String">[precioTexto]</OutArgument>
+      </Assign.To>
+      <Assign.Value>
+        <InArgument x:TypeArguments="x:String">[filaSeleccionada("Precio").ToString()]</InArgument>
+      </Assign.Value>
+    </Assign>
     <Assign DisplayName="Leer urlBruta" sap:VirtualizedContainerService.HintSize="522.6666666666666,176.66666666666666" sap2010:WorkflowViewState.IdRef="Assign_3">
       <Assign.To>
         <OutArgument x:TypeArguments="x:String">[urlBruta]</OutArgument>
@@ -232,14 +238,14 @@
         <OutArgument x:TypeArguments="x:String" x:Key="out_URLLimpia">[urlLimpia]</OutArgument>
       </ui:InvokeWorkflowFile.Arguments>
     </ui:InvokeWorkflowFile>
-    <ui:InvokeWorkflowFile ArgumentsVariable="{x:Null}" ContinueOnError="{x:Null}" DisplayName="WF_ActualizarResultados" sap:VirtualizedContainerService.HintSize="522.6666666666666,173.33333333333334" sap2010:WorkflowViewState.IdRef="InvokeWorkflowFile_7" UnSafe="False" WorkflowFileName="Business\WorkFlow\WF_ActualizarResultados.xaml">
+    <ui:InvokeWorkflowFile ArgumentsVariable="{x:Null}" ContinueOnError="{x:Null}" DisplayName="WF_ActualizarResultados" sap:VirtualizedContainerService.HintSize="522.6666666666666,173.33333333333334" sap2010:WorkflowViewState.IdRef="InvokeWorkflowFile_12" UnSafe="False" WorkflowFileName="Business\WorkFlow\WF_ActualizarResultados.xaml">
       <ui:InvokeWorkflowFile.Arguments>
-        <InArgument x:TypeArguments="sd:DataRow" x:Key="in_TransactionItem" />
-        <InArgument x:TypeArguments="x:String" x:Key="in_Estado" />
-        <InArgument x:TypeArguments="x:String" x:Key="in_PrecioTexto" />
-        <InArgument x:TypeArguments="x:String" x:Key="in_PrecioNumero" />
-        <InArgument x:TypeArguments="x:String" x:Key="in_UrlProducto" />
-        <InOutArgument x:TypeArguments="sd:DataTable" x:Key="io_dtResultados" />
+        <InArgument x:TypeArguments="x:String" x:Key="in_Descripcion">[textoBusqueda]</InArgument>
+        <InArgument x:TypeArguments="x:String" x:Key="in_ContenidoNeto">[contenidoNeto]</InArgument>
+        <InArgument x:TypeArguments="x:String" x:Key="in_Unidad">[Unidad]</InArgument>
+        <InArgument x:TypeArguments="x:String" x:Key="in_Precio">[precioTexto]</InArgument>
+        <InArgument x:TypeArguments="x:String" x:Key="in_Url">[urlLimpia]</InArgument>
+        <InOutArgument x:TypeArguments="sd:DataTable" x:Key="io_dtResultados">[dtProductosResultado]</InOutArgument>
       </ui:InvokeWorkflowFile.Arguments>
     </ui:InvokeWorkflowFile>
   </Sequence>
