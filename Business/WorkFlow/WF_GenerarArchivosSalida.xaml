@@ -1,9 +1,4 @@
-<Activity mc:Ignorable="sap sap2010" x:Class="Business_Workflows_WF_GenerarArchivosSalida" xmlns="http://schemas.microsoft.com/netfx/2009/xaml/activities" xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" xmlns:sap="http://schemas.microsoft.com/netfx/2009/xaml/activities/presentation" xmlns:sap2010="http://schemas.microsoft.com/netfx/2010/xaml/activities/presentation" xmlns:scg="clr-namespace:System.Collections.Generic;assembly=System.Private.CoreLib" xmlns:sco="clr-namespace:System.Collections.ObjectModel;assembly=System.Private.CoreLib" xmlns:sd="clr-namespace:System.Data;assembly=System.Data.Common" xmlns:ui="http://schemas.uipath.com/workflow/activities" xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml">
-  <x:Members>
-    <x:Property Name="in_Config" Type="InArgument(scg:Dictionary(x:String, x:Object))" />
-    <x:Property Name="in_dtResultados" Type="InArgument(sd:DataTable)" />
-  </x:Members>
-  <sap2010:WorkflowViewState.IdRef>WF_GenerarArchivosSalida</sap2010:WorkflowViewState.IdRef>
+<Activity mc:Ignorable="sap sap2010" x:Class="Business_Workflows_WF_GenerarArchivosSalida" sap2010:WorkflowViewState.IdRef="WF_GenerarArchivosSalida" xmlns="http://schemas.microsoft.com/netfx/2009/xaml/activities" xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" xmlns:sap="http://schemas.microsoft.com/netfx/2009/xaml/activities/presentation" xmlns:sap2010="http://schemas.microsoft.com/netfx/2010/xaml/activities/presentation" xmlns:scg="clr-namespace:System.Collections.Generic;assembly=System.Private.CoreLib" xmlns:sco="clr-namespace:System.Collections.ObjectModel;assembly=System.Private.CoreLib" xmlns:ui="http://schemas.uipath.com/workflow/activities" xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml">
   <TextExpression.NamespacesForImplementation>
     <sco:Collection x:TypeArguments="x:String">
       <x:String>GlobalConstantsNamespace</x:String>
@@ -28,6 +23,7 @@
       <x:String>System.Collections</x:String>
       <x:String>System.Reflection</x:String>
       <x:String>System.Linq.Expressions</x:String>
+      <x:String>UiPath.Platform</x:String>
     </sco:Collection>
   </TextExpression.NamespacesForImplementation>
   <TextExpression.ReferencesForImplementation>
@@ -71,14 +67,15 @@
       <AssemblyReference>UiPath.UiAutomation.Activities</AssemblyReference>
       <AssemblyReference>UiPath.Workflow</AssemblyReference>
       <AssemblyReference>WindowsBase</AssemblyReference>
+      <AssemblyReference>UiPath.CodedWorkflows</AssemblyReference>
     </sco:Collection>
   </TextExpression.ReferencesForImplementation>
-  <Sequence DisplayName="WF_GenerarArchivosSalida" sap:VirtualizedContainerService.HintSize="956.6666666666666,290" sap2010:WorkflowViewState.IdRef="Sequence_1">
+  <Sequence DisplayName="WF_GenerarArchivosSalida" sap:VirtualizedContainerService.HintSize="926.6666666666666,444.32333333333327" sap2010:WorkflowViewState.IdRef="Sequence_1">
     <sap:WorkflowViewStateService.ViewState>
       <scg:Dictionary x:TypeArguments="x:String, x:Object">
         <x:Boolean x:Key="IsExpanded">True</x:Boolean>
       </scg:Dictionary>
     </sap:WorkflowViewStateService.ViewState>
-    <ui:AppendWriteCsvFile FilePath="{x:Null}" AddHeaders="True" CsvAction="Write" DataTable="[in_dtResultados]" Delimitator="Comma" DelimitatorForViewModel="Comma" DisplayName="Generar CSV de resultados" sap:VirtualizedContainerService.HintSize="450,267.3333333333333" sap2010:WorkflowViewState.IdRef="AppendWriteCsvFile_1" PathResource="[New UiPath.Core.Activities.Resources.File(in_Config(&quot;Ruta_Output_Resultados&quot;).ToString())]" ShouldQuote="True" />
+    <ui:WriteCsvFile AddHeaders="True" DataTable="[dtProductosResultado]" Delimitator="Comma" DisplayName="Escribir CSV" FilePath="[Config(&quot;Ruta_Output_Resultados&quot;).ToString]" sap:VirtualizedContainerService.HintSize="450,182" sap2010:WorkflowViewState.IdRef="WriteCsvFile_1" ShouldQuote="True" />
   </Sequence>
 </Activity>
